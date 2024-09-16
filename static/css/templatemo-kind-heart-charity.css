@@ -9,39 +9,39 @@ https://templatemo.com/tm-581-kind-heart-charity
 
 
 @font-face {
-    font-family: 'Metropolis';
-    src: url("{% static 'fonts/Metropolis/Metropolis-Regular.woff2' %}") format('woff2'),
-        url("{% static 'fonts/Metropolis/Metropolis-Regular.woff' %}") format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Metropolis';
+  src: url("{% static 'fonts/Metropolis/Metropolis-Regular.woff2' %}") format('woff2'),
+      url("{% static 'fonts/Metropolis/Metropolis-Regular.woff' %}") format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Metropolis';
-    src: url("{% static 'fonts/Metropolis/Metropolis-Light.woff2' %}") format('woff2'),
-        url("{% static 'fonts/Metropolis/Metropolis-Light.woff' %}") format('woff');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Metropolis';
+  src: url("{% static 'fonts/Metropolis/Metropolis-Light.woff2' %}") format('woff2'),
+      url("{% static 'fonts/Metropolis/Metropolis-Light.woff' %}") format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Metropolis';
-    src: url("{% static 'fonts/Metropolis/Metropolis-SemiBold.woff2'' %}") format('woff2'),
-        url("{% static 'fonts/Metropolis/Metropolis-SemiBold.woff' %}") format('woff');
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Metropolis';
+  src: url("{% static 'fonts/Metropolis/Metropolis-SemiBold.woff2'' %}") format('woff2'),
+      url("{% static 'fonts/Metropolis/Metropolis-SemiBold.woff' %}") format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Metropolis';
-    src: url("{% static ' fonts/Metropolis/Metropolis-Bold.woff2' %}") format('woff2'),
-        url("{% static ' fonts/Metropolis/Metropolis-Bold.woff' %}") format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Metropolis';
+  src: url("{% static ' fonts/Metropolis/Metropolis-Bold.woff2' %}") format('woff2'),
+      url("{% static ' fonts/Metropolis/Metropolis-Bold.woff' %}") format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 /*---------------------------------------
