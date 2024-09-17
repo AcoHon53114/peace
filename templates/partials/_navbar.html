@@ -18,44 +18,37 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#top">首頁</a>
+                    <a class="nav-link click-scroll" href={% url "index" %}>首頁</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#section_2">關於我們</a>
+                    <a class="nav-link click-scroll" href={% url "about" %}>關於我們</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#section_3">院舍環境</a>
+                    <a class="nav-link click-scroll" href={% url "environment" %}>院舍環境</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#section_4">入院須知</a>
+                    <a class="nav-link click-scroll" href={% url "information" %}>入院須知</a>
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link click-scroll dropdown-toggle::after {display: none;}" href="#section_5"
+                    <a class="nav-link click-scroll dropdown-toggle::after {display: none;}" href={% url "news" %}
                         id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         院舍消息</a>
 
-                    <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
-                        <li>
-                            <a class="dropdown-item" href="news.html">News Listing</a>
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item" href="news-detail.html">News Detail</a>
-                        </li>
-                    </ul>
-                </li>
-
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#section_6">聯絡我們</a>
+                    <a class="nav-link click-scroll" href={% url "contact" %}>聯絡我們</a>
                 </li>
 
                 <li class="nav-item ms-3">
-                    <a class="nav-link custom-btn custom-border-btn btn" href="donate.html">Donate</a>
+                    <a class="nav-link custom-btn custom-border-btn btn" href={% url "register" %}>註冊</a>
+                </li>
+
+                <li class="nav-item ms-3">
+                    <a class="nav-link custom-btn custom-border-btn btn" href={% url "login" %}>登錄</a>
                 </li>
             </ul>
         </div>
