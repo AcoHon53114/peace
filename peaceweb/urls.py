@@ -21,11 +21,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', include("pages.urls")),
     path('news/', include("news.urls")),
     path('accounts/', include("accounts.urls")),  # 這裡定義了 'accounts/'
     path('contacts/', include("contacts.urls")),
     path('informations/', include("informations.urls")),
     path('environments/', include("environments.urls")),
-    path('admin/', admin.site.urls),
+    #path('__debug__/', include('debug_toolbar.urls')),
 ]

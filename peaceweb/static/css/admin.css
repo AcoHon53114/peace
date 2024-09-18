@@ -1,0 +1,78 @@
+#header {
+  height: 50px;
+  background: #67400aa2;
+  color: #fff;
+}
+#branding h1 {
+  color: #fff;
+}
+
+a:link,
+a:visited {
+  color: #171715;
+}
+
+div.breadcrumbs {
+  background: #daae8a;
+  color: #637fc6;
+}
+
+div.breadcrumbs a {
+  color: #333;
+}
+
+.module h2,
+.module caption,
+.inlinegroup h2 {
+  background: #daae8a;
+}
+
+.button,
+input[type="submit"]
+input[type="button"]
+.submitrow input,
+a.button {
+  color: #fff;
+  background: #67400aa2;
+}
+
+/* 修改登录按钮的样式 */
+.submit-row input[type="submit"] {
+  background-color: #daae8a; /* 设置背景颜色 */
+  color: #fff; /* 设置文字颜色 */
+  border: none; /* 去掉边框 */
+  padding: 10px 20px; /* 设置内边距 */
+  border-radius: 4px; /* 设置圆角 */
+  cursor: pointer; /* 设置鼠标指针样式 */
+}
+
+/* 鼠标悬停时的样式 */
+.submit-row input[type="submit"]:hover {
+  background-color: #daae8a; /* 设置悬停时的背景颜色 */
+}
+
+/* 为每个按钮设置不同的样式 */
+.submit-row input[type="submit"].icon-sun {
+  background-color: #daae8a; /* 设置背景颜色 */
+}
+
+.submit-row input[type="submit"].icon-auto {
+  background-color: #daae8a; /* 设置背景颜色 */
+}
+
+.submit-row input[type="submit"].icon-moon {
+  background-color: #daae8a; /* 设置背景颜色 */
+}
+
+/* 鼠标悬停时的样式 */
+.submit-row input[type="submit"].icon-sun:hover {
+  background-color: #daae8a; /* 设置悬停时的背景颜色 */
+}
+
+.submit-row input[type="submit"].icon-auto:hover {
+  background-color: #daae8a; /* 设置悬停时的背景颜色 */
+}
+
+.submit-row input[type="submit"].icon-moon:hover {
+  background-color: #daae8a; /* 设置悬停时的背景颜色 */
+}

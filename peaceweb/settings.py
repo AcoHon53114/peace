@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'pages.apps.PagesConfig',
+    #'debug_toolbar',
     'environments.apps.EnvironmentsConfig',
     'informations.apps.InformationsConfig',
     'news.apps.NewsConfig',
@@ -54,6 +55,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
+
+INTERNAL_IPS = [
+    #'127.0.0.1',
 ]
 
 ROOT_URLCONF = 'peaceweb.urls'
@@ -82,8 +88,11 @@ WSGI_APPLICATION = 'peaceweb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'peaceweb',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        "HOST": 'localhost',
     }
 }
 

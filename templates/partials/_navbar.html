@@ -2,7 +2,7 @@
 <!--_navbar.html-->
 <nav class="navbar navbar-expand-lg bg-light shadow-lg">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href={% url "index" %}>
             <img src={%static "images/logo.png" %} class="logo img-fluid" alt="Kind Heart Charity" />
             <span>
                 平安護老院有限公司
@@ -17,37 +17,44 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
+                <li {% if '/' == request.path %} class="nav-item active mr-3" {% else %}
+                class="nav-item mr-3"
+                {% endif %}>
                     <a class="nav-link click-scroll" href={% url "index" %}>首頁</a>
                 </li>
 
-                <li class="nav-item">
+                <li {% if 'about' in request.path %} class="nav-item active mr-3" {% else %}
+                class="nav-item mr-3" {% endif %}>
                     <a class="nav-link click-scroll" href={% url "about" %}>關於我們</a>
                 </li>
 
-                <li class="nav-item">
+                <li {% if 'environment' in request.path %} class="nav-item active mr-3" {% else %}
+                class="nav-item mr-3" {% endif %}>
                     <a class="nav-link click-scroll" href={% url "environment" %}>院舍環境</a>
                 </li>
 
-                <li class="nav-item">
+                <li {% if 'information' in request.path %} class="nav-item active mr-3" {% else %}
+                class="nav-item mr-3" {% endif %}>
                     <a class="nav-link click-scroll" href={% url "information" %}>入院須知</a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link click-scroll dropdown-toggle::after {display: none;}" href={% url "news" %}
-                        id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        院舍消息</a>
+                <li {% if 'news' in request.path %} class="nav-item active mr-3" {% else %}
+                class="nav-item mr-3" {% endif %}>
+                    <a class="nav-link click-scroll" href={% url "news" %}>院舍消息</a>
+                </li>                    
 
-                <li class="nav-item">
+                <li {% if 'contact' in request.path %} class="nav-item active mr-3" {% else %}
+                class="nav-item mr-3" {% endif %}>
                     <a class="nav-link click-scroll" href={% url "contact" %}>聯絡我們</a>
                 </li>
 
-                <li class="nav-item ms-3">
+                <li {% if 'register' in request.path %} class="nav-item active mr-3" {% else %}
+                class="nav-item mr-3" {% endif %} style="margin-right: 15px;">
                     <a class="nav-link custom-btn custom-border-btn btn" href={% url "register" %}>註冊</a>
                 </li>
 
-                <li class="nav-item ms-3">
+                <li {% if 'login' in request.path %} class="nav-item active mr-3" {% else %}
+                class="nav-item mr-3" {% endif %} style="margin-right: 15px;">
                     <a class="nav-link custom-btn custom-border-btn btn" href={% url "login" %}>登錄</a>
                 </li>
             </ul>
