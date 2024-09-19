@@ -49,12 +49,12 @@
                 </li>
 
                 <li {% if 'register' in request.path %} class="nav-item active mr-3" {% else %}
-                class="nav-item mr-3" {% endif %} style="margin-right: 15px;">
+                class="nav-item mr-3" {% endif %} style="margin-right: 10px;">
                     <a class="nav-link custom-btn custom-border-btn btn" href={% url "register" %}>註冊</a>
                 </li>
 
                 <li {% if 'login' in request.path %} class="nav-item active mr-3" {% else %}
-                class="nav-item mr-3" {% endif %} style="margin-right: 15px;">
+                class="nav-item mr-3" {% endif %} style="margin-right: 10px;">
                     <a class="nav-link custom-btn custom-border-btn btn" href={% url "login" %}>登錄</a>
                 </li>
             </ul>

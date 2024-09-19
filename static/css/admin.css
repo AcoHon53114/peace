@@ -1,3 +1,7 @@
+:root {
+  --header-bg: #67400aa2;
+}
+
 #header {
   height: 50px;
   background: #67400aa2;
@@ -76,3 +80,32 @@ a.button {
 .submit-row input[type="submit"].icon-moon:hover {
   background-color: #daae8a; /* 设置悬停时的背景颜色 */
 }
+
+.theme-toggle {
+  background-color : #67400aa2;
+}
+
+.theme-label-when-auto {
+  background-color : #67400aa2;
+}
+
+.theme-label-when-light {
+  background-color : #67400aa2;
+}
+
+.theme-label-when-dark {
+  background-color : #67400aa2;
+}
+
+svg.theme-icon-when-auto {
+  color : #67400aa2;
+}
+
+svg.theme-icon-when-light {
+  color : #67400aa2;
+}
+
+svg.theme-icon-when-dark {
+  color : #67400aa2;
+}
+
