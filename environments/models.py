@@ -5,7 +5,7 @@ from environments.choices import title_choices
 
 # Create your models here.
 class Booking(models.Model):
-    title = models.CharField(max_length=20,choices=title_choices.items())
+    title = models.CharField(max_length=20,choices=title_choices.items(),default='預約參觀選位')
     name = models.CharField(max_length=50)
     phone = models.CharField(max_length=20)
     email = models.CharField(max_length=50)
