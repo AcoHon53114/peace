@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'news.apps.NewsConfig',
     'contacts.apps.ContactsConfig',
     'accounts.apps.AccountsConfig',
+    'banks.apps.BanksConfig',
+    'residents.apps.ResidentsConfig',
 ]
 
 MIDDLEWARE = [
