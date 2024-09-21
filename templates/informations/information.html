@@ -308,5 +308,33 @@
             </div>
         </div>
     </div>
+    <body>
+        <label for="meeting-time">日期及時間:</label>
+        <input
+          type="datetime-local"
+          id="meeting-time"
+          name="meeting-time"
+          value=""
+          min=""
+          max=""
+        />
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var currentTime = new Date();
+                var minTime = new Date(currentTime);
+                minTime.setDate(currentTime.getDate() + 1);
+                minTime.setHours(10, 0, 0, 0);
+    
+                var maxTime = new Date(currentTime);
+                maxTime.setDate(currentTime.getDate() + 7);
+                maxTime.setHours(18, 0, 0, 0);
+    
+                var meetingTimeInput = document.getElementById("meeting-time");
+                meetingTimeInput.setAttribute("min", minTime.toISOString().slice(0, 16));
+                meetingTimeInput.setAttribute("max", maxTime.toISOString().slice(0, 16));
+            });
+        </script>
+    </body>
 </section>
 {% endblock %}

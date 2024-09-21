@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'banks.apps.BanksConfig',
     'residents.apps.ResidentsConfig',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -143,13 +144,23 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+# Media collect static
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
+# email sent account setting 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'dpythonweb@gmail.com'
 EMAIL_HOST_PASSWORD = '' 
+
+
+#import/export function in admin site
+# settings.py
+from import_export.formats.base_formats import CSV, XLSX
+# multiple import options
+IMPORT_FORMATS = [CSV, XLSX]
+
+# single export options
+EXPORT_FORMATS = [XLSX]
