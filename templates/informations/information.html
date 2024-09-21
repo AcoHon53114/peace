@@ -1,4 +1,5 @@
 {% extends 'base.html' %} 
+{% load static %}
 {% load humanize %}
 {% block content %}
 
@@ -59,57 +60,84 @@
                 <div class="col-lg-6 col-12">
                     <div class="custom-text-box">
                         <h5 class="mb-3">新院友帶備物品建議清單:</h5>
-                        <table cellspacing="10"> 
-                            <tr>
-                                <td>輕便睡衣(褲-橡筋褲頭)</td>
-                                <td>4套</td>
-                            </tr>
-                            <tr>
-                                <td>外套、鞋襪、拖鞋、冬季禦寒衣物 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td>各1件</td>
-                            </tr>
-                            <tr>
-                                <td>浴巾、面巾</td>
-                                <td>各2條</td>
-                            </tr>
-                            <tr>
-                                <td>電鬚刨(男院友適用)</td>
-                                <td>1個</td>
-                            </tr>
-                            <tr>
-                                <td>有蓋水杯、水壺</td>
-                                <td>各1件</td>
-                            </tr>
-                            <tr>   
-                                <td>廁紙、盒裝濕紙巾</td>
-                                <td>各1件</td> 
-                            </tr>
-                            <tr>
-                                <td>牙膏、牙刷、漱口膠杯<br>
-                                    (如有假牙請帶備假牙盒)</td>
-                                <td>各1件</td>
-                            </tr>
-                            <tr>
-                                <td>潤膚露</td>
-                                <td>1件</td>
-                            </tr>
-                            <tr>
-                                <td>膠底圍裙</td>
-                                <td>2件</td>
-                            </tr>
-                            <tr>
-                                <td>洗衣網袋</td>
-                                <td>1個</td>
-                            </tr>
-                            <tr>
-                                <td>膠箱</td>
-                                <td>1個</td>
-                            </tr>
-                            <tr>
-                                <td>細垃圾箱</td>
-                                <td>1個</td>
-                            </tr>
-                        </table>
+
+                            <div class="row">
+                                <div class="col-6" style="border: 1px solid #fff">輕便睡衣(褲-橡筋褲頭)</div>
+                                <div class="col-3" style="border: 1px solid #fff"> </div>
+                                <div class="col-3" style="border: 1px solid #fff">4套</div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-6" style="border: 1px solid #fff">外套、冬季禦寒衣</div>
+                                <div class="col-3" style="border: 1px solid #fff"> </div>
+                                <div class="col-3" style="border: 1px solid #fff">各1件</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6" style="border: 1px solid #fff">鞋襪、拖鞋</div>
+                                <div class="col-3" style="border: 1px solid #fff"> </div>
+                                <div class="col-3" style="border: 1px solid #fff">各1件</div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-6" style="border: 1px solid #fff">浴巾、面巾</div>
+                                <div class="col-3" style="border: 1px solid #fff"> </div>
+                                <div class="col-3" style="border: 1px solid #fff">各2條</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6" style="border: 1px solid #fff">電鬚刨(男院友適用)</div>
+                                <div class="col-3" style="border: 1px solid #fff"> </div>
+                                <div class="col-3" style="border: 1px solid #fff">1個</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6" style="border: 1px solid #fff">有蓋水杯、水壺</div>
+                                <div class="col-3" style="border: 1px solid #fff"> </div>
+                                <div class="col-3" style="border: 1px solid #fff">各1件</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6" style="border: 1px solid #fff">廁紙、盒裝濕紙巾</div>
+                                <div class="col-3" style="border: 1px solid #fff"> </div>
+                                <div class="col-3" style="border: 1px solid #fff">各1件</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-9" style="border: 1px solid #fff">牙膏、牙刷、漱口膠杯(如有假牙請帶備假牙盒)</div>
+                                <div class="col-3" style="border: 1px solid #fff">各1件</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6" style="border: 1px solid #fff">潤膚露</div>
+                                <div class="col-3" style="border: 1px solid #fff"> </div>
+                                <div class="col-3" style="border: 1px solid #fff">1件</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6" style="border: 1px solid #fff">膠底圍裙</div>
+                                <div class="col-3" style="border: 1px solid #fff"> </div>
+                                <div class="col-3" style="border: 1px solid #fff">2件</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6" style="border: 1px solid #fff">洗衣網袋</div>
+                                <div class="col-3" style="border: 1px solid #fff"> </div>
+                                <div class="col-3" style="border: 1px solid #fff">1個</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6" style="border: 1px solid #fff">膠箱</div>
+                                <div class="col-3" style="border: 1px solid #fff"> </div>
+                                <div class="col-3" style="border: 1px solid #fff">1個</div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-6" style="border: 1px solid #fff">細垃圾箱</div>
+                                <div class="col-3" style="border: 1px solid #fff"> </div>
+                                <div class="col-3" style="border: 1px solid #fff">1個</div>
+                            </div>
                     
                     <br>
 
@@ -118,57 +146,87 @@
 
 <!--新院友建議準備的醫療用品&紙本文件-->                        
 <!--新院友建議準備的紙本文件-->
-                <div class="col-lg-6 col-12">
+                <div class="col-lg-6 col-12" >
                     <div class="custom-text-box">
                         <h5 class="mb-3">新院友建議準備的紙本文件:</h5>
-                        <table cellspacing="10"> 
-                        <tr>
-                            <td>安老院體格檢查報告&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                            <td>1份</td>
-                        </tr>
-                        <tr>
-                            <td>出院紙、覆診紙</td>
-                            <td>1份</td>
-                        </tr>
-                        </table>
+
+                        <div class="row">
+                            <div class="col-6" style="border: 1px solid #fff">安老院體格檢查報告</div>
+                            <div class="col-3" style="border: 1px solid #fff"> </div>
+                            <div class="col-3" style="border: 1px solid #fff">1份</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6" style="border: 1px solid #fff">出院紙、覆診紙</div>
+                            <div class="col-3" style="border: 1px solid #fff"> </div>
+                            <div class="col-3" style="border: 1px solid #fff">1份</div>
+                        </div>
 
                         <br>
 <!--新院友醫療用品建議帶備清單-->   
                         <h5 class="mb-3">新院友醫療用品建議帶備清單(按需要):</h5>
-                        <table cellspacing="10"> 
-                            <tr>
-                                <td>助行器(標記名字)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td>1個</td>
-                            </tr>
-                            <tr>
-                                <td>輪椅(標記名字)</td>
-                                <td>1輛</td>
-                            </tr>
-                        </table>     
+
+                        <div class="row">
+                            <div class="col-6" style="border: 1px solid #fff">助行器(標記名字)</div>
+                            <div class="col-3" style="border: 1px solid #fff"> </div>
+                            <div class="col-3" style="border: 1px solid #fff">1個</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6" style="border: 1px solid #fff">輪椅(標記名字)</div>
+                            <div class="col-3" style="border: 1px solid #fff"> </div>
+                            <div class="col-3" style="border: 1px solid #fff">1個</div>
+                        </div> 
                         
+                        <div class="row">
+                            <div class="col-6" style="border: 1px solid #fff">驗血糖機,血糖試紙,採血針頭</div>
+                            <div class="col-3" style="border: 1px solid #fff"> </div>
+                            <div class="col-3" style="border: 1px solid #fff">適當數量</div>
+                        </div> 
+
+                        <div class="row">
+                            <div class="col-6" style="border: 1px solid #fff">日常服用藥物</div>
+                            <div class="col-3" style="border: 1px solid #fff"> </div>
+                            <div class="col-3" style="border: 1px solid #fff">適當數量</div>
+                        </div> 
+
                         <br>
 
-                        <table>
-                            <tr>
-                                <td>驗血糖機&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                <td rowspan="4">適當數量</td>
-                            </tr>
-                            <tr>   
-                                <td>血糖試紙</td>
-                            </tr>
-                            <tr>   
-                                <td>採血針頭</td>
-                            </tr>
-                            <tr>   
-                                <td>日常服用藥物</td>
-                        </table>
                     </div>
                 </div>
 
 <hr>
 
 
-<!--預約參觀表格+護老小知識link button-->     
+<!--預約參觀表格+護老小知識link button-->  
+<body>
+    <label for="meeting-time">日期及時間:</label>
+    <input
+      type="datetime-local"
+      id="meeting-time"
+      name="meeting-time"
+      value=""
+      min=""
+      max=""
+    />
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var currentTime = new Date();
+            var minTime = new Date(currentTime);
+            minTime.setDate(currentTime.getDate() + 1);
+            minTime.setHours(10, 0, 0, 0);
+
+            var maxTime = new Date(currentTime);
+            maxTime.setDate(currentTime.getDate() + 7);
+            maxTime.setHours(18, 0, 0, 0);
+
+            var meetingTimeInput = document.getElementById("meeting-time");
+            meetingTimeInput.setAttribute("min", minTime.toISOString().slice(0, 16));
+            meetingTimeInput.setAttribute("max", maxTime.toISOString().slice(0, 16));
+        });
+    </script>
+</body>   
         <div class="row">
             <div class="col-lg-6 col-12 text-center">
                 <h3 class="text-white mb-1">預約參觀</h3>
@@ -213,14 +271,14 @@
 
             <div class="col-lg-6 col-12">
                 
-                <img src="images/smiling-casual-woman-dressed-volunteer-t-shirt-with-badge.jpg"
+                <img src={% static "images/smiling-casual-woman-dressed-volunteer-t-shirt-with-badge.jpg" %}
                     class="volunteer-image img-fluid mt-5" alt="" />
 
 <!-- link to 護老小知識.html -->
             <div class="custom-block-body text-center">
                 <h4 class="text-white mt-lg-3 mb-lg-3"> 想知更多護老小知識？</h4>
                 <p class="text-white">
-                    <a href="#section_4" class="custom-btn btn smoothscroll">點擊這裏</a>
+                    <a href={% url "guideline" %} class="custom-btn btn smoothscroll">點擊這裏</a>
                 </p>
             </div>
             
@@ -308,33 +366,5 @@
             </div>
         </div>
     </div>
-    <body>
-        <label for="meeting-time">日期及時間:</label>
-        <input
-          type="datetime-local"
-          id="meeting-time"
-          name="meeting-time"
-          value=""
-          min=""
-          max=""
-        />
-    
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                var currentTime = new Date();
-                var minTime = new Date(currentTime);
-                minTime.setDate(currentTime.getDate() + 1);
-                minTime.setHours(10, 0, 0, 0);
-    
-                var maxTime = new Date(currentTime);
-                maxTime.setDate(currentTime.getDate() + 7);
-                maxTime.setHours(18, 0, 0, 0);
-    
-                var meetingTimeInput = document.getElementById("meeting-time");
-                meetingTimeInput.setAttribute("min", minTime.toISOString().slice(0, 16));
-                meetingTimeInput.setAttribute("max", maxTime.toISOString().slice(0, 16));
-            });
-        </script>
-    </body>
 </section>
 {% endblock %}
