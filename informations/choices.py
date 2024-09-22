@@ -4,4 +4,3 @@ from datetime import datetime, timedelta
 title_choices = {
     'visiting': '預約參觀選位',
 }
-
