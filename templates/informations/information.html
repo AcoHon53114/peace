@@ -1,3 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>入院須知</title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #booking-section {
+            scroll-margin-top: -23px; /* 根据你的导航栏高度调整 */
+        }
+    </style>
+</head>
+<body>
+
 {% extends 'base.html' %} 
 {% load static %}
 {% load humanize %}
@@ -193,9 +211,9 @@
                         <br>
 
                     </div>
-<div id="booking-section">
-    <!-- 这里是你要跳转到的内容 -->
-</div>  
+    <div id="booking-section">
+<!-- 这里是你要跳转到的内容 -->
+    </div>  
                 </div>
 <hr>
 
@@ -242,7 +260,7 @@
 
                         <div class="col-lg-6 col-12">
                             <input type="email" name="volunteer-email" id="volunteer-email"
-                                pattern="[^ @]*@[^ @]*" class="form-control" placeholder="Jackdoe@gmail.com"
+                                pattern="[^ @]@[^ @]" class="form-control" placeholder="Jackdoe@gmail.com"
                                 required />
                         </div>
 
@@ -287,3 +305,5 @@
     </div>
 </section>
 {% endblock %}
+
+</body>
