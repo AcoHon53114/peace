@@ -58,6 +58,7 @@ CUSTOM PROPERTIES ( VARIABLES )
 --dark-color:                   #000000;
 --p-color:                      #717275;
 --border-color:                 #9bb9d7;
+--news-color:                   #ffddad;
 
 --body-font-family:             'Metropolis', sans-serif;
 
@@ -138,6 +139,27 @@ h6 {
 font-size: var(--h6-font-size);
 }
 
+h7 { 
+width: 550px;
+padding: 10px;
+border: 2px solid #fff;
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 4;
+box-sizing: border-box;
+font-size: 1rem; /* 设置字体大小 */
+margin: 0 auto; /* 确保水平居中 */
+}
+
+@media (max-width: 600px) {
+h7 {
+  width: 80px; /* 小屏幕时调整宽度 */
+  font-size: 0.8rem; /* 调整字体大小 */
+}
+}
+
 p {
 color: var(--p-color);
 font-size: var(--p-font-size);
@@ -207,6 +229,10 @@ border-radius: var(--border-radius-medium);
 position: relative;
 overflow: hidden;
 transition: all 0.5s;
+height: 600px; /* 固定高度 */
+display: flex;
+flex-direction: column; /* 使内容垂直排列 */
+justify-content: space-between; /* 在垂直方向上分配空间 */
 }
 
 .custom-block-wrap:hover {
@@ -222,6 +248,7 @@ display: block;
 width: 100%;
 height: 100%;
 object-fit: cover;
+height: 300px; 
 }
 
 .custom-block .custom-btn {
@@ -274,12 +301,64 @@ background: var(--white-color);
 border-radius: var(--border-radius-medium);
 margin-bottom: 24px;
 padding: 40px;
+
 }
+
+.custom-text-box_1 {
+background: #f7e5ca;
+border-radius: var(--border-radius-medium);
+margin-bottom: 24px;
+padding: 40px;
+width: auto;
+height: 150px;
+}
+
+.custom-text-box_2 {
+background: var(--section-bg-color);
+border-radius: var(--border-radius-medium);
+margin-bottom: 24px;
+padding: 40px;
+}
+
+.custom-text-box_3 {
+background: var(--section-bg-color);
+border-radius: var(--border-radius-medium);
+margin-bottom: 24px;
+padding: 40px;
+width: 400 px;
+height: 600px;
+}
+
+
+.parent-container {
+display: flex;
+justify-content: center; /* 水平居中 */
+align-items: center; /* 垂直居中 */
+height: 200px; /* 使父容器充满视口高度，便于垂直居中 */
+}
+
+.custom-text-box_3 {
+background: var(--white-color);
+border-radius: var(--border-radius-medium);
+margin: auto; /* 上下间距为 24px，左右自动 */
+padding: 100px;
+width: 80%; /* 或其他适合的宽度 */
+max-width: 600px; /* 设定一个最大宽度以保持居中 */
+}
+
+
 
 .custom-text-box-image {
 border-radius: var(--border-radius-medium);
 width: 100%;
 height: 100%;
+object-fit: cover;
+}
+
+.custom-text-box-image_1 {
+border-radius: var(--border-radius-medium);
+width: 100%;
+height: 150px;
 object-fit: cover;
 }
 
@@ -563,6 +642,92 @@ line-height: inherit;
 margin-right: 15px;
 }
 
+/*---------------------------------------
+lightbox-thumbnail
+-----------------------------------------*/
+
+.lightbox-thumbnail {
+width: 80px;  /* 設置您想要的寬度 */
+height: 60px; /* 設置您想要的高度 */
+overflow: hidden;
+position: relative;
+border-radius: 8px; 
+}
+
+.lightbox-thumbnail a {
+display: block;
+width: 100%;
+height: 100%;
+}
+
+.lightbox-thumbnail img {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.lightbox-thumbnail a::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0, 0, 0, 0.3);
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+
+.lightbox-thumbnail a::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: rgba(0, 0, 0, 0.3);
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+
+.lightbox-thumbnail a:hover::after {
+opacity: 1;
+}
+
+@media (max-width: 768px) {
+.lightbox-thumbnail {
+    width: 100px;
+    height: 100px;
+}
+}
+
+.thumbs-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: flex-start;
+margin: -10px; /* 抵消子元素的 margin */
+}
+
+.thumb-item {
+flex: 0 0 calc(16.666% - 20px); /* 對應於 col-md-2 的寬度 */
+margin: 2px; /* 調整這個值來改變間距 */
+}
+
+@media (max-width: 768px) {
+.thumb-item {
+    flex: 0 0 calc(33.333% - 20px); /* 在小屏幕上每行顯示3個 */
+}
+}
+
+@media (max-width: 576px) {
+.thumb-item {
+    flex: 0 0 calc(50% - 20px); /* 在更小的屏幕上每行顯示2個 */
+}
+}
 
 /*---------------------------------------
 HERO & HERO SLIDE         
@@ -951,6 +1116,8 @@ TESTIMONIAL CAROUSEL
 position: relative;
 overflow: hidden;
 text-align: center;
+border-radius: var(--border-radius-medium);
+
 }
 
 .testimonial-section::before {
@@ -1078,6 +1245,12 @@ background: var(--white-color);
 }
 
 .contact-form {
+background: #d1a76e;
+border-radius: var(--border-radius-small);
+padding: 40px;
+}
+
+.contact-form_1 {
 background: var(--section-bg-color);
 border-radius: var(--border-radius-small);
 padding: 40px;
@@ -1668,4 +1841,80 @@ h5 {
 .donate-form {
   padding: 25px;
 }
+}
+
+/*---------------------------------------
+pagination STYLES               
+-----------------------------------------*/
+.pagination {
+justify-content: center;
+}
+
+.pagination .page-item .page-link {
+color: #ffffff;
+background-color: #67400aa2;
+border-color: #D0CDC6;
+border-radius: 0.25rem; /* 圓角 */
+margin: 0 2px; /* 按鈕之間的間距 */
+padding: 0.5rem 0.75rem; /* 內部填充 */
+}
+
+.pagination .page-item.active .page-link {
+color: #fff;
+background-color: #301c01a2;
+border-color: #D0CDC6;
+border-radius: 0.25rem; /* 圓角 */
+margin: 0 2px; /* 按鈕之間的間距 */
+padding: 0.5rem 0.75rem; /* 內部填充 */
+}
+
+.pagination .page-item .page-link:hover {
+color: #919191;
+background-color: #67400aa2;
+border-color: #68430ea2;
+border-radius: 0.25rem; /* 圓角 */
+margin: 0 2px; /* 按鈕之間的間距 */
+padding: 0.5rem 0.75rem; /* 內部填充 */
+}
+
+.pagination .page-item.disabled .page-link {
+color: #ffffff;
+background-color: #67400aa2;
+border-color: #D0CDC6;
+border-radius: 0.25rem; /* 圓角 */
+margin: 0 2px; /* 按鈕之間的間距 */
+padding: 0.5rem 0.75rem; /* 內部填充 */
+}
+
+/*---------------------------------------
+youtube links              
+-----------------------------------------*/
+
+.video-container {
+position: relative;
+padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+height: 0;
+overflow: hidden;
+}
+
+.video-container iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+/*---------------------------------------
+img            
+-----------------------------------------*/
+.card-body {
+display: flex;
+flex-direction: column; /* 纵向排列 */
+align-items: center; /* 水平居中 */
+}
+
+.img-main {
+max-width: 100%; /* 不超过容器宽度 */
+height: auto; /* 自适应高度 */
 }
