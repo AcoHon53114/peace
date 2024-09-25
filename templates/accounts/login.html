@@ -1,5 +1,33 @@
 {% extends 'base.html' %} 
 {% load humanize %}
+{% load static %}
 {% block content %}
-<h1>login.html</h1>
+<!--login.html-->
+<section class="contact-section section-padding" id="section_6">
+  <div class="container">
+      <div class="row">
+
+
+          <div class="col-lg-5 col-12 mx-auto text-center">
+              <form class="custom-form contact-form" action="#" method="post" role="form">
+                  <h2>登錄</h2>
+
+                  <p class="mb-4">
+                      
+                      <a href="#"></a>
+                  </p>
+                  <input type="text" name="user-name" id="user-name" pattern="[^ @]*@[^ @]*" class="form-control"
+                      placeholder="登錄名稱" required />
+
+                  <input type="password" name="login-password" id="login-password" pattern="[^ @]*@[^ @]*" class="form-control"
+                      placeholder="密碼" required />
+
+
+                  <button type="submit" class="form-control">登錄</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</section>
+</main>
 {% endblock %}

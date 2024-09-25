@@ -1,5 +1,92 @@
 {% extends 'base.html' %} 
 {% load humanize %}
+{% load static %}
 {% block content %}
-<h1>dashboard.html</h1>
+<!--dashboard.html-->
+<section class="contact-section section-padding" id="section_6">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-12 ms-auto mb-5 mb-lg-0">
+                <div class="contact-info-wrap">
+                    <h2>歡迎 陳小文</h2>
+
+                    <section id="dashboard" class="py-4">
+                        <div class="container">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <h2></h2>
+                              <p>以下是您過往6個月的上傳記錄列表</p>
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">過往上傳記錄</th>
+                                    <th></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>22</td>
+                                    <td>3月份</td>
+                                    <td>
+                                      <a class="btn btn-light" href="#">查看記錄</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>43</td>
+                                    <td>4月份</td>
+                                    <td>
+                                      <a class="btn btn-light" href="#">查看記錄</a>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>31</td>
+                                    <td>5月份</td>
+                                    <td>
+                                      <a class="btn btn-light" href="#">查看記錄</a>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                </div>
+            </div>
+
+            <div class="col-lg-5 col-12 mx-auto text-center">
+                <form class="custom-form contact-form" action="#" method="post" role="form">
+                    <h2>上傳轉帳記錄</h2>
+  
+                    <p class="mb-4">
+                        
+                        <a href="#"></a>
+                    </p>
+                    <input type="text" name="resident-id" id="resident-id" pattern="[^ @]*@[^ @]*" class="form-control"
+                        placeholder="院友編號" required />
+  
+                    <input type="text" name="resident-name" id="resident-name" pattern="[^ @]*@[^ @]*" class="form-control"
+                        placeholder="院友姓名" required />
+                    
+                    <select name="payment-method" id="payment-method" class="form-control" required>
+                          <option value="" disabled selected>選擇付款方式</option>
+                          <option value="credit-card">銀行轉帳</option>
+                          <option value="bank-transfer">轉數快轉帳(FPS)</option>
+                          <!-- 其他選項 -->
+                    </select>
+  
+                    <input type="file" name="file" id="file" class="form-control" placeholder="附件上傳" required />
+
+                    <input type="text" name="remark-message" id="remark-message" pattern="[^ @]*@[^ @]*" class="form-control"
+                        placeholder="備註/留言" required />
+  
+  
+                    <button type="submit" class="form-control">上傳</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
 {% endblock %}
