@@ -1,3 +1,9 @@
+{% extends 'base.html' %} 
+{% block title %} | 入院須知 {% endblock %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="zh-HK">
 <head>
@@ -15,11 +21,6 @@
     </style>
 </head>
 <body>
-
-{% extends 'base.html' %} 
-{% load static %}
-{% load humanize %}
-{% block content %}
 
 <!--information.html-->
 <section class="volunteer-section section-padding" id="section_4">
@@ -250,12 +251,12 @@
                         });
                         </script>
                     
-                  <input type="text" name="name" id="name" pattern="[^ @]*@[^ @]*" class="form-control"
+                  <input type="text" name="name" id="name" class="form-control"
                   placeholder="姓名" required />
 
-                  <input type="tel" name="phone" id="phone" pattern="\d{852}-\d{8}" class="form-control" placeholder="電話" required />
+                  <input type="tel" name="phone" id="phone" class="form-control" placeholder="電話" required />
 
-                  <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control"
+                  <input type="email" name="email" id="email" class="form-control"
                   placeholder="電郵地址" />
 
                     <textarea name="volunteer-message" rows="3" class="form-control" id="volunteer-message"
