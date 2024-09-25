@@ -217,34 +217,6 @@
                 </div>
 <hr>
 
-<!--預約參觀表格+護老小知識link button-->  
-<body>
-    <label for="meeting-time">日期及時間:</label>
-    <input
-      type="datetime-local"
-      id="meeting-time"
-      name="meeting-time"
-      value=""
-      min=""
-      max=""
-    />
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var currentTime = new Date();
-            var minTime = new Date(currentTime);
-            minTime.setDate(currentTime.getDate() + 1);
-            minTime.setHours(10, 0, 0, 0);
-
-            var maxTime = new Date(currentTime);
-            maxTime.setDate(currentTime.getDate() + 7);
-            maxTime.setHours(18, 0, 0, 0);
-
-            var meetingTimeInput = document.getElementById("meeting-time");
-            meetingTimeInput.setAttribute("min", minTime.toISOString().slice(0, 16));
-            meetingTimeInput.setAttribute("max", maxTime.toISOString().slice(0, 16));
-        });
-    </script>
-</body> 
         <div class="row">
             <div class="col-lg-6 col-12 text-center">
                 <h3 class="text-white mb-1">預約參觀</h3>
@@ -252,38 +224,44 @@
                 <form class="custom-form volunteer-form mb-5 mb-lg-0" action="#" method="post" role="form">
                     <h5 class="mb-4">立即預約參觀</h5>
 
-                    <div class="row">
-                        <div class="col-lg-6 col-12">
-                            <input type="text" name="volunteer-name" id="volunteer-name" class="form-control"
-                                placeholder="Jack Doe" required />
-                        </div>
+                    <select name="booking-title" id="booking-title" class="form-control" required>
+                        <option value="" disabled selected>預約參觀選位</option>
+                        <option value="credit-card">預約參觀選位</option>
+                        <!-- 其他選項 -->
+                  </select>
 
-                        <div class="col-lg-6 col-12">
-                            <input type="email" name="volunteer-email" id="volunteer-email"
-                                pattern="[^ @]@[^ @]" class="form-control" placeholder="Jackdoe@gmail.com"
-                                required />
-                        </div>
+                <!--預約參觀表格+護老小知識link button-->  
+                <label for="meeting-time"></label>
+                <input type="datetime-local" id="meeting-time" name="meeting-time" value="" min="" max="" class="form-control" />
+                        <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                        var currentTime = new Date();
+                        var minTime = new Date(currentTime);
+                        minTime.setDate(currentTime.getDate() + 1);
+                        minTime.setHours(10, 0, 0, 0);
 
-                        <div class="col-lg-6 col-12">
-                            <input type="text" name="volunteer-subject" id="volunteer-subject"
-                                class="form-control" placeholder="Subject" required />
-                        </div>
+                        var maxTime = new Date(currentTime);
+                        maxTime.setDate(currentTime.getDate() + 7);
+                        maxTime.setHours(18, 0, 0, 0);
 
-                        <div class="col-lg-6 col-12">
-                            <div class="input-group input-group-file">
-                                <input type="file" class="form-control" id="inputGroupFile02" />
+                        var meetingTimeInput = document.getElementById("meeting-time");
+                        meetingTimeInput.setAttribute("min", minTime.toISOString().slice(0, 16));
+                        meetingTimeInput.setAttribute("max", maxTime.toISOString().slice(0, 16));
+                        });
+                        </script>
+                    
+                  <input type="text" name="name" id="name" pattern="[^ @]*@[^ @]*" class="form-control"
+                  placeholder="姓名" required />
 
-                                <label class="input-group-text" for="inputGroupFile02">Upload your CV</label>
+                  <input type="tel" name="phone" id="phone" pattern="\d{852}-\d{8}" class="form-control" placeholder="電話" required />
 
-                                <i class="bi-cloud-arrow-up ms-auto"></i>
-                            </div>
-                        </div>
-                    </div>
+                  <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control"
+                  placeholder="電郵地址" />
 
                     <textarea name="volunteer-message" rows="3" class="form-control" id="volunteer-message"
                         placeholder="Comment (Optional)"></textarea>
 
-                    <button type="submit" class="form-control">Submit</button>
+                    <button type="submit" class="form-control">提交</button>
                 </form>
             </div>
 
