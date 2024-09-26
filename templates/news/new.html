@@ -1,0 +1,163 @@
+{% extends 'base.html' %} 
+{% block title %} | 消息詳情 {% endblock %}
+<!--add tag title-->
+{% block title %} | {{new.id}} {% endblock %} 
+{% block content %} {% load humanize%} 
+{% load youtube_filters %}
+
+
+<!-- New --> 
+<section id="new" class="volunteer-section section-padding" id="section_4">
+    <div class="container">
+    
+    <div class="col">
+        <div class="custom-text-box my-auto ">
+
+                <h5 class="text-center">{{new.title}}</h5> 
+
+            <div class="card-body">
+                    <h6 class="text-secondary">日期: {{new.list_date}}</h6>
+
+                    <div class="row mb-5">
+                    <!-- Event Main Image -->
+                    <div class="col-12 d-flex justify-content-center">
+                        <div class="custom-text-box_4 ">  
+                            <img
+                                src="{{new.photo_main.url}}"
+                                alt=""
+                                class="img-main img-fluid thumbs-container mb-3 rounded"
+                                style="max-width: 100%; height: auto;"
+                            />
+                        </div>
+                    </div>
+
+                    
+                <!-- Thumbnails -->
+                    <div class="mb-4 thumbs-container">
+                    {% if new.photo_1 %}
+                        <div class="thumb-item">
+                            <div class="lightbox-thumbnail">
+                                <a href="{{ new.photo_1.url }}" data-lightbox="home-images">
+                                <img src="{{ new.photo_1.url }}" alt="" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if new.photo_2 %}
+                        <div class="thumb-item">
+                            <div class="lightbox-thumbnail">
+                                <a href="{{ new.photo_2.url }}" data-lightbox="home-images">
+                                <img src="{{ new.photo_2.url }}" alt="" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if new.photo_3 %}
+                        <div class="thumb-item">
+                            <div class="lightbox-thumbnail">
+                                <a href="{{ new.photo_3.url }}" data-lightbox="home-images">
+                                <img src="{{ new.photo_3.url }}" alt="" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if new.photo_4 %}
+                        <div class="thumb-item">
+                            <div class="lightbox-thumbnail">
+                                <a href="{{ new.photo_4.url }}" data-lightbox="home-images">
+                                <img src="{{ new.photo_4.url }}" alt="" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if new.photo_5 %}
+                        <div class="thumb-item">
+                            <div class="lightbox-thumbnail">
+                                <a href="{{ new.photo_5.url }}" data-lightbox="home-images">
+                                <img src="{{ new.photo_5.url }}" alt="" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if new.photo_6 %}
+                        <div class="thumb-item">
+                            <div class="lightbox-thumbnail">
+                                <a href="{{ new.photo_6.url }}" data-lightbox="home-images">
+                                <img src="{{ new.photo_6.url }}" alt="" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if new.photo_7 %}
+                        <div class="thumb-item">
+                            <div class="lightbox-thumbnail">
+                                <a href="{{ new.photo_7.url }}" data-lightbox="home-images">
+                                <img src="{{ new.photo_7.url }}" alt="" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if new.photo_8 %}
+                        <div class="thumb-item">
+                            <div class="lightbox-thumbnail">
+                                <a href="{{ new.photo_8.url }}" data-lightbox="home-images">
+                                <img src="{{ new.photo_8.url }}" alt="" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if new.photo_9 %}
+                        <div class="thumb-item">
+                            <div class="lightbox-thumbnail">
+                                <a href="{{ new.photo_9.url }}" data-lightbox="home-images">
+                                <img src="{{ new.photo_9.url }}" alt="" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                    </div>
+                
+                <div>
+
+            </div> 
+
+            <!-- Description -->
+                <div class="row col">
+                    {{new.description}}
+
+                    <!-- YouTube -->
+                
+                    {% if new.youtube_link %}
+                        <hr/>
+                        <h5 class="text-center"> 精 彩 片 段 回 顧 </h5> 
+                        <div class="video-container my-2">{{ new.youtube_link|youtube_embed }}
+                        </div>
+                        <hr/>
+                    {% endif %}
+                    
+                </div>
+
+
+        </div>
+    </div>
+        
+    </div>
+
+    <a href={% url "news" %} class="custom-btn_1 btn smoothscroll btn btn-light mb-4 mt-4 "> 返 回 院 舍 消 息 </a>
+
+    
+</section>
+
+
+
+
+
+{% endblock %}

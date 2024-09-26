@@ -1,250 +1,143 @@
 {% extends 'base.html' %} 
+{% block title %} | 院舎消息 {% endblock %}
 {% load humanize %}
 {% load static %}
-{% block title %} | 院舎消息 {% endblock %}
 {% block content %}
-<!--news.html-->
-<section class="news-section section-padding" id="section_5">
+
+<section class="volunteer-section section-padding" id="section_4">
     <div class="container">
+
+        <section class="testimonial-section section-padding section-bg">
+            <div class="col-lg-12 col-12 ">
+                <div class="text-center" >
+                    <h8>院舍消息</h8>
+                </div>
+            </div>
+        </section>
+
+<!--search bar-->
+
+    <section>
+        <form class="custom-form search-form" action={% url 'search' %} method="get">
+            {% csrf_token %}
+            <input 
+            type="text"
+            name="title"
+            class="form-control"  
+            placeholder="搜 尋 院 舍 消 息" 
+            value={{ values.title }}
+            >
+        
+            <button type="submit" class="form-control"> 
+                <i class="bi-search"></i>
+            </button>
+        </form>
+    </section>
+
+
+<section>
+
+    <!--news-->
+        <div class="custom-text-box_2">
         <div class="row">
-            <div class="col-lg-12 col-12 mb-5">
-                <h2>院舍消息</h2>
+            {% if news %}
+                {% for new in news %}            
+                <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0 my-5">
+                    <div class="custom-block-wrap">
+
+                    <img src="{{new.photo_main.url}}"
+                        class="custom-block-image" alt="" />
+
+                    <div class="custom-block">
+                    <div class="custom-block-body">
+                        <h5 class="text-center">{{new.title}}</h5> 
+                        
+                            <i class="bi-calendar4 custom-icon me-1"></i>
+                            {{new.list_date}} <br>
+                            <i class="bi-calendar4 custom-icon me-1"></i>
+                            <span> {{new.list_date | timesince }} </span>
+
+                                <h7 class="col-sm-6 col-md-8 col-lg-9 col-xl-10 text-right" >
+                                    {{new.description}}
+                                </h7>   
+                    </div>
+                    </div>
+
+                    <div class="container " style="width:200px" >            
+                        <a href={% url "new" new.id %} class="custom-btn btn smoothscroll" style="width:180px"
+                        >More Info
+                        </a>
+                    </div>
+                            
+                    <br>
+                </div>
+        </div>
+            {% endfor %}
+            {% else %}
+            <div class="col-md-12">
+                <p>暫時未能提供院舎消息</p>
             </div>
+            {% endif%}
 
-            <div class="col-lg-7 col-12">
-                <div class="news-block">
-                    <div class="news-block-top">
-                        <a href="news-detail.html">
-                            <img src={% static "images/news/medium-shot-volunteers-with-clothing-donations.jpg" %}
-                                class="news-image img-fluid" alt="" />
-                        </a>
+    <!--pagination-->
 
-                        <div class="news-category-block">
-                            <a href="#" class="category-block-link"> Lifestyle, </a>
+        <div class="row">
+            <div class="col-md-12">
+    
+            <br>
 
-                            <a href="#" class="category-block-link">
-                                Clothing Donation
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="news-block-info">
-                        <div class="d-flex mt-2">
-                            <div class="news-block-date">
-                                <p>
-                                    <i class="bi-calendar4 custom-icon me-1"></i>
-                                    October 12, 2036
-                                </p>
-                            </div>
-
-                            <div class="news-block-author mx-5">
-                                <p>
-                                    <i class="bi-person custom-icon me-1"></i>
-                                    By Admin
-                                </p>
-                            </div>
-
-                            <div class="news-block-comment">
-                                <p>
-                                    <i class="bi-chat-left custom-icon me-1"></i>
-                                    32 Comments
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="news-block-title mb-2">
-                            <h4>
-                                <a href="news-detail.html" class="news-block-title-link">Clothing donation to
-                                    urban area</a>
-                            </h4>
-                        </div>
-
-                        <div class="news-block-body">
-                            <p>
-                                Lorem Ipsum dolor sit amet, consectetur adipsicing kengan
-                                omeg kohm tokito Professional charity theme based on
-                                Bootstrap
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="news-block mt-3">
-                    <div class="news-block-top">
-                        <a href="news-detail.html">
-                            <img src={% static "images/news/medium-shot-people-collecting-foodstuff.jpg" %}
-                                class="news-image img-fluid" alt="" />
-                        </a>
-
-                        <div class="news-category-block">
-                            <a href="#" class="category-block-link"> Food, </a>
-
-                            <a href="#" class="category-block-link"> Donation, </a>
-
-                            <a href="#" class="category-block-link"> Caring </a>
-                        </div>
-                    </div>
-
-                    <div class="news-block-info">
-                        <div class="d-flex mt-2">
-                            <div class="news-block-date">
-                                <p>
-                                    <i class="bi-calendar4 custom-icon me-1"></i>
-                                    October 20, 2036
-                                </p>
-                            </div>
-
-                            <div class="news-block-author mx-5">
-                                <p>
-                                    <i class="bi-person custom-icon me-1"></i>
-                                    By Admin
-                                </p>
-                            </div>
-
-                            <div class="news-block-comment">
-                                <p>
-                                    <i class="bi-chat-left custom-icon me-1"></i>
-                                    35 Comments
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="news-block-title mb-2">
-                            <h4>
-                                <a href="news-detail.html" class="news-block-title-link">Food donation area</a>
-                            </h4>
-                        </div>
-
-                        <div class="news-block-body">
-                            <p>
-                                Sed leo nisl, posuere at molestie ac, suscipit auctor
-                                mauris. Etiam quis metus elementum, tempor risus vel,
-                                condimentum orci
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-12 mx-auto">
-                <form class="custom-form search-form" action="#" method="get" role="form">
-                    <input name="search" type="search" class="form-control" id="search" placeholder="Search"
-                        aria-label="Search" />
-
-                    <button type="submit" class="form-control">
-                        <i class="bi-search"></i>
-                    </button>
-                </form>
-
-                <h5 class="mt-5 mb-3">Recent news</h5>
-
-                <div class="news-block news-block-two-col d-flex mt-4">
-                    <div class="news-block-two-col-image-wrap">
-                        <a href="news-detail.html">
-                            <img src={% static "images/news/africa-humanitarian-aid-doctor.jpg" %}
-                                class="news-image img-fluid" alt="" />
-                        </a>
-                    </div>
-
-                    <div class="news-block-two-col-info">
-                        <div class="news-block-title mb-2">
-                            <h6>
-                                <a href="news-detail.html" class="news-block-title-link">Food donation area</a>
-                            </h6>
-                        </div>
-
-                        <div class="news-block-date">
-                            <p>
-                                <i class="bi-calendar4 custom-icon me-1"></i>
-                                October 16, 2036
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="news-block news-block-two-col d-flex mt-4">
-                    <div class="news-block-two-col-image-wrap">
-                        <a href="news-detail.html">
-                            <img src={% static "images/news/close-up-happy-people-working-together.jpg" %}
-                                class="news-image img-fluid" alt="" />
-                        </a>
-                    </div>
-
-                    <div class="news-block-two-col-info">
-                        <div class="news-block-title mb-2">
-                            <h6>
-                                <a href="news-detail.html" class="news-block-title-link">Volunteering Clean</a>
-                            </h6>
-                        </div>
-
-                        <div class="news-block-date">
-                            <p>
-                                <i class="bi-calendar4 custom-icon me-1"></i>
-                                October 24, 2036
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="category-block d-flex flex-column">
-                    <h5 class="mb-3">Categories</h5>
-
-                    <a href="#" class="category-block-link">
-                        Drinking water
-                        <span class="badge">20</span>
-                    </a>
-
-                    <a href="#" class="category-block-link">
-                        Food Donation
-                        <span class="badge">30</span>
-                    </a>
-
-                    <a href="#" class="category-block-link">
-                        Children Education
-                        <span class="badge">10</span>
-                    </a>
-
-                    <a href="#" class="category-block-link">
-                        Poverty Development
-                        <span class="badge">15</span>
-                    </a>
-
-                    <a href="#" class="category-block-link">
-                        Clothing Donation
-                        <span class="badge">20</span>
-                    </a>
-                </div>
-
-                <div class="tags-block">
-                    <h5 class="mb-3">Tags</h5>
-
-                    <a href="#" class="tags-block-link"> Donation </a>
-
-                    <a href="#" class="tags-block-link"> Clothing </a>
-
-                    <a href="#" class="tags-block-link"> Food </a>
-
-                    <a href="#" class="tags-block-link"> Children </a>
-
-                    <a href="#" class="tags-block-link"> Education </a>
-
-                    <a href="#" class="tags-block-link"> Poverty </a>
-
-                    <a href="#" class="tags-block-link"> Clean Water </a>
-                </div>
-
-                <form class="custom-form subscribe-form" action="#" method="get" role="form">
-                    <h5 class="mb-4">Newsletter Form</h5>
-
-                    <input type="email" name="subscribe-email" id="subscribe-email" pattern="[^ @]*@[^ @]*"
-                        class="form-control" placeholder="Email Address" required />
-
-                    <div class="col-lg-12 col-12">
-                        <button type="submit" class="form-control">Subscribe</button>
-                    </div>
-                </form>
+            <!-- pagination part of the code -->
+            {% if news.has_other_pages %}
+                <ul class="pagination">
+            {% if news.has_previous %}
+                <li class="page-item">
+                    <a href="?page={{news.previous_page_number}}"
+                    class="page-link">&laquo;</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">&laquo;</a>
+                </li>
+                    
+            {% endif %}
+                    
+            <!--Use for loop to gen page numbers-->
+            {% for i in news.paginator.page_range %}
+            <!-- check current page, then change the button color-->
+            {% if news.number == i %}
+                <li class="page-item active">
+                    <a class="page-link">{{i}}</a>
+                </li>
+            {% else %}
+                <li class="page-item">
+                    <a class="page-link" href=?page={{i}}>{{i}}</a>
+                </li>
+            {% endif %}
+            {% endfor %}
+        
+            <!-- next button-->
+            {% if news.has_next %}
+                <li class="page-item">
+                    <a href="?page={{listings.next_page_number}}" 
+                        class="page-link">&raquo;</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" href="#">&raquo;</a>
+                </li>
+            {% endif %}
+                </ul>
+            {% endif %}
             </div>
         </div>
+
+
+        </div>
+        </div>
+    </section>
+
+
     </div>
 </section>
+
 {% endblock %}
