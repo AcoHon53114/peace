@@ -4,8 +4,9 @@ from django.contrib import admin
 from .models import Voice
 
 class VoiceAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'description')
+    list_display = ('id', 'name', 'description', 'is_published')
     list_display_links = ('id', 'name')
+    list_editable = ('is_published',)
     list_filter = ('name', 'description')
     search_fields = ('name', 'description')
     list_per_page = (25)

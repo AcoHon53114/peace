@@ -18,12 +18,13 @@
 
                     <div class="custom-block">
                         <div class="custom-block-body">
-                            <h5 class="mb-3">房間</h5>
+                            <h5 class=text-center >房間</h5>
+                            <div class="custom-text-box_1"> 
 
-                            <p>
                                 <li>舒適的住宿環境</li>
                                 <li>單、雙人房間設有獨立的洗手盤</li>
-                            </p>
+                            
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -36,12 +37,12 @@
 
                     <div class="custom-block">
                         <div class="custom-block-body">
-                            <h5 class="mb-3">設施</h5>
+                            <h5 class=text-center >設施</h5>
+                            <div class="custom-text-box_1">
 
-                            <p>
                                 <li>設置LCD電視、個人儲物櫃</li>
                                 <li>設有餐廳、會客室、運動區</li>
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -54,12 +55,12 @@
 
                     <div class="custom-block">
                         <div class="custom-block-body">
-                            <h5 class="mb-3">照顧設備</h5>
+                            <h5 class=text-center >照顧設備</h5>
+                            <div class="custom-text-box_1">
 
-                            <p>
                                 <li>設有藥房、洗衣房</li>
                                 <li>洗手間更設有平安鐘,為每位長者提供舒適和貼心的服務</li>
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -72,76 +73,34 @@
         <div class="row">
             <div class="col-lg-8 col-12 mx-auto">
                 <h2 class="mb-lg-3">院友心聲</h2>
-
+                {% if voices %}
                 <div id="testimonial-carousel" class="carousel carousel-fade slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
+                        {% for voice in voices %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
                             <div class="carousel-caption">
                                 <h4 class="carousel-title">
-                                    今天天氣很好
+                                    {{voice.description}}
                                 </h4>
-
-                                <small class="carousel-name"><span class="carousel-name-title">陳大文</span>
-                                    </small>
+                                <small class="carousel-name"><span class="carousel-name-title">{{voice.name}}</span></small>
                             </div>
                         </div>
+                        {% endfor %}
 
-                        <div class="carousel-item">
-                            <div class="carousel-caption">
-                                <h4 class="carousel-title">
-                                    我愛吃蕃茄
-                                </h4>
-
-                                <small class="carousel-name"><span class="carousel-name-title">陳小明</span>
-                                    </small>
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <div class="carousel-caption">
-                                <h4 class="carousel-title">
-                                    今天天氣炎熱
-                                </h4>
-
-                                <small class="carousel-name"><span class="carousel-name-title">陳小雯</span>
-                                    </small>
-                            </div>
-                        </div>
-
-                        <div class="carousel-item">
-                            <div class="carousel-caption">
-                                <h4 class="carousel-title">
-                                    今日好凍
-                                </h4>
-
-                                <small class="carousel-name"><span class="carousel-name-title">陳美玲</span>
-                                    </small>
-                            </div>
-                        </div>
-
-                        <ol class="carousel-indicators">
-                            <li data-bs-target="#testimonial-carousel" data-bs-slide-to="0" class="active">
-                                <img src={% static "images/avatar/portrait-beautiful-young-woman-standing-grey-wall.jpg" %}
-                                    class="img-fluid rounded-circle avatar-image" alt="avatar" />
-                            </li>
-
-                            <li data-bs-target="#testimonial-carousel" data-bs-slide-to="1" class="">
-                                <img src={% static "images/avatar/portrait-young-redhead-bearded-male.jpg" %}
-                                    class="img-fluid rounded-circle avatar-image" alt="avatar" />
-                            </li>
-
-                            <li data-bs-target="#testimonial-carousel" data-bs-slide-to="2" class="">
-                                <img src={% static "images/avatar/pretty-blonde-woman-wearing-white-t-shirt.jpg" %}
-                                    class="img-fluid rounded-circle avatar-image" alt="avatar" />
-                            </li>
-
-                            <li data-bs-target="#testimonial-carousel" data-bs-slide-to="3" class="">
-                                <img src={% static "images/avatar/studio-portrait-emotional-happy-funny.jpg" %}
-                                    class="img-fluid rounded-circle avatar-image" alt="avatar" />
-                            </li>
+                    <ol class="carousel-indicators">
+                        {% for voice in voices %}
+                        <li data-bs-target="#testimonial-carousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}">
+                        <img src="{{ voice.photo.url }}" class="img-fluid rounded-circle avatar-image" alt="avatar" />
+                        </li>
+                        {% endfor %}
                         </ol>
-                    </div>
                 </div>
+                {% else %}
+                <div class="col-md-12">
+                    <p>暫時無法提供</p>
+                </div>
+                {% endif %}
+            </div>
             </div>
         </div>
     </div>
