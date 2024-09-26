@@ -22,32 +22,32 @@
                 <li {% if '/' == request.path %} class="nav-item active mr-3" {% else %}
                 class="nav-item mr-3"
                 {% endif %}>
-                    <a class="nav-link click-scroll" href={% url "index" %}>首頁</a>
+                    <a class="nav-link" href={% url "index" %}>首頁</a>
                 </li>
 
                 <li {% if 'about' in request.path %} class="nav-item active mr-3" {% else %}
                 class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link click-scroll" href={% url "about" %}>關於我們</a>
+                    <a class="nav-link" href={% url "about" %}>關於我們</a>
                 </li>
 
                 <li {% if 'environment' in request.path %} class="nav-item active mr-3" {% else %}
                 class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link click-scroll" href={% url "environment" %}>院舍環境</a>
+                    <a class="nav-link" href={% url "environment" %}>院舍環境</a>
                 </li>
 
                 <li {% if 'information' in request.path %} class="nav-item active mr-3" {% else %}
                 class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link click-scroll" href={% url "information" %}>入院須知</a>
+                    <a class="nav-link" href={% url "information" %}>入院須知</a>
                 </li>
 
                 <li {% if 'news' in request.path %} class="nav-item active mr-3" {% else %}
                 class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link click-scroll" href={% url "news" %}>院舍消息</a>
+                    <a class="nav-link" href={% url "news" %}>院舍消息</a>
                 </li>                    
 
                 <li {% if 'contact' in request.path %} class="nav-item active mr-3" {% else %}
                 class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link click-scroll" href={% url "contact" %}>聯絡我們</a>
+                    <a class="nav-link" href={% url "contact" %}>聯絡我們</a>
                 </li>
 
                 <li {% if 'register' in request.path %} class="nav-item active mr-3" {% else %}

@@ -74,7 +74,7 @@
             <div class="col-lg-8 col-12 mx-auto">
                 <h2 class="mb-lg-3">院友心聲</h2>
                 {% if voices %}
-                <div id="testimonial-carousel" class="carousel carousel-fade slide" data-bs-ride="carousel">
+                <div id="testimonial-carousel" class="carousel carousel-fade slide" data-bs-ride="carousel" data-bs-interval="2400">
                     <div class="carousel-inner">
                         {% for voice in voices %}
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
@@ -97,7 +97,7 @@
                 </div>
                 {% else %}
                 <div class="col-md-12">
-                    <p>暫時無法提供</p>
+                    <p>暫時未能提供</p>
                 </div>
                 {% endif %}
             </div>

@@ -8,10 +8,8 @@ class Voice(models.Model):
     description = models.TextField(max_length=50)
     is_published = models.BooleanField(default=True)
     
-    def _str_(self):
+    def __str__(self):
         return self.name
-    
-    
     
     
 
