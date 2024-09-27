@@ -10,17 +10,19 @@
 
 
           <div class="col-lg-5 col-12 mx-auto text-center">
-              <form class="custom-form contact-form" action="#" method="post" role="form">
+            {% include 'partials/_alert.html' %}
+              <form class="custom-form contact-form" action="{% url 'login' %}" method="POST" role="form">
+                {% csrf_token %}
                   <h2>登錄</h2>
 
                   <p class="mb-4">
                       
                       <a href="#"></a>
                   </p>
-                  <input type="text" name="user-name" id="user-name" pattern="[^ @]*@[^ @]*" class="form-control"
+                  <input type="text" name="username" id="username" class="form-control"
                       placeholder="登錄名稱" required />
 
-                  <input type="password" name="login-password" id="login-password" pattern="[^ @]*@[^ @]*" class="form-control"
+                  <input type="password" name="password" id="password" class="form-control"
                       placeholder="密碼" required />
 
 

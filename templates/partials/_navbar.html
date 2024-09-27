@@ -18,47 +18,57 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li {% if '/' == request.path %} class="nav-item active mr-3" {% else %}
-                class="nav-item mr-3"
-                {% endif %}>
-                    <a class="nav-link" href={% url "index" %}>首頁</a>
+            <ul class="navbar-nav ml-auto">
+                <li {% if '/' == request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+                    <a class="nav-link" href="{% url 'index' %}">首頁</a>
                 </li>
-
-                <li {% if 'about' in request.path %} class="nav-item active mr-3" {% else %}
-                class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link" href={% url "about" %}>關於我們</a>
+            
+                <li {% if 'about' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+                    <a class="nav-link" href="{% url 'about' %}">關於我們</a>
                 </li>
-
-                <li {% if 'environment' in request.path %} class="nav-item active mr-3" {% else %}
-                class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link" href={% url "environment" %}>院舍環境</a>
+            
+                <li {% if 'environment' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+                    <a class="nav-link" href="{% url 'environment' %}">院舍環境</a>
                 </li>
-
-                <li {% if 'information' in request.path %} class="nav-item active mr-3" {% else %}
-                class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link" href={% url "information" %}>入院須知</a>
+            
+                <li {% if 'information' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+                    <a class="nav-link" href="{% url 'information' %}">入院須知</a>
                 </li>
-
-                <li {% if 'news' in request.path %} class="nav-item active mr-3" {% else %}
-                class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link" href={% url "news" %}>院舍消息</a>
-                </li>                    
-
-                <li {% if 'contact' in request.path %} class="nav-item active mr-3" {% else %}
-                class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link" href={% url "contact" %}>聯絡我們</a>
+            
+                <li {% if 'news' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+                    <a class="nav-link" href="{% url 'news' %}">院舍消息</a>
                 </li>
-
-                <li {% if 'register' in request.path %} class="nav-item active mr-3" {% else %}
-                class="nav-item mr-3" {% endif %} style="margin-right: 10px;">
-                    <a class="nav-link custom-btn custom-border-btn btn" href={% url "register" %}>註冊</a>
+            
+                <li {% if 'contact' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
+                    <a class="nav-link" href="{% url 'contact' %}">聯絡我們</a>
                 </li>
-
-                <li {% if 'login' in request.path %} class="nav-item active mr-3" {% else %}
-                class="nav-item mr-3" {% endif %} style="margin-right: 10px;">
-                    <a class="nav-link custom-btn custom-border-btn btn" href={% url "login" %}>登錄</a>
+            
+                <!-- 如果用戶已登錄，顯示 Dashboard 和 Logout 按鈕 -->
+                {% if user.is_authenticated %}
+                <!-- Dashboard 按鈕 -->
+                <li {% if 'dashboard' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %} style="margin-right: 10px;">
+                    <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'dashboard' %}">歡迎{{user.username}}(主要)</a>
                 </li>
+                <!-- Logout 按鈕 -->
+                <li class="nav-item mr-3">
+                    <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link custom-btn custom-border-btn btn">
+                        <i class="fas fa-sign-out-alt"></i>登出
+                    </a>
+                    <form action="{% url 'logout' %}" method="POST" id="logout">
+                        {% csrf_token %}
+                        <input type="hidden">
+                    </form>
+                </li>
+                {% else %}
+                <!-- 如果用戶未登錄，顯示註冊和登錄按鈕 -->
+                <li {% if 'register' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %} style="margin-right: 10px;">
+                    <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'register' %}">註冊</a>
+                </li>
+            
+                <li {% if 'login' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %} style="margin-right: 10px;">
+                    <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'login' %}">登錄</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>

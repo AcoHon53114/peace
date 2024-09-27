@@ -1,65 +1,54 @@
 {% extends 'base.html' %} 
+{% block title %} | 註冊 {% endblock %}
 {% load humanize %}
 {% load static %}
-{% block title %} | 註冊 {% endblock %}
 {% block content %}
 <!--register.html-->
 <section class="contact-section section-padding" id="section_6">
   <div class="container">
       <div class="row">
 
-
           <div class="col-lg-5 col-12 mx-auto text-center">
-              <form class="custom-form contact-form" action="#" method="post" role="form">
-                  <h2>註冊</h2>
+            {% include 'partials/_alert.html' %}
+        <form class="custom-form contact-form" action="{% url 'register' %}" method="POST" role="form">
+            {% csrf_token %}
+            <h2>註冊</h2>
 
-                  <p class="mb-4">
+            <p class="mb-4">
                       
-                      <a href="#"></a>
-                  </p>
-                  <input type="text" name="last-name" id="last-name" pattern="[^ @]*@[^ @]*" class="form-control"
-                      placeholder="姓氏" required />
+            <a href="#"></a>
+            </p>
+            <input type="text" name="last_name" id="last-name" class="form-control" placeholder="姓氏" required />
 
-                  <input type="text" name="first-name" id="first-name" pattern="[^ @]*@[^ @]*" class="form-control"
-                      placeholder="名字" required />
+            <input type="text" name="first_name" id="first-name" class="form-control" placeholder="名字" required />
                   
-                  <input type="text" name="user-name" id="user-name" pattern="[^ @]*@[^ @]*" class="form-control"
-                      placeholder="登錄名稱" required />
+            <input type="text" name="username" id="username" class="form-control" placeholder="登錄名稱" required />
 
-                  <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control"
-                      placeholder="電郵地址" required />
+            <input type="email" name="email" id="email" class="form-control" placeholder="電郵地址" required/>
                   
-                  <input type="password" name="login-password" id="login-password" pattern="[^ @]*@[^ @]*" class="form-control"
-                      placeholder="密碼" required />
+            <input type="password" name="password" id="password" class="form-control" placeholder="密碼" required />
 
-                  <input type="password" name="login-password" id="login-password" pattern="[^ @]*@[^ @]*" class="form-control"
-                      placeholder="再次確認密碼" required />
+            <input type="password" name="password2" id="password2" class="form-control" placeholder="再次確認密碼" required />
 
-                  <input type="text" name="resident-id" id="resident-id" pattern="[^ @]*@[^ @]*" class="form-control"
-                      placeholder="院友編號" required />
+            <input type="text" name="resident_id" id="resident_id" class="form-control" placeholder="院友編號" />
                 
-                  <input type="text" name="resident-name" id="resident-name" pattern="[^ @]*@[^ @]*" class="form-control"
-                      placeholder="院友姓名" required />
+            <input type="text" name="resident_name" id="resident_name" class="form-control" placeholder="院友姓名" />
 
-                  <input type="text" name="resident-contact-person" id="resident-contact-person" pattern="[^ @]*@[^ @]*" class="form-control"
-                      placeholder="院友聯絡人" required />
+            <input type="text" name="resident_contact_person" id="resident_contact_person" class="form-control" placeholder="院友聯絡人" />
 
-                  <input type="tel" name="resident-contact-phone" id="resident-contact-phone" pattern="\d{852}-\d{8}" class="form-control" placeholder="聯絡人電話" required />
+            <input type="tel" name="resident_contact_phone" id="resident_contact_phone" pattern="\d{852}-\d{8}" class="form-control" placeholder="聯絡人電話" />
 
-                  <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" class="form-control"
-                  placeholder="聯絡人電郵地址" />
+            <input type="email" name="resident_email" id="resident_email" class="form-control" placeholder="聯絡人電郵地址" />
 
-                  <input type="text" name="resident-contact-relation" id="resident-contact-relation" pattern="[^ @]*@[^ @]*" class="form-control"
-                  placeholder="聯絡人與院友關係" required />
+            <input type="text" name="resident_contact_relation" id="resident_contact_relation" class="form-control" placeholder="聯絡人與院友關係" />
 
-                  <input type="text" name="resident-description" id="text" pattern="[^ @]*@[^ @]*" class="form-control"
-                  placeholder="院友資訊" />
+            <input type="text" name="resident_description" id="resident_description" class="form-control" placeholder="院友資訊" />
                   
                   
 
 
-                  <button type="submit" class="form-control">提交</button>
-              </form>
+            <button type="submit" class="form-control">提交</button>
+        </form>
           </div>
       </div>
   </div>

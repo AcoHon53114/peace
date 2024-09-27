@@ -28,7 +28,7 @@ def register(request):
                                                 first_name=first_name,
                                                 last_name=last_name)
                     user.save()
-                    messages.success(request, " : 您已經成功註冊和可以登錄!")
+                    messages.success(request, ": 您已經成功註冊和可以登錄!")
                     return redirect('login')
         else:
             messages.error(request,'密碼不正確!')
@@ -44,10 +44,10 @@ def login(request):
         user = auth.authenticate(username=username,password=password)
         if user is not None:
             auth.login(request, user)
-            messages.success(request, ' : 您已經成功登錄!')
+            messages.success(request, ': 您已經成功登錄!')
             return redirect('dashboard')
         else:
-            messages.error(request, '登錄失敗!Invalid credentials')
+            messages.error(request, '登錄失敗!')
             return redirect('login')
     else:
         return render(request, 'accounts/login.html')
@@ -55,10 +55,8 @@ def login(request):
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-        messages.success(request, ' : 您已經成功登出!You are now logged out')
+        messages.success(request, ': 您已經成功登出!')
     return redirect('index')
 
 def dashboard(request):
-    user_contacts = Resident.objects.order_by('-contact_date').filter(user_id=request.user.id)
-    context = {'contacts': user_contacts}
-    return render(request, 'accounts/dashboard.html', context)
+    return render(request, 'accounts/dashboard.html')
