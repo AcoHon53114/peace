@@ -35,7 +35,9 @@ https://templatemo.com/tm-581-kind-heart-charity -->
     {% block content %} {% endblock %}
     {% include 'partials/_footer.html' %}
 
-<!-- JAVASCRIPT FILES -->
+     <!-- 引入 scripts.js -->
+    <script src={% static 'js/scripts.js' %}></script>
+    <!-- JAVASCRIPT FILES -->
     <script src={% static "js/jquery.min.js" %}></script>
     <script src={% static "js/bootstrap.min.js" %}></script>
     <script src={% static "js/jquery.sticky.js" %}></script>

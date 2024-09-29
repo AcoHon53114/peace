@@ -1,4 +1,8 @@
-
+setTimeout(function () {
+  $("#message").fadeOut("slow");
+}, 2000);
+  
+  
   (function ($) {
   
   "use strict";
@@ -29,9 +33,3 @@
 });
     
   })(window.jQuery);
-
-  setTimeout(function () {
-    $("#message").fadeOut("slow");
-}, 2000);
-
-
