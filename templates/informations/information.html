@@ -9,15 +9,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
-<section class="volunteer-section section-padding" id="section_4">
+<body>
+
+<section class="volunteer-section section-padding "  id="section_4">
     <div class="container">
 
-        <br>
-        <br>
-        <br>
-        <br>
-    <title>入院須知</title>
     <style>
         html {
             scroll-behavior: smooth;
@@ -27,16 +25,29 @@
             scroll-margin-top: -73px; /* 根据你的导航栏高度调整 */
         }
     </style>
-</head>
-<body>
+
+    <div class="row">
+        <div class="col-lg-6 col-12"></div>
+        {% if messages %}
+        {% for message in messages %}
+            <div id="message-container" class="alert alert-{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}">
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <title>入院須知</title>
+
+
 
 <!--information.html-->
 
         <div class="row">
             <div class="col-lg-6 col-12"></div>
-                <h2 class="text-white text-center mb-4 ">入院須知</h2>
+            <h2 class="text-white text-center mb-4 ">入院須知</h2>
 
 <!--入院條件-->          
+
 <section class="testimonial-section section-padding section-bg">            
     <div class="col">
         <div class="custom-text-box">
@@ -47,6 +58,7 @@
         </div>
     </div>
 </section>
+
 <hr>
 <!--訂房程序-->   
                 <div class="col-lg-6 col-12">
@@ -223,72 +235,215 @@
                 </div>
 <hr>
 
-        <div class="row">
-            <div class="col-lg-6 col-12 text-center">
-                <h3 class="text-white mb-1">預約參觀</h3>
+<div class="row">
+    <div class="col-lg-6 col-12 text-center">
+        <h3 class="text-white mb-4">立即預約參觀選位</h3>
 
-                <form class="custom-form volunteer-form mb-5 mb-lg-0" action="#" method="post" role="form">
-                    <h5 class="mb-4">立即預約參觀</h5>
+        <form class="custom-form volunteer-form mb-5 mb-lg-0" action="{% url 'information' %}" method="POST" role="form">
+            {% csrf_token %}
 
-                    <select name="booking-title" id="booking-title" class="form-control" required>
-                        <option value="" disabled selected>預約參觀選位</option>
-                        <option value="credit-card">預約參觀選位</option>
-                        <!-- 其他選項 -->
-                  </select>
+            <h5 class="text-start">稱謂:</h5>
+            
+            <select name="title" id="title" class="form-control" value="{{ title }}" required>
+                <option selected="true" disabled="disabled">稱謂</option>
+                {% for key, value in title_choices.items %}
+                    <option value="{{ key }}"
+                    {% if key == title %} selected {% endif %}
+                    >{{ value }}</option>
+                {% endfor %}
+            </select>
 
-                <!--預約參觀表格+護老小知識link button-->  
-                <label for="meeting-time"></label>
-                <input type="datetime-local" id="meeting-time" name="meeting-time" value="" min="" max="" class="form-control" />
-                        <script>
-                        document.addEventListener("DOMContentLoaded", function() {
-                        var currentTime = new Date();
-                        var minTime = new Date(currentTime);
-                        minTime.setDate(currentTime.getDate() + 1);
-                        minTime.setHours(10, 0, 0, 0);
+            <h5 class="text-start">預約參觀日子及時間:</h5>
 
-                        var maxTime = new Date(currentTime);
-                        maxTime.setDate(currentTime.getDate() + 7);
-                        maxTime.setHours(18, 0, 0, 0);
+            <input 
+                type="date" 
+                id="meeting-date" 
+                name="visit_date" 
+                class="form-control" 
+                value="{{ visit_date }}"
+                required />
 
-                        var meetingTimeInput = document.getElementById("meeting-time");
-                        meetingTimeInput.setAttribute("min", minTime.toISOString().slice(0, 16));
-                        meetingTimeInput.setAttribute("max", maxTime.toISOString().slice(0, 16));
-                        });
-                        </script>
-                    
-                  <input type="text" name="name" id="name" class="form-control"
-                  placeholder="姓名" required />
+            <select id="meeting-time" name="visit_time" class="form-control" required>
+                <option value="" disabled {% if not visit_time %}selected{% endif %}>請選擇時間</option>
+                <!-- 這裡可以添加時間選項 -->
+            </select>
 
-                  <input type="tel" name="phone" id="phone" class="form-control" placeholder="電話" required />
+            <h5 class="text-start">姓名:</h5>
+            {% if errors.name %}<span class="error">{{ errors.name }}</span>{% endif %}
+            <input 
+                type="text" 
+                name="name" 
+                id="name" 
+                class="form-control" 
+                placeholder="姓名" 
+                value="{{ name }}"
+                required />
 
-                  <input type="email" name="email" id="email" class="form-control"
-                  placeholder="電郵地址" />
+            <h5 class="text-start">電話:</h5>
+            {% if errors.phone %}<span class="error">{{ errors.phone }}</span>{% endif %}
+            <input 
+                type="tel" 
+                name="phone" 
+                id="phone" 
+                class="form-control" 
+                placeholder="電話" 
+                value="{{ phone }}"
+                required />
 
-                  <textarea name="volunteer-message" rows="3" class="form-control" id="volunteer-message"
-                  placeholder="Comment (Optional)"></textarea>
+            <h5 class="text-start">電郵地址:</h5>
+            {% if errors.email %}<span class="error">{{ errors.email }}</span>{% endif %}
+            <input 
+                type="email" 
+                name="email" 
+                id="email" 
+                class="form-control" 
+                placeholder="電郵地址" 
+                value="{{ email }}"
+                required />
 
-                    <button type="submit" class="form-control">提交</button>
-                </form>
-            </div>
+            <h5 class="text-start">如有任何問題，請在此填寫:</h5>
+            <textarea 
+                name="comment" 
+                rows="3" 
+                class="form-control" 
+                id="comment" 
+                placeholder="(可選填)">{{ comment }}</textarea>
 
-            <div class="col-lg-6 col-12">
+            <button type="submit" class="form-control">提交</button>
+        </form>
+        
+    </div>
+
+
+<style>
+    .error {
+        color: red;
+        font-size: 0.8em;
+        display: block;
+        margin-top: 5px;
+    }
+</style>
+
+
+
                 
-                <img src={% static "images/smiling-casual-woman-dressed-volunteer-t-shirt-with-badge.jpg" %}
-                    class="volunteer-image img-fluid mt-5" alt="" />
+
 
 <!-- link to 護老小知識.html -->
-            <div class="custom-block-body text-center">
-                <h4 class="text-white mt-lg-3 mb-lg-3"> 想知更多護老小知識？</h4>
-                <p class="text-white">
-                    <a href={% url "guideline" %} class="custom-btn btn smoothscroll">點擊這裏</a>
-                </p>
-            </div>
+        <div class="col-lg-6 col-12">
+            <div class="custom-block-body">
+
+                <div class="row">
+
+                    <div class="col-lg-12" style="border: 30px solid #9F8668"></div>
+
+                    <div>
+                        <img src={% static "images/smiling-casual-woman-dressed-volunteer-t-shirt-with-badge.jpg" %}
+                        class="volunteer-image img-fluid mx-auto" alt="" />
+                    </div>
+
+                    <div>
+                        <h4 class="text-white text-center mt-3 mb-3 my-auto mx-auto"> 想知更多護老小知識？</h4>
+                    </div>
+
+                    <div>
+                        <p class="text-white text-center">
+                        <a href={% url "guideline" %} class="custom-btn btn smoothscroll">點擊這裏</a>
+                        </p>
+                    </div>
+                </div>
             
         </div>
         </div>
+
     </div>
 </section>
-{% endblock %}
 
+<!-- JAVASCRIPT -->
+
+    <!-- message fadeout -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var messageContainer = document.getElementById('message-container');
+            if (messageContainer) {
+                setTimeout(function() {
+                    messageContainer.style.transition = 'opacity 1s';
+                    messageContainer.style.opacity = '0';
+                    setTimeout(function() {
+                    messageContainer.style.display = 'none';
+                    }, 1000);
+                }, 3000);
+                }
+            });
+    </script>
+    
+
+    <!-- set booking time -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 設定今天的日期
+            var today = new Date();
+            var minDate = new Date(today);
+            minDate.setDate(today.getDate() + 1); // 設定最小日期為明天
+            var maxDate = new Date(today);
+            maxDate.setDate(today.getDate() + 7); // 設定最大日期為今天起的七天
+        
+            // 設定日期輸入的最小值和最大值
+            var meetingDateInput = document.getElementById("meeting-date");
+            meetingDateInput.setAttribute("min", minDate.toISOString().slice(0, 10));
+            meetingDateInput.setAttribute("max", maxDate.toISOString().slice(0, 10));
+        
+            // 設定可用的時間
+            var allowedTimes = [];
+            for (var hour = 10; hour <= 17; hour++) {
+                allowedTimes.push((hour < 10 ? '0' : '') + hour + ':00');
+            }
+        
+            meetingDateInput.addEventListener('change', function() {
+                var selectedDate = meetingDateInput.value;
+                var timeSelect = document.getElementById("meeting-time");
+                timeSelect.innerHTML = ""; // 清空先前的選項
+        
+                // 添加有效時間選項
+                allowedTimes.forEach(function(time) {
+                    var option = document.createElement("option");
+                    option.value = time;
+                    option.textContent = time;
+                    timeSelect.appendChild(option);
+                });
+            });
+        });
+    </script>
+
+    
+    <!-- 保存表單位置 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 如果有錯誤，滾動到表單位置
+            if (document.querySelector('.error')) {
+                document.getElementById('bookingForm').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        
+            // 保存表單位置
+            var form = document.getElementById('bookingForm');
+            form.addEventListener('submit', function() {
+                localStorage.setItem('formPosition', window.pageYOffset);
+            });
+        
+            // 如果有保存的位置，滾動到該位置
+            var savedPosition = localStorage.getItem('formPosition');
+            if (savedPosition !== null) {
+                window.scrollTo(0, parseInt(savedPosition));
+                localStorage.removeItem('formPosition');
+            }
+        });
+    </script>
+
+
+{% endblock %}
 </body>
+
+
 

@@ -1,6 +1,7 @@
 from django.db import models
-from datetime import datetime
+from django.utils import timezone
 from informations.choices import title_choices
+from datetime import datetime
 
 
 # Create your models here.
@@ -10,8 +11,10 @@ class Booking(models.Model):
     phone = models.CharField(max_length=100)
     email = models.CharField(max_length=50)
     visit_date_time = models.DateTimeField(default=datetime.now, blank=True)
-    comment = models.TextField(blank=True)
+    comment = models.TextField(blank=True, null=True)
     submit_date = models.DateTimeField(default=datetime.now, blank=True)
+    visit_date = models.DateField(default=timezone.now)  # 新增的日期欄位
+    visit_time = models.TimeField(default=timezone.now) 
     
     def __str__(self):
-        return self.title
+        return f"{self.name} - {self.visit_date} {self.visit_time}"

@@ -90,9 +90,18 @@ def logout(request):
     return redirect('index')
 
 def dashboard(request):
+    # 獲取當前用戶的 Resident 信息
+    resident = None
+    if request.user.is_authenticated:
+        try:
+            resident = Resident.objects.get(username=request.user)
+        except Resident.DoesNotExist:
+            pass
+
     context = {
         'payment_method_choices': payment_method_choices.items(),
         'payment_month_choices': payment_month_choices.items(),
         'payment_year_choices': payment_year_choices.items(),
+        'resident': resident,
     }
     return render(request, 'accounts/dashboard.html', context)
