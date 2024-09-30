@@ -4,6 +4,7 @@ from .models import Bank
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
+import datetime
 
 # Create your views here.
 def bank(request):
@@ -38,6 +39,26 @@ def bank(request):
             message=message
         )
         bank.save()
+        
+        email_subject = "上傳轉帳記錄表單提交"
+        email_body = (
+                        f'院友編號: {resident_code}\n'
+                        f'院友姓名: {resident_name}\n'
+                        f'付款方式: {payment_method}\n'
+                        f'付款年份: {payment_year}\n'
+                        f'付款月份: {payment_month}\n'
+                        f'轉帳記錄: {depositslip_photo}\n'
+                        f'備註/留言: {message}'
+                        )
+
+        # Send the email
+        send_mail(
+                    email_subject,
+                    email_body,
+                    "dpythonweb@gmail.com",
+                    ['dpythonweb@gmail.com'],
+                    fail_silently=False,
+                    )
         
         messages.success(request, '您的轉帳記錄已經上傳成功，如有進一步消息會盡快聯繫您!')        
         return redirect('dashboard')

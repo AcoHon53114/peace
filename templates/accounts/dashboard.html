@@ -11,27 +11,29 @@
           {% include 'partials/_alert.html' %}
             <div class="col-lg-4 col-12 ms-auto mb-5 mb-lg-0">
                 <div class="contact-info-wrap">
-                    <h2>歡迎 {{user.username}}</h2>
+                    <h2 style="padding-left: 0.3cm;">歡迎 {{user.username}}</h2>
 
                     <section id="dashboard" class="py-4">
                         <div class="container">
                           <div class="row">
                             <div class="col-md-12">
                               <h2></h2>
-                              <p>以下是您最近的上傳記錄列表(最多近6次)</p>
+                              <p>以下是您最近的上傳轉帳記錄(最多顯示6次):
+                              </p>
                               <table class="table">
                                 <thead>
                                   <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">過往上傳記錄</th>
+                                    <th scope="col">編號</th>
+                                    <th scope="col" style="padding-left: 0.90cm;">付款年份及月份</th>
+                                    <th scope="col" style="padding-left: 0.95cm;">詳細</th>
                                     <th></th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   {% for bank in banks %}
                                   <tr>
-                                    <td>{{bank.id}}</td>
-                                    <td>{{bank.payment_year}}年{{bank.payment_month}}</td>
+                                    <td style="padding-left: 0.45cm;">{{bank.id}}</td>
+                                    <td style="padding-left: 0.95cm;">{{bank.payment_year}}年 {{bank.payment_month}}</td>
                                     <td>
                                       <!-- Modal -->
                                       <a class="btn btn-light" href="#" data-toggle="modal" data-target="#recordModal{{bank.id}}">查看記錄</a>
@@ -68,7 +70,7 @@
                   <input type="text" name="resident_name" id="resident_name" class="form-control" placeholder="院友姓名" value="{{resident.resident_name}}" required />
                 
                   <select name="payment_method" id="payment_method" class="form-control" required>
-                    <option value="" disabled selected>選擇付款方式</option>
+                    <option value="" disabled selected>付款方式</option>
                     {% for key, value in payment_method_choices %}
                         <option value="{{ key }}" {% if key == values.payment_method %} selected {% endif %}>{{ value }}</option>
                     {% endfor %}
@@ -161,6 +163,10 @@
                 <label for="message" class="col-form-label">備註/留言</label>
                 <textarea name="message" class="form-control" disabled>{{ bank.message }}</textarea>
             </div>
+            <div class="form-group">
+              <label for="uploaded_date" class="col-form-label">上傳日期及時間</label>
+              <input type="text" name="uploaded_date" class="form-control" value="{{ bank.uploaded_date }}" disabled />
+          </div>
         </form>
     </div>
     </div>
