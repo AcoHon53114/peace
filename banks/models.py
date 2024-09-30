@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 from residents.models import Resident
+from django.contrib.auth.models import User
 from banks.choices import payment_method_choices, payment_month_choices, payment_year_choices
 
 def current_year():
@@ -14,6 +15,7 @@ def current_month():
     return ''
 
 class Bank(models.Model):
+    user_id = models.IntegerField(blank=True)
     resident_id = models.IntegerField()
     resident_name = models.CharField(max_length=200)
     resident_code = models.CharField(max_length=200) 

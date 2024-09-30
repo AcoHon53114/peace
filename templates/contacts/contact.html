@@ -1,5 +1,4 @@
 {% extends 'base.html' %} 
-{% block title %} | 聯絡我們 {% endblock %}
 {% load humanize %}
 {% block content %}
 {% load static %} 
@@ -46,28 +45,38 @@
             </div>
 
             <div class="col-lg-5 col-12 mx-auto">
+                {% if messages %}
+                    <div class="alert alert-success" role="alert">
+                        {% for message in messages %}
+                            {{ message }}<br>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+        
                 <form class="custom-form contact-form" action="{% url 'contact' %}" method="POST" role="form">
                     {% csrf_token %}
                     <h2>讓我們聯繫您!</h2>
-                  
+                
                     <p class="mb-4">
-                      歡迎瞭解更多資訊，我們非常樂意為您服務。<br>或電郵至：
-                      <a href="mailto:info@yourgmail.com">limcheelee@gmail.com</a>
+                        歡迎瞭解更多資訊，我們非常樂意為您服務。<br>或電郵至：
+                        <a href="mailto:info@yourgmail.com">limcheelee@gmail.com</a>
                     </p>
                     <input type="text" name="name" id="name" class="form-control" placeholder="姓名" required />
-                  
+                
                     <input type="email" name="email" id="email" class="form-control" placeholder="電郵地址" required />
                     
                     <input type="tel" name="phone" id="phone" class="form-control" placeholder="聯絡電話" required />
-
+                
                     <textarea name="message" rows="5" class="form-control" id="message" placeholder="請問有什麼事情可以幫忙? 謝謝"></textarea>
-                  
+                
                     <button type="submit" class="form-control">傳送資訊</button>
                 </form>
             </div>
         </div>
     </div>
 </section>
+
 </main>
 
 {% endblock %}
+

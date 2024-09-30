@@ -17,7 +17,7 @@
                           <div class="row">
                             <div class="col-md-12">
                               <h2></h2>
-                              <p>以下是您過往6個月的上傳記錄列表</p>
+                              <p>以下是您最近6次的上傳記錄列表</p>
                               <table class="table">
                                 <thead>
                                   <tr>
@@ -27,12 +27,14 @@
                                   </tr>
                                 </thead>
                                 <tbody>
+                                  {% for record in records %}
                                   <tr>
-                                    <td>22</td>
-                                    <td>3月份</td>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{record.payment_month}} {{record.payment_year}}</td>
                                     <td>
                                       <!-- Modal -->
-                                      <a class="btn btn-light" href="#" data-toggle="modal" data-target="#recordModal">查看記錄</a>
+                                      <a class="btn btn-light" href="#" data-toggle="modal" data-target="#recordModal{{record.id}}">查看記錄</a>
+                                      {% endfor %}
 <div class="modal fade" id="recordModal" tabindex="-1" role="dialog" aria-labelledby="recordModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -86,20 +88,6 @@
 </main>
                                     </td>
                                   </tr>
-                                  <tr>
-                                    <td>43</td>
-                                    <td>4月份</td>
-                                    <td>
-                                      <a class="btn btn-light" href="#" data-toggle="modal" data-target="#recordModal">查看記錄</a>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>31</td>
-                                    <td>5月份</td>
-                                    <td>
-                                      <a class="btn btn-light" href="#" data-toggle="modal" data-target="#recordModal">查看記錄</a>
-                                    </td>
-                                  </tr>
                                 </tbody>
                               </table>
                             </div>
@@ -109,8 +97,9 @@
                 </div>
             </div>
 
+
             <div class="col-lg-5 col-12 mx-auto text-center">
-              <form class="custom-form contact-form" action="{% url 'bank' %}" method="POST" role="form">
+              <form class="custom-form contact-form" action="{% url 'bank' %}" method="POST" role="form" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% if user.is_authenticated %}
                 <input type='hidden' name='user_id' value="{{user.id}}" />
@@ -124,6 +113,7 @@
                   <p class="mb-4">
                       <a href="#"></a>
                   </p>
+
                   <input type="text" name="resident_code" id="resident_code" class="form-control" placeholder="院友編號" value="{{resident.resident_code}}" required />
           
                   <input type="text" name="resident_name" id="resident_name" class="form-control" placeholder="院友姓名" value="{{resident.resident_name}}" required />

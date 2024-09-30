@@ -4,6 +4,7 @@ from django.contrib import messages, auth
 from residents.models import Resident
 from banks.choices import payment_method_choices, payment_month_choices, payment_year_choices
 from datetime import datetime
+from banks.models import Bank
 
 def register(request):
     if request.method == 'POST':
