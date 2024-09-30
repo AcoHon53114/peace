@@ -1,3 +1,4 @@
+# /Users/minkeihon/Desktop/peace/accounts/views.py
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
@@ -98,11 +99,15 @@ def dashboard(request):
             resident = Resident.objects.get(username=request.user)
         except Resident.DoesNotExist:
             pass
+    
+    # 獲取當前用戶的銀行記錄
+    user_banks = Bank.objects.filter(user_id=request.user.id).order_by('-uploaded_date')[:6]  # Get the latest 6 records
 
     context = {
         'payment_method_choices': payment_method_choices.items(),
         'payment_month_choices': payment_month_choices.items(),
         'payment_year_choices': payment_year_choices.items(),
         'resident': resident,
+        'banks': user_banks,
     }
     return render(request, 'accounts/dashboard.html', context)

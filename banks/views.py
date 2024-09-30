@@ -50,7 +50,7 @@ def dashboard(request):
     context = {'banks': user_banks}
     return render(request,'accounts/dashboard.html', context)
 '''
-
+'''
 def dashboard(request):
     if request.user.is_authenticated:
         user_id = request.user.id
@@ -59,3 +59,4 @@ def dashboard(request):
     else:
         messages.error(request, '用户未登录。')
         return redirect('login')
+'''

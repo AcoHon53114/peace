@@ -1,3 +1,4 @@
+<!-- /Users/minkeihon/Desktop/peace/templates/accounts/dashboard.html -->
 {% extends 'base.html' %} 
 {% load humanize %}
 {% load static %}
@@ -17,7 +18,7 @@
                           <div class="row">
                             <div class="col-md-12">
                               <h2></h2>
-                              <p>以下是您最近6次的上傳記錄列表</p>
+                              <p>以下是您最近的上傳記錄列表(最多近6次)</p>
                               <table class="table">
                                 <thead>
                                   <tr>
@@ -27,67 +28,16 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  {% for record in records %}
+                                  {% for bank in banks %}
                                   <tr>
-                                    <td>{{forloop.counter}}</td>
-                                    <td>{{record.payment_month}} {{record.payment_year}}</td>
+                                    <td>{{bank.id}}</td>
+                                    <td>{{bank.payment_year}}年{{bank.payment_month}}</td>
                                     <td>
                                       <!-- Modal -->
-                                      <a class="btn btn-light" href="#" data-toggle="modal" data-target="#recordModal{{record.id}}">查看記錄</a>
-                                      {% endfor %}
-<div class="modal fade" id="recordModal" tabindex="-1" role="dialog" aria-labelledby="recordModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="recordModalLabel">查看記錄</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-            <div class="form-group">
-                <label for="resident_code" class="col-form-label">院友編號</label>
-                <input type="text" name="resident_code" class="form-control" value="" disabled />
-            </div>
-            <div class="form-group">
-                <label for="resident_name" class="col-form-label">院友姓名</label>
-                <input type="text" name="resident_name" class="form-control" disabled />
-            </div>
-            <div class="form-group">
-                <label for="payment_method" class="col-form-label">付款方式</label>
-                <input type="text" name="payment_method" class="form-control" disabled />
-            </div>
-            <div class="form-group">
-              <label for="payment_year" class="col-form-label">付款年份</label>
-              <input type="text" name="payment_year" class="form-control" disabled />
-          </div>
-            <div class="form-group">
-                <label for="payment_month" class="col-form-label">付款月份</label>
-                <input type="text" name="payment_month" class="form-control" disabled />
-            </div>
-                        <!-- 下载文件栏位 -->
-                        <div class="form-group">
-                          <label class="col-form-label">轉帳記錄</label>
-                          <div class="row">
-                              <div class="col-md-3">
-                                  <a href="path/to/your/file.pdf" download class="btn btn-primary btn-block">下載檔案</a>
-                              </div>
-                          </div>
-                      </div>
-            <div class="form-group">
-                <label for="message" class="col-form-label">備註/留言</label>
-                <textarea name="message" class="form-control" disabled></textarea>
-            </div>
-        </form>
-    </div>
-    </div>
-  </div>
-</div>
-
-</main>
+                                      <a class="btn btn-light" href="#" data-toggle="modal" data-target="#recordModal{{bank.id}}">查看記錄</a>
                                     </td>
                                   </tr>
+                                  {% endfor %}
                                 </tbody>
                               </table>
                             </div>
@@ -96,7 +46,6 @@
                       </section>
                 </div>
             </div>
-
 
             <div class="col-lg-5 col-12 mx-auto text-center">
               <form class="custom-form contact-form" action="{% url 'bank' %}" method="POST" role="form" enctype="multipart/form-data">
@@ -148,7 +97,7 @@
           
                   <input type="file" name="depositslip_photo" id="depositslip_photo" class="form-control" placeholder="附件上傳" accept=".pdf, .png, .jpg, .jpeg" required />
 
-                  <input type="text" name="message" id="message" class="form-control" placeholder="備註/留言" required />
+                  <input type="text" name="message" id="message" class="form-control" placeholder="備註/留言" />
           
                   <button type="submit" class="form-control">上傳</button>
               </form>
@@ -165,4 +114,57 @@
         </div>
     </div>
 </section>
+
+<!-- Modals -->
+{% for bank in banks %}
+<div class="modal fade" id="recordModal{{ bank.id }}" tabindex="-1" role="dialog" aria-labelledby="recordModalLabel{{ bank.id }}" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="recordModalLabel{{ bank.id }}">查看記錄</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label for="resident_code" class="col-form-label">院友編號</label>
+                <input type="text" name="resident_code" class="form-control" value="{{ bank.resident_code }}" disabled />
+            </div>
+            <div class="form-group">
+                <label for="resident_name" class="col-form-label">院友姓名</label>
+                <input type="text" name="resident_name" class="form-control" value="{{ bank.resident_name }}" disabled />
+            </div>
+            <div class="form-group">
+                <label for="payment_method" class="col-form-label">付款方式</label>
+                <input type="text" name="payment_method" class="form-control" value="{{ bank.payment_method }}" disabled />
+            </div>
+            <div class="form-group">
+              <label for="payment_year" class="col-form-label">付款年份</label>
+              <input type="text" name="payment_year" class="form-control" value="{{ bank.payment_year }}" disabled />
+          </div>
+            <div class="form-group">
+                <label for="payment_month" class="col-form-label">付款月份</label>
+                <input type="text" name="payment_month" class="form-control" value="{{ bank.payment_month }}" disabled />
+            </div>
+                        <!-- 下载文件栏位 -->
+                        <div class="form-group">
+                          <label class="col-form-label">轉帳記錄</label>
+                          <div class="row">
+                              <div class="col-md-3">
+                                  <a href="{{ bank.depositslip_photo.url }}" download class="btn btn-primary btn-block">下載檔案</a>
+                              </div>
+                          </div>
+                      </div>
+            <div class="form-group">
+                <label for="message" class="col-form-label">備註/留言</label>
+                <textarea name="message" class="form-control" disabled>{{ bank.message }}</textarea>
+            </div>
+        </form>
+    </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
 {% endblock %}
