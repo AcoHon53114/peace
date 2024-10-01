@@ -1,5 +1,5 @@
 from django.contrib import admin
-
+from django.utils.timezone import localtime
 # Register your models here.
 from .models import Bank
 

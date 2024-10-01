@@ -10,7 +10,7 @@ class Booking(models.Model):
     name = models.CharField(max_length=50)
     phone = models.CharField(max_length=100)
     email = models.CharField(max_length=50)
-    visit_date_time = models.DateTimeField(default=datetime.now, blank=True)
+    #visit_date_time = models.DateTimeField(default=datetime.now, blank=True)
     comment = models.TextField(blank=True, null=True)
     submit_date = models.DateTimeField(default=datetime.now, blank=True)
     visit_date = models.DateField(default=timezone.now)  # 新增的日期欄位

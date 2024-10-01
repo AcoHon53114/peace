@@ -4,7 +4,9 @@ from .models import Bank
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.contrib.auth.models import User
-import datetime
+from datetime import datetime
+from django.urls import reverse
+from django.conf import settings
 
 # Create your views here.
 def bank(request):
@@ -40,15 +42,26 @@ def bank(request):
         )
         bank.save()
         
+        # Format uploaded_date
+        uploaded_date = bank.uploaded_date.strftime('%Y年%m月%d日 %I:%M %p')
+        
+        # Generate admin change URL
+        admin_change_url = request.build_absolute_uri(reverse('admin:banks_bank_change', args=[bank.id]))
+        
+        # Generate image URL
+        image_url = request.build_absolute_uri(settings.MEDIA_URL + str(bank.depositslip_photo))
+        
         email_subject = "上傳轉帳記錄表單提交"
         email_body = (
-                        f'院友編號: {resident_code}\n'
-                        f'院友姓名: {resident_name}\n'
-                        f'付款方式: {payment_method}\n'
-                        f'付款年份: {payment_year}\n'
-                        f'付款月份: {payment_month}\n'
-                        f'轉帳記錄: {depositslip_photo}\n'
-                        f'備註/留言: {message}'
+                        f'院友編號: {resident_code}<br>'
+                        f'院友姓名: {resident_name}<br>'
+                        f'付款方式: {payment_method}<br>'
+                        f'付款年份: {payment_year}<br>'
+                        f'付款月份: {payment_month}<br>'
+                        f'轉帳記錄: <a href="{image_url}">點擊這裡查看上傳附件</a><br>'
+                        f'備註/留言: {message}<br>'
+                        f'上傳日期和時間: {uploaded_date}<br>'
+                        f'查看記錄: <a href="{admin_change_url}">點擊這裡</a><br>'
                         )
 
         # Send the email
@@ -58,6 +71,7 @@ def bank(request):
                     "dpythonweb@gmail.com",
                     ['dpythonweb@gmail.com'],
                     fail_silently=False,
+                    html_message=email_body,  # Use html_message for HTML content
                     )
         
         messages.success(request, '您的轉帳記錄已經上傳成功，如有進一步消息會盡快聯繫您!')        
@@ -65,19 +79,3 @@ def bank(request):
     else:
         # Handle GET request or other methods
         return render(request, 'bank.html')
-'''
-def dashboard(request):
-    user_banks = Bank.objects.filter(user_id=user_id).order_by('-uploaded_date')[:6]  # Get the latest 6 records
-    context = {'banks': user_banks}
-    return render(request,'accounts/dashboard.html', context)
-'''
-'''
-def dashboard(request):
-    if request.user.is_authenticated:
-        user_id = request.user.id
-        records = Bank.objects.filter(user_id=user_id).order_by('-uploaded_date')[:6]  # Get the latest 6 records
-        return render(request, 'accounts/dashboard.html', {'records': records})
-    else:
-        messages.error(request, '用户未登录。')
-        return redirect('login')
-'''

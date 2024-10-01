@@ -6,48 +6,52 @@
 {% block content %}
 <!--dashboard.html-->
 <section class="contact-section section-padding" id="section_6">
-    <div class="container">
-        <div class="row">
-          {% include 'partials/_alert.html' %}
-            <div class="col-lg-4 col-12 ms-auto mb-5 mb-lg-0">
-                <div class="contact-info-wrap">
-                    <h2 style="padding-left: 0.3cm;">歡迎 {{user.username}}</h2>
+  <div class="container">
+      <div class="row">
+        {% include 'partials/_alert.html' %}
+          <div class="col-lg-4 col-12 ms-auto mb-5 mb-lg-0">
+              <div class="contact-info-wrap">
+                  <h2 style="padding-left: 0.3cm;">歡迎 {{user.username}}</h2>
 
-                    <section id="dashboard" class="py-4">
-                        <div class="container">
-                          <div class="row">
-                            <div class="col-md-12">
-                              <h2></h2>
-                              <p>以下是您最近的上傳轉帳記錄(最多顯示6次):
-                              </p>
-                              <table class="table">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">編號</th>
-                                    <th scope="col" style="padding-left: 0.90cm;">付款年份及月份</th>
-                                    <th scope="col" style="padding-left: 0.95cm;">詳細</th>
-                                    <th></th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  {% for bank in banks %}
-                                  <tr>
-                                    <td style="padding-left: 0.45cm;">{{bank.id}}</td>
-                                    <td style="padding-left: 0.95cm;">{{bank.payment_year}}年 {{bank.payment_month}}</td>
-                                    <td>
-                                      <!-- Modal -->
-                                      <a class="btn btn-light" href="#" data-toggle="modal" data-target="#recordModal{{bank.id}}">查看記錄</a>
-                                    </td>
-                                  </tr>
-                                  {% endfor %}
-                                </tbody>
-                              </table>
-                            </div>
+                  <section id="dashboard" class="py-4">
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <h2></h2>
+                            <p>以下是您最近的上傳轉帳記錄(最多顯示6次):
+                            </p>
+                            {% if banks %}
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th scope="col">編號</th>
+                                  <th scope="col" style="padding-left: 0.90cm;">付款年份及月份</th>
+                                  <th scope="col" style="padding-left: 0.95cm;">詳細</th>
+                                  <th></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for bank in banks %}
+                                <tr>
+                                  <td style="padding-left: 0.35cm;">{{bank.id}}</td>
+                                  <td style="padding-left: 0.95cm;">{{bank.payment_year}}年 {{bank.payment_month}}</td>
+                                  <td>
+                                    <!-- Modal -->
+                                    <a class="btn btn-light" href="#" data-toggle="modal" data-target="#recordModal{{bank.id}}">查看記錄</a>
+                                  </td>
+                                </tr>
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                            {% else %}
+                            <p><strong style="font-size: 1.2em;">暫未有記錄</strong></p>
+                            {% endif %}
                           </div>
                         </div>
-                      </section>
-                </div>
-            </div>
+                      </div>
+                    </section>
+              </div>
+          </div>
 
             <div class="col-lg-5 col-12 mx-auto text-center">
               <form class="custom-form contact-form" action="{% url 'bank' %}" method="POST" role="form" enctype="multipart/form-data">
@@ -165,7 +169,7 @@
             </div>
             <div class="form-group">
               <label for="uploaded_date" class="col-form-label">上傳日期及時間</label>
-              <input type="text" name="uploaded_date" class="form-control" value="{{ bank.uploaded_date }}" disabled />
+              <input type="text" name="uploaded_date" class="form-control" value="{{ bank.uploaded_date|date:"Y年m月d日" }} {{ bank.uploaded_date|time:"P" }}" disabled />
           </div>
         </form>
     </div>

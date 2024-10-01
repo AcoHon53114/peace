@@ -4,6 +4,9 @@ from django.contrib import messages
 import re
 from .choices import title_choices  # 引入你的 choices.py
 from django.core.mail import send_mail
+from datetime import datetime
+from django.urls import reverse
+from django.conf import settings
 
 def information(request):
     context = {
@@ -73,15 +76,23 @@ def information(request):
         )
         booking.save()
         
+        # Format uploaded_date
+        submit_date = booking.submit_date.strftime('%Y年%m月%d日 %I:%M %p')
+        
+        # Generate admin change URL
+        admin_change_url = request.build_absolute_uri(reverse('admin:informations_booking_change', args=[booking.id]))
+        
         email_subject = "預約表單提交"
         email_body = (
-                        f'稱謂: {title}\n'
-                        f'姓名: {name}\n'
-                        f'電郵: {email}\n'
-                        f'電話: {phone}\n'
-                        f'預約參觀日期: {visit_date}\n'
-                        f'預約參觀時間: {visit_time}\n'
-                        f'留言: {comment}'
+                        f'稱謂: {title}<br>'
+                        f'姓名: {name}<br>'
+                        f'電郵: {email}<br>'
+                        f'電話: {phone}<br>'
+                        f'預約參觀日期: {visit_date}<br>'
+                        f'預約參觀時間: {visit_time}<br>'
+                        f'留言: {comment}<br>'
+                        f'提交日期和時間: {submit_date}<br>'
+                        f'查看記錄: <a href="{admin_change_url}">點擊這裡</a><br>'
                         )
 
         # Send the email
@@ -91,6 +102,7 @@ def information(request):
                     "dpythonweb@gmail.com",
                     ['dpythonweb@gmail.com'],
                     fail_silently=False,
+                    html_message=email_body  # 指定 HTML 內容
                     )
         
         # 顯示成功消息
