@@ -9,19 +9,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        @media (max-width: 767px) {
-            .custom-text-box {
-                padding: 10px;
-            }
-            .form-control {
-                font-size: 14px;
-            }
-            .row {
-                justify-content: center;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -39,8 +26,8 @@
         }
     </style>
 
-    <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-8 col-sm-10 col-12"></div>
+    <div class="row">
+        <div class="col-lg-6 col-12"></div>
         {% if messages %}
         {% for message in messages %}
             <div id="message-container" class="alert alert-{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}">
@@ -51,10 +38,12 @@
 
     <title>入院須知</title>
 
+
+
 <!--information.html-->
 
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-8 col-sm-10 col-12"></div>
+        <div class="row">
+            <div class="col-lg-6 col-12"></div>
             <h2 class="text-white text-center mb-4 ">入院須知</h2>
 
 <!--入院條件-->          
@@ -72,7 +61,7 @@
 
 <hr>
 <!--訂房程序-->   
-                <div class="col-lg-6 col-md-8 col-sm-10 col-12">
+                <div class="col-lg-6 col-12">
                     <div class="custom-text-box">
                         <h5 class="mb-3">訂房程序:</h5>
                         <li>由院友，家屬，朋友或社工參觀院舍及訂定床位
@@ -88,7 +77,7 @@
                     </div>
                 </div>
 <!--入院程序-->
-                <div class="col-lg-6 col-md-8 col-sm-10 col-12">
+                <div class="col-lg-6 col-12">
                     <div class="custom-text-box">
                         <h5 class="mb-3">入院程序:</h5>
                         <li>帶院友身份証影印本一份</li>
@@ -104,7 +93,7 @@
                 </div>
 <hr>
 <!--新院友日常用品建議帶備清單-->
-                <div class="col-lg-6 col-md-8 col-sm-10 col-12">
+                <div class="col-lg-6 col-12">
                     <div class="custom-text-box">
                         <h5 class="mb-3">新院友帶備物品建議清單:</h5>
 
@@ -193,7 +182,7 @@
 
 <!--新院友建議準備的醫療用品&紙本文件-->                        
 <!--新院友建議準備的紙本文件-->
-                <div class="col-lg-6 col-md-8 col-sm-10 col-12" >
+                <div class="col-lg-6 col-12" >
                     <div class="custom-text-box">
                         <h5 class="mb-3">新院友建議準備的紙本文件:</h5>
 
@@ -246,8 +235,8 @@
                 </div>
 <hr>
 
-<div class="row justify-content-center">
-    <div class="col-lg-6 col-md-8 col-sm-10 col-12 text-center">
+<div class="row">
+    <div class="col-lg-6 col-12 text-center">
         <h3 class="text-white mb-4">立即預約參觀選位</h3>
 
         <form class="custom-form volunteer-form mb-5 mb-lg-0" action="{% url 'information' %}" method="POST" role="form">
@@ -278,6 +267,8 @@
                 <option value="" disabled {% if not visit_time %}selected{% endif %}>請選擇時間</option>
                 <!-- 這裡可以添加時間選項 -->
             </select>
+
+            
 
             <h5 class="text-start">姓名:</h5>
             {% if errors.name %}<span class="error">{{ errors.name }}</span>{% endif %}
@@ -337,8 +328,6 @@
 
 
 
-
-
                 
 
 
@@ -374,86 +363,7 @@
 
 <!-- JAVASCRIPT -->
 
-    <!-- message fadeout -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var messageContainer = document.getElementById('message-container');
-            if (messageContainer) {
-                setTimeout(function() {
-                    messageContainer.style.transition = 'opacity 1s';
-                    messageContainer.style.opacity = '0';
-                    setTimeout(function() {
-                    messageContainer.style.display = 'none';
-                    }, 1000);
-                }, 3000);
-                }
-            });
-    </script>
-    
-
-    <!-- set booking time -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // 設定今天的日期
-            var today = new Date();
-            var minDate = new Date(today);
-            minDate.setDate(today.getDate() + 1); // 設定最小日期為明天
-            var maxDate = new Date(today);
-            maxDate.setDate(today.getDate() + 7); // 設定最大日期為今天起的七天
-        
-            // 設定日期輸入的最小值和最大值
-            var meetingDateInput = document.getElementById("meeting-date");
-            meetingDateInput.setAttribute("min", minDate.toISOString().slice(0, 10));
-            meetingDateInput.setAttribute("max", maxDate.toISOString().slice(0, 10));
-        
-            // 設定可用的時間
-            var allowedTimes = [];
-            for (var hour = 10; hour <= 17; hour++) {
-                allowedTimes.push((hour < 10 ? '0' : '') + hour + ':00');
-            }
-        
-            meetingDateInput.addEventListener('change', function() {
-                var selectedDate = meetingDateInput.value;
-                var timeSelect = document.getElementById("meeting-time");
-                timeSelect.innerHTML = ""; // 清空先前的選項
-        
-                // 添加有效時間選項
-                allowedTimes.forEach(function(time) {
-                    var option = document.createElement("option");
-                    option.value = time;
-                    option.textContent = time;
-                    timeSelect.appendChild(option);
-                });
-            });
-        });
-    </script>
-
-    
-    <!-- 保存表單位置 -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 如果有錯誤，滾動到表單位置
-            if (document.querySelector('.error')) {
-                document.getElementById('bookingForm').scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        
-            // 保存表單位置
-            var form = document.getElementById('bookingForm');
-            form.addEventListener('submit', function() {
-                localStorage.setItem('formPosition', window.pageYOffset);
-            });
-        
-            // 如果有保存的位置，滾動到該位置
-            var savedPosition = localStorage.getItem('formPosition');
-            if (savedPosition !== null) {
-                window.scrollTo(0, parseInt(savedPosition));
-                localStorage.removeItem('formPosition');
-            }
-        });
-    </script>
-
+    <script src={% static "js/main.js" %}></script>
 
 {% endblock %}
 </body>

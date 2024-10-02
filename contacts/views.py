@@ -15,7 +15,7 @@ def contact(request):
         phone = request.POST['phone']
         message = request.POST['message']
         # 顯示成功消息
-        messages.success(request, '您的信息已成功提交，我們會盡快與您聯繫。')
+        #messages.success(request, '您的信息已成功提交，我們會盡快與您聯繫。')
         
         # 創建 Contact 對象並保存到數據庫
         contact = Contact(name=name, email=email, phone=phone, message=message)
@@ -36,17 +36,8 @@ def contact(request):
             fail_silently=False,
             html_message=f'姓名: {name}<br>電郵: {email}<br>電話: {phone}<br>留言: {message}<br>傳送日期和時間: {contact_date}<br>查看記錄: <a href="{admin_change_url}">點擊這裡</a>'  # HTML 內容
         )
-    return render(request, 'contacts/contact.html')
-
-def contact_view(request):
-    if request.method == 'POST':
-        # 假設你在這裡處理表單數據
-        # 例如：form = ContactForm(request.POST)
         
-        # 設置成功消息
         messages.success(request, '您的信息已成功提交，我們會盡快與您聯繫。')
-    
-        # 重定向到聯繫頁面
         return redirect('contact')
-    
+        
     return render(request, 'contacts/contact.html')
