@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class Resident(models.Model):
     username = models.OneToOneField(User, on_delete=models.DO_NOTHING)
-    resident_name = models.CharField(max_length=50, unique=True)
+    resident_name = models.CharField(max_length=50)
     resident_code = models.CharField(max_length=50, unique=True)
     resident_description = models.CharField(max_length=200)
     resident_contact_person = models.CharField(max_length=80)

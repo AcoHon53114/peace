@@ -637,6 +637,46 @@ top: -8px;
 top: 8px;
 }
 
+/* iPad Pro 直版 1024 x 1366 */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) {
+  .navbar {
+    padding: 10px;
+  }
+  .navbar-brand {
+    font-size: 1.5rem;
+  }
+}
+
+/* iPad Pro 橫版 1366 x 1024 */
+@media only screen and (min-device-width: 1366px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .navbar {
+    padding: 15px;
+  }
+  .navbar-brand {
+    font-size: 2rem;
+  }
+}
+
+/* iPad Air 直版 820 x 1180 */
+@media only screen and (min-device-width: 820px) and (max-device-width: 1180px) and (orientation: portrait) {
+  .navbar {
+    padding: 8px;
+  }
+  .navbar-brand {
+    font-size: 1.3rem;
+  }
+}
+
+/* iPad Air 橫版 1180 x 820 */
+@media only screen and (min-device-width: 1180px) and (max-device-width: 820px) and (orientation: landscape) {
+  .navbar {
+    padding: 12px;
+  }
+  .navbar-brand {
+    font-size: 1.8rem;
+  }
+}
+
 
 /*---------------------------------------
 SITE HEADER              

@@ -34,9 +34,9 @@ def register(request):
                     return redirect('register')
                 else:
                     # 檢查 resident_name 是否已經存在
-                    if Resident.objects.filter(resident_name=resident_name).exists():
-                        messages.error(request, '院友姓名已經存在')
-                        return redirect('register')
+                    #if Resident.objects.filter(resident_name=resident_name).exists():
+                        #messages.error(request, '院友姓名已經存在')
+                        #return redirect('register')
                     # 檢查 resident_code 是否已經存在
                     if Resident.objects.filter(resident_code=resident_code).exists():
                         messages.error(request, '院友編號已經存在')
