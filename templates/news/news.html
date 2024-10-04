@@ -2,6 +2,7 @@
 {% block title %} | 院舎消息 {% endblock %}
 {% load humanize %}
 {% load static %}
+{% load custom_filters %}
 {% block content %}
 
 <section class="volunteer-section section-padding" id="section_4">
@@ -53,9 +54,9 @@
                         <h5 class="text-center">{{new.title}}</h5> 
                         
                             <i class="bi-calendar4 custom-icon me-1"></i>
-                            {{new.list_date}} <br>
+                            {{new.list_date|date:"Y年m月d日 H:i"}} <br>
                             <i class="bi-calendar4 custom-icon me-1"></i>
-                            <span> {{new.list_date | timesince }} </span>
+                            <span> {{ new.list_date| timesince_zh }} </span>
 
                                 <h7 class="col-sm-6 col-md-8 col-lg-9 col-xl-10 text-right" >
                                     {{new.description}}
@@ -140,7 +141,4 @@
     </div>
 </section>
 
-<!-- JAVASCRIPT -->
-<script src={% static "js/jquery.min.js" %}></script>
-<script src={% static "js/lightbox.min.js" %}></script>
 {% endblock %}

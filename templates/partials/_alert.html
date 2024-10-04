@@ -1,21 +1,30 @@
 {% if messages %}
     <!--if there is any messages then loop the messages object-->
-{% for message in messages %}
-<div id="message" class="container">
-    <div 
-    class="alert alert-{{message.tags}} alert-dismissible text-center"
-    role="alert"
->
-        <button type='button' class="close" data-dismiss="alert">
-            <span aria-hidden='true' >&times;</span>
-        </button>
-        <strong>
-            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}錯誤:{% else %}
-            {{message.tags | title }}
-            {% endif %}
-        </strong>{{message}}
-    </div>
-</div> 
-{% endfor %}
-<!--end for loop-->
+    {% for message in messages %}
+    <div id="message" class="container">
+        <div 
+        class="alert alert-{{ message.tags }} alert-dismissible text-center"
+        role="alert"
+        >
+            <button type='button' class="close" data-dismiss="alert">
+                <span aria-hidden='true'>&times;</span>
+            </button>
+            <strong>
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    錯誤:
+                {% elif message.tags == 'success' %}
+                    成功
+                {% elif message.tags == 'info' %}
+                    信息:
+                {% elif message.tags == 'warning' %}
+                    警告:
+                {% else %}
+                    {{ message.tags | title }}
+                {% endif %}
+            </strong>
+            {{ message }}
+        </div>
+    </div> 
+    {% endfor %}
+    <!--end for loop-->
 {% endif %}

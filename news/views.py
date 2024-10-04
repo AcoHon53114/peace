@@ -3,6 +3,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .models import New
 from django.shortcuts import render, get_object_or_404
 from urllib.parse import urlparse, parse_qs
+from django.contrib import messages
 
 # Create your views here.
 
