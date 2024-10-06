@@ -13,12 +13,12 @@ def contact(request):
         name = request.POST['name']
         email = request.POST['email']
         phone = request.POST['phone']
-        message = request.POST['message']
+        comment = request.POST['comment']
         # 顯示成功消息
         #messages.success(request, '您的信息已成功提交，我們會盡快與您聯繫。')
         
         # 創建 Contact 對象並保存到數據庫
-        contact = Contact(name=name, email=email, phone=phone, message=message)
+        contact = Contact(name=name, email=email, phone=phone, comment=comment)
         contact.save()
         
         # Format contact_date
@@ -29,12 +29,12 @@ def contact(request):
         
         # 發送電郵
         send_mail(
-            '聯絡表單提交',  # 主題
-            f'姓名: {name}\n電郵: {email}\n電話: {phone}\n留言: {message}\n傳送日期和時間: {contact_date}\n查看記錄: 點擊這裡',  # 純文本內容
+            '(平安護老院)聯絡表單提交',  # 主題
+            f'姓名: {name}\n電郵: {email}\n電話: {phone}\n留言: {comment}\n傳送日期和時間: {contact_date}\n查看記錄: 點擊這裡',  # 純文本內容
             'dpythonweb@gmail.com',  # 發件人
             ['dpythonweb@gmail.com'],  # 收件人
             fail_silently=False,
-            html_message=f'姓名: {name}<br>電郵: {email}<br>電話: {phone}<br>留言: {message}<br>傳送日期和時間: {contact_date}<br>查看記錄: <a href="{admin_change_url}">點擊這裡</a>'  # HTML 內容
+            html_message=f'姓名: {name}<br>電郵: {email}<br>電話: {phone}<br>留言: {comment}<br>傳送日期和時間: {contact_date}<br>查看記錄: <a href="{admin_change_url}">點擊這裡</a>'  # HTML 內容
         )
         
         messages.success(request, '您的信息已成功提交，我們會盡快與您聯繫。')

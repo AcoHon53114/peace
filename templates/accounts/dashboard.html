@@ -102,7 +102,7 @@
           
                   <input type="file" name="depositslip_photo" id="depositslip_photo" class="form-control" placeholder="附件上傳" accept=".pdf, .png, .jpg, .jpeg" required />
 
-                  <input type="text" name="message" id="message" class="form-control" placeholder="備註/留言" />
+                  <input type="text" name="comment" id="comment" class="form-control" placeholder="備註/留言" />
           
                   <button type="submit" class="form-control">上傳</button>
               </form>
@@ -163,8 +163,8 @@
                           </div>
                       </div>
             <div class="form-group">
-                <label for="message" class="col-form-label">備註/留言</label>
-                <textarea name="message" class="form-control" disabled>{{ bank.message }}</textarea>
+                <label for="comment" class="col-form-label">備註/留言</label>
+                <textarea name="comment" class="form-control" disabled>{{ bank.comment }}</textarea>
             </div>
             <div class="form-group">
               <label for="uploaded_date" class="col-form-label">上傳日期及時間</label>

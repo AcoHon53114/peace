@@ -82,7 +82,7 @@ def information(request):
         # Generate admin change URL
         admin_change_url = request.build_absolute_uri(reverse('admin:informations_booking_change', args=[booking.id]))
         
-        email_subject = "預約表單提交"
+        email_subject = "(平安護老院)預約表單提交"
         email_body = (
                         f'稱謂: {title}<br>'
                         f'姓名: {name}<br>'

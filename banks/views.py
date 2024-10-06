@@ -18,7 +18,7 @@ def bank(request):
         payment_month = request.POST['payment_month']
         payment_year = request.POST['payment_year']
         depositslip_photo = request.FILES['depositslip_photo']  # Use request.FILES for file uploads
-        message = request.POST['message']
+        comment = request.POST['comment']
         
         # Ensure user is authenticated
         if not request.user.is_authenticated:
@@ -38,7 +38,7 @@ def bank(request):
             payment_month=payment_month,
             payment_year=payment_year,
             depositslip_photo=depositslip_photo,
-            message=message
+            comment=comment
         )
         bank.save()
         
@@ -51,7 +51,7 @@ def bank(request):
         # Generate image URL
         image_url = request.build_absolute_uri(settings.MEDIA_URL + str(bank.depositslip_photo))
         
-        email_subject = "上傳轉帳記錄表單提交"
+        email_subject = "(平安護老院)上傳轉帳記錄表單提交"
         email_body = (
                         f'院友編號: {resident_code}<br>'
                         f'院友姓名: {resident_name}<br>'
@@ -59,7 +59,7 @@ def bank(request):
                         f'付款年份: {payment_year}<br>'
                         f'付款月份: {payment_month}<br>'
                         f'轉帳記錄: <a href="{image_url}">點擊這裡查看上傳附件</a><br>'
-                        f'備註/留言: {message}<br>'
+                        f'備註/留言: {comment}<br>'
                         f'上傳日期和時間: {uploaded_date}<br>'
                         f'查看記錄: <a href="{admin_change_url}">點擊這裡</a><br>'
                         )

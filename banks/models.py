@@ -23,7 +23,7 @@ class Bank(models.Model):
     payment_month = models.CharField(max_length=20, choices=payment_month_choices.items(), default=current_month)
     payment_year = models.CharField(max_length=20, choices=payment_year_choices.items(), default=current_year)
     depositslip_photo = models.FileField(upload_to='photos/%Y/%m/%d/')
-    message = models.TextField(max_length=50)
+    comment = models.TextField(max_length=50)
     uploaded_date = models.DateTimeField(default=datetime.now, blank=True)
     
     def __str__(self):
