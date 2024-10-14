@@ -11,6 +11,8 @@ def timesince_zh(value, arg=None):
     if arg:
         return timesince(value, arg)
     result = timesince(value)
+    result = result.replace('years', '年').replace('year', '年')
+    result = result.replace('weeks', '星期').replace('week', '星期')
     result = result.replace('days', '天').replace('day', '天')
     result = result.replace('hours', '小時').replace('hour', '小時')
     result = result.replace('minutes', '分鐘').replace('minute', '分鐘')
