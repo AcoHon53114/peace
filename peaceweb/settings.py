@@ -12,20 +12,39 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from django.contrib.messages import constants as messages
 from pathlib import Path
 import os
+import dj_database_url
+from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / ".env.local")
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-msy&j84aaf&6*b%8f28!)ltg-9er24yvn3a%wds)7f7k0+b5(f'
+SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = [
+    value.strip()
+    for value in os.getenv(
+        "DJANGO_ALLOWED_HOSTS",
+        "localhost,127.0.0.1",
+    ).split(",")
+    if value.strip()
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    value.strip()
+    for value in os.getenv(
+        "DJANGO_CSRF_TRUSTED_ORIGINS",
+        "",
+    ).split(",")
+    if value.strip()
+]
 
 
 # Application definition
@@ -90,13 +109,11 @@ WSGI_APPLICATION = 'peaceweb.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'peaceweb',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        "HOST": 'localhost',
-    }
+    "default": dj_database_url.parse(
+        os.environ["DATABASE_URL"],
+        conn_max_age=0,
+        ssl_require=True,
+    )
 }
 
 
@@ -133,11 +150,10 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'peaceweb/static')
-
+    BASE_DIR / "peaceweb" / "static",
 ]
 
 # Default primary key field type
@@ -157,12 +173,13 @@ MESSAGE_TAGS ={
     }
 
 # email sent account setting 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
-EMAIL_HOST_USER ='dpythonweb@gmail.com'
-EMAIL_HOST_PASSWORD = 'incxulhqtbtbvcgs'
 EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
 
 
 #import/export function in admin site
