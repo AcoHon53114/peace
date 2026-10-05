@@ -16,6 +16,6 @@ def youtube_embed(value):
             return f"Invalid YouTube URL: {value}"
         
         embed_url = f"https://www.youtube.com/embed/{video_id}"
-        return mark_safe(f'<iframe width="560" height="315" src="{embed_url}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
+        return mark_safe(f'<iframe loading="lazy" width="560" height="315" src="{embed_url}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>')
     except Exception as e:
         return f"Error processing YouTube URL: {str(e)}"

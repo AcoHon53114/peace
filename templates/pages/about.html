@@ -11,7 +11,7 @@
             </div>
 
             <div class="col-lg-6 col-12 mb-5 mb-lg-0">
-                <img src={% static "images/IMG_1428.JPG" %} 
+                <img decoding="async" width="2160" height="3840" src={% static "images/IMG_1428.webp" %} 
                     class="custom-text-box-image img-fluid" alt="" />
             </div>
 
@@ -111,7 +111,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-5 col-12">
-                <img src={% static "images/portrait-volunteer-who-organized-donations-charity.jpg" %} 
+                <img decoding="async" width="1000" height="1500" src={% static "images/portrait-volunteer-who-organized-donations-charity.webp" %} 
                     class="about-image ms-lg-auto bg-light shadow-lg img-fluid" alt="" />
             </div>
 
@@ -172,4 +172,7 @@
         </div>
     </div>
 </section>
+{% endblock %}
+{% block extra_js %}
+<script defer src="{% static 'js/counter.js' %}"></script>
 {% endblock %}

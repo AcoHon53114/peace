@@ -13,7 +13,7 @@
 <!--img of 房間-->
             <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
                 <div class="custom-block-wrap">
-                    <img src= {% static "images/causes/facilities3a.jpg" %}
+                    <img decoding="async" width="900" height="675" src= {% static "images/causes/facilities3a.webp" %}
                         class="custom-block-image img-fluid" alt="" />
 
                     <div class="custom-block">
@@ -32,7 +32,7 @@
 
             <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
                 <div class="custom-block-wrap">
-                    <img src={% static "images/causes/facilities2aa.jpg" %}
+                    <img decoding="async" width="675" height="900" src={% static "images/causes/facilities2aa.webp" %}
                         class="custom-block-image img-fluid" alt="" />
 
                     <div class="custom-block">
@@ -50,7 +50,7 @@
 
             <div class="col-lg-4 col-md-6 col-12">
                 <div class="custom-block-wrap">
-                    <img src={% static "images/causes/facilities4a.jpg" %}
+                    <img decoding="async" width="675" height="900" src={% static "images/causes/facilities4a.webp" %}
                         class="custom-block-image img-fluid" alt="" />
 
                     <div class="custom-block">
@@ -90,7 +90,7 @@
                     <ol class="carousel-indicators">
                         {% for voice in voices %}
                         <li data-bs-target="#testimonial-carousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}">
-                        <img src="{{ voice.photo.url }}" class="img-fluid rounded-circle avatar-image" alt="avatar" />
+                        <img src="{{ voice.photo.url }}" loading="lazy" decoding="async" class="img-fluid rounded-circle avatar-image" alt="avatar" />
                         </li>
                         {% endfor %}
                         </ol>
