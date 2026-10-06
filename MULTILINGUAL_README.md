@@ -2,16 +2,22 @@
 
 基於 GitHub main：c27acfb0bbc984d7175ab06aa9fc939c8218db15（peace-optimized）。
 
-## 本次修正（Safari 選語言沒有反應）
+## 本次更新（Hero／社交連結／Admin 主副色）
 
-只修改 peaceweb/static/js/language-ui.js 的 focusout 關閉條件：Safari 觸控時下一個焦點為 null，不立即關閉選單，以免選項的 click 尚未執行便被隱藏。
-明確移到外部元素、點擊外部、Esc 仍可關閉；現有語言切換、網址保留及未提交表單／附件保護不變。
-本次 CSS、HTML、圖片、翻譯、後端及資料庫完全不變，另更新此說明。
-如已套用上一版，只需覆蓋 peaceweb/static/js/language-ui.js，提交 GitHub 並讓 Vercel 部署；無需 migration。
-部署後請在實體 iPhone Safari 點開語言選單，輪流選 EN／繁／简確認切換。
+Hero 左右箭嘴使用 #B84A00 橙色底、白色箭嘴，hover #923B00，鍵盤焦點有深藍框及白色隔線。
+Desktop top bar Facebook／YouTube／WhatsApp 使用橙色，hover 深橙色及底線，鍵盤焦點深藍框。
+Admin 主色 #B84A00、副色 #923B00；保留原有淡黃背景、深色／自動模式，以及紅色刪除／錯誤和綠色成功提示。
+保留預覽中的箭嘴顯示方式、現有尺寸及 responsive 規則。其他功能、文案、圖片、語言 JS、後端及資料庫不變。
 
-本次使用實際 JavaScript 的 DOM 事件模擬：修正前可重現 null relatedTarget 令選單提早關閉，修正後9組語言組合、外部點擊、Esc、鍵盤焦點離開、query/hash及未提交表單保護均通過。
-JavaScript 語法及 git diff --check 通過。此測試不等同實體 Safari，本次未在 iPhone 或 WebKit 引擎執行；下方其他測試為此前版本的驗證記錄。
+若你已套用上一版配色，只需覆蓋以下兩檔：
+- peaceweb/static/css/brand-theme.css
+- peaceweb/static/css/admin.css
+
+提交 GitHub 後讓 Vercel 部署，不需改環境變數、安裝套件、migration 或編譯翻譯。
+本次驗證：前台9頁×3語言×5寬度（375、390、768、1024、1440）共135組；後台6類頁面×3主題×4寬度共72組。
+檢查 Hero 和三個社交連結的一般、hover、真實 Tab 鍵焦點樣式，及 admin 主副色變數、按鈕、紅色刪除。
+測試使用本機 SQLite，沒有接觸正式 Neon。Chromium viewport 測試不等同實體 iPhone Safari。
+下方歷史檢查記錄來自此前三語版本。
 
 ## 已完成
 
@@ -26,7 +32,7 @@ JavaScript 語法及 git diff --check 通過。此測試不等同實體 Safari�
 
 ## 保留原有內容及功能
 
-圖片、既有 CSS/JS 資產、models、migrations、choices、requirements.txt 及業務邏輯保持不變。
+圖片、既有業務 JS、models、migrations、choices、requirements.txt 及業務邏輯保持不變；admin.css按本次批准更新，前台新增brand-theme.css。
 付款方式／月份只翻譯顯示文字，提交及儲存值仍是原有值。原有記錄無需轉換。
 消息、院友心聲及用戶輸入維持原文；PDF、圖片內文字、外部網站、管理後台及内部通知電郵不作三語化。
 外部資源三個名稱已按確認文案翻譯，繁體／簡體名稱保持原樣。
@@ -47,7 +53,7 @@ JavaScript 語法及 git diff --check 通過。此測試不等同實體 Safari�
 建議提交命令（在你的 peace 專案根目錄）：
 
 ```sh
-git add templates locale pages/templatetags pages/tests.py accounts/views.py banks/views.py contacts/views.py informations/views.py peaceweb/settings.py peaceweb/urls.py peaceweb/middleware.py peaceweb/static/css/language-ui.css peaceweb/static/js/language-ui.js
+git add templates locale pages/templatetags pages/tests.py accounts/views.py banks/views.py contacts/views.py informations/views.py peaceweb/settings.py peaceweb/urls.py peaceweb/middleware.py peaceweb/static/css/language-ui.css peaceweb/static/js/language-ui.js peaceweb/static/css/brand-theme.css peaceweb/static/css/admin.css
 git diff --cached --stat
 git commit -m "Add Traditional Chinese, Simplified Chinese and English language switching"
 git push origin main
@@ -71,6 +77,8 @@ git push origin main
 - `pages/tests.py`
 - `peaceweb/middleware.py`
 - `peaceweb/settings.py`
+- `peaceweb/static/css/admin.css`
+- `peaceweb/static/css/brand-theme.css`
 - `peaceweb/static/css/language-ui.css`
 - `peaceweb/static/js/language-ui.js`
 - `peaceweb/urls.py`

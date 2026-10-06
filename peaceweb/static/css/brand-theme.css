@@ -1,0 +1,39 @@
+/* Approved public website palette; layout and functionality unchanged. */
+.volunteer-section{background:#fffdec !important}.custom-text-box_2,.custom-text-box_3,.custom-text-box_4{background:#fff9dd !important}.volunteer-section::after,.testimonial-section::before{background:#ffe6e6 !important}.testimonial-section::after{background:#fff2bc !important}body{background:linear-gradient(#ffffe0 0px,#fff 650px) fixed !important}.site-header{background:linear-gradient(100deg,#ffff99,#fffbdc) !important}.site-header,.site-header a,.site-header p,.site-header span,.site-header .social-icon-link{color:#59472e !important}.navbar.bg-light{background:#fffde4 !important;border-bottom:4px solid #ffb3a2}.section-bg,.contact-section{background:#fffdec !important}.custom-block,.custom-form,.custom-text-box,.contact-info-wrap{background-color:#fff9dd !important}.site-footer{background:linear-gradient(#ffe6e6,#ffb1b1) !important}.site-footer-bottom{background:linear-gradient(#ffb1b1,#ff7979) !important}.site-footer p,.site-footer a,.site-footer .text-white,.site-footer span,.site-footer i{color:#514235 !important}.site-footer .custom-btn{color:#fff !important}.site-footer .custom-btn i{color:#fff !important}
+.custom-btn,.custom-form button[type="submit"],.search-form button[type="submit"],.btn-primary{background:#B84A00 !important;border-color:#B84A00 !important;color:#fff !important}
+.custom-btn:hover,.custom-form button[type="submit"]:hover,.search-form button[type="submit"]:hover,.btn-primary:hover{background:#923B00 !important;border-color:#923B00 !important;color:#fff !important}
+.custom-border-btn,.btn-light{background:transparent !important;border:2px solid #B84A00 !important;color:#B84A00 !important}
+.custom-border-btn:hover,.btn-light:hover{background:#B84A00 !important;border-color:#B84A00 !important;color:#fff !important}
+.custom-btn:focus-visible,.custom-form button[type="submit"]:focus-visible,.search-form button[type="submit"]:focus-visible,.btn-primary:focus-visible,.btn-light:focus-visible{outline:3px solid #173F5F !important;outline-offset:3px;box-shadow:0 0 0 2px #fff !important}
+.custom-btn:active,.custom-form button[type="submit"]:active,.btn-primary:active{background:#783000 !important;border-color:#783000 !important;color:white !important}
+
+/* Hero controls and desktop top-bar links: approved orange palette. */
+#hero-slide .carousel-control-next-icon,
+#hero-slide .carousel-control-prev-icon {
+  background-color:#B84A00 !important;
+  opacity:1 !important;
+}
+#hero-slide .carousel-control-next:hover .carousel-control-next-icon,
+#hero-slide .carousel-control-prev:hover .carousel-control-prev-icon {
+  background-color:#923B00 !important;
+}
+#hero-slide .carousel-control-next:focus-visible .carousel-control-next-icon,
+#hero-slide .carousel-control-prev:focus-visible .carousel-control-prev-icon {
+  outline:3px solid #173F5F !important;
+  outline-offset:3px !important;
+  box-shadow:0 0 0 2px #fff !important;
+}
+.site-header .social-icon-link {
+  background:transparent !important;
+  color:#B84A00 !important;
+}
+.site-header .social-icon-link:hover {
+  background:transparent !important;
+  color:#923B00 !important;
+  text-decoration:underline;
+}
+.site-header .social-icon-link:focus-visible {
+  outline:3px solid #173F5F !important;
+  outline-offset:3px !important;
+  text-decoration:underline;
+}

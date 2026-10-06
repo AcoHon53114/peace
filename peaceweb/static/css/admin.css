@@ -1,111 +1,60 @@
-:root {
-  --header-bg: #67400aa2;
+/* Admin palette uses Django theme variables; semantic feedback colors retained. */
+:root, html[data-theme="light"] {
+  --primary:#B84A00; --secondary:#923B00; --accent:#59472e;
+  --primary-fg:#fff; --body-bg:#fffdf1; --body-fg:#443b30;
+  --body-quiet-color:#655c50; --body-medium-color:#51483d; --body-loud-color:#2d261e;
+  --header-bg:#fff5b3; --header-color:#59472e;
+  --header-branding-color:#59472e; --header-link-color:#59472e;
+  --breadcrumbs-bg:#fff9dd; --breadcrumbs-fg:#65513c; --breadcrumbs-link-fg:#923B00;
+  --link-fg:#B84A00; --link-hover-color:#923B00; --link-selected-fg:#923B00;
+  --hairline-color:#eee4d2; --border-color:#cdbfa6;
+  --darkened-bg:#fff9dd; --selected-bg:#ffefc9; --selected-row:#fff1c6;
+  --button-fg:#fff; --button-bg:#B84A00; --button-hover-bg:#923B00;
+  --default-button-bg:#B84A00; --default-button-hover-bg:#923B00;
+  --object-tools-bg:#B84A00; --object-tools-hover-bg:#923B00;
+  --close-button-bg:#655343; --close-button-hover-bg:#443b30;
+  --error-fg:#ba2121; --message-success-bg:#dfd; --message-warning-bg:#ffc; --message-error-bg:#ffefef;
+  --delete-button-bg:#ba2121; --delete-button-hover-bg:#a41515;
+  --brand-panel-bg:#fff; --brand-heading-bg:#fff5b3; --brand-focus:#173F5F;
+  color-scheme:light;
 }
-
-#header {
-  height: 50px;
-  background: #67400aa2;
-  color: #fff;
+html[data-theme="dark"] {
+  --primary:#B84A00; --secondary:#923B00; --accent:#ffe2b3;
+  --body-bg:#211b16; --body-fg:#f5eee5; --body-quiet-color:#d9ccbc; --body-medium-color:#e9dfd2; --body-loud-color:#fff;
+  --header-bg:#3b2c1c; --header-color:#ffe2b3; --header-branding-color:#ffe2b3; --header-link-color:#ffe2b3;
+  --breadcrumbs-bg:#34291f; --breadcrumbs-fg:#e9dfd2; --breadcrumbs-link-fg:#ffbd82;
+  --link-fg:#ffbd82; --link-hover-color:#ffdcad; --link-selected-fg:#ffdcad;
+  --hairline-color:#4c4034; --border-color:#7b6854; --darkened-bg:#30271f; --selected-bg:#463323; --selected-row:#49351f;
+  --error-fg:#ff9696; --message-success-bg:#164528; --message-warning-bg:#583305; --message-error-bg:#570808;
+  --brand-panel-bg:#29221b; --brand-heading-bg:#3b2c1c; --brand-focus:#9bceff;
+  color-scheme:dark;
 }
-#branding h1 {
-  color: #fff;
+@media (prefers-color-scheme:dark) {
+ :root:not([data-theme="light"]) {
+  --primary:#B84A00; --secondary:#923B00; --accent:#ffe2b3;
+  --body-bg:#211b16; --body-fg:#f5eee5; --body-quiet-color:#d9ccbc; --body-medium-color:#e9dfd2; --body-loud-color:#fff;
+  --header-bg:#3b2c1c; --header-color:#ffe2b3; --header-branding-color:#ffe2b3; --header-link-color:#ffe2b3;
+  --breadcrumbs-bg:#34291f; --breadcrumbs-fg:#e9dfd2; --breadcrumbs-link-fg:#ffbd82;
+  --link-fg:#ffbd82; --link-hover-color:#ffdcad; --link-selected-fg:#ffdcad;
+  --hairline-color:#4c4034; --border-color:#7b6854; --darkened-bg:#30271f; --selected-bg:#463323; --selected-row:#49351f;
+  --error-fg:#ff9696; --message-success-bg:#164528; --message-warning-bg:#583305; --message-error-bg:#570808;
+  --brand-panel-bg:#29221b; --brand-heading-bg:#3b2c1c; --brand-focus:#9bceff;
+  color-scheme:dark;
+ }
 }
-
-a:link,
-a:visited {
-  color: #171715;
+#header { flex-shrink:0; height:auto; min-height:50px; background:var(--header-bg); }
+#branding h1 { color:var(--header-branding-color); display:flex; align-items:center; flex-wrap:wrap; margin:0; }
+#branding .brand_img { flex-shrink:0; object-fit:contain; }
+#branding h1 span { overflow-wrap:anywhere; }
+.module { background:var(--brand-panel-bg); }
+.module h2, .module caption, .inline-group h2 { background:var(--brand-heading-bg); color:var(--header-color); }
+a.section:link, a.section:visited { color:var(--header-color); }
+#header a:link, #header a:visited { color:var(--header-link-color); }
+.button:focus-visible, input[type="submit"]:focus-visible, input[type="button"]:focus-visible,
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+ outline:3px solid var(--brand-focus); outline-offset:3px;
 }
-
-div.breadcrumbs {
-  background: #daae8a;
-  color: #637fc6;
+@media (max-width:767px) {
+ #branding h1 { justify-content:center; font-size:1rem; }
+ #branding .brand_img { width:60px; height:40px; }
 }
-
-div.breadcrumbs a {
-  color: #333;
-}
-
-.module h2,
-.module caption,
-.inlinegroup h2 {
-  background: #daae8a;
-}
-
-.button,
-input[type="submit"]
-input[type="button"]
-.submitrow input,
-a.button {
-  color: #fff;
-  background: #67400aa2;
-}
-
-/* 修改登录按钮的样式 */
-.submit-row input[type="submit"] {
-  background-color: #daae8a; /* 设置背景颜色 */
-  color: #fff; /* 设置文字颜色 */
-  border: none; /* 去掉边框 */
-  padding: 10px 20px; /* 设置内边距 */
-  border-radius: 4px; /* 设置圆角 */
-  cursor: pointer; /* 设置鼠标指针样式 */
-}
-
-/* 鼠标悬停时的样式 */
-.submit-row input[type="submit"]:hover {
-  background-color: #daae8a; /* 设置悬停时的背景颜色 */
-}
-
-/* 为每个按钮设置不同的样式 */
-.submit-row input[type="submit"].icon-sun {
-  background-color: #daae8a; /* 设置背景颜色 */
-}
-
-.submit-row input[type="submit"].icon-auto {
-  background-color: #daae8a; /* 设置背景颜色 */
-}
-
-.submit-row input[type="submit"].icon-moon {
-  background-color: #daae8a; /* 设置背景颜色 */
-}
-
-/* 鼠标悬停时的样式 */
-.submit-row input[type="submit"].icon-sun:hover {
-  background-color: #daae8a; /* 设置悬停时的背景颜色 */
-}
-
-.submit-row input[type="submit"].icon-auto:hover {
-  background-color: #daae8a; /* 设置悬停时的背景颜色 */
-}
-
-.submit-row input[type="submit"].icon-moon:hover {
-  background-color: #daae8a; /* 设置悬停时的背景颜色 */
-}
-
-.theme-toggle {
-  background-color : #67400aa2;
-}
-
-.theme-label-when-auto {
-  background-color : #67400aa2;
-}
-
-.theme-label-when-light {
-  background-color : #67400aa2;
-}
-
-.theme-label-when-dark {
-  background-color : #67400aa2;
-}
-
-svg.theme-icon-when-auto {
-  color : #67400aa2;
-}
-
-svg.theme-icon-when-light {
-  color : #67400aa2;
-}
-
-svg.theme-icon-when-dark {
-  color : #67400aa2;
-}
-
