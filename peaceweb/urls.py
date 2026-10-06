@@ -16,12 +16,14 @@ Including another URLconf
 """
 
 from django.contrib import admin
+from pages.admin_language import set_admin_language
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
+    path('admin/set-language/', set_admin_language, name='admin_set_language'),
     path('admin/', admin.site.urls),
     path('', include("pages.urls")),
     path('news/', include("news.urls")),

@@ -1,26 +1,19 @@
 {% extends 'admin/base.html' %}
-<!-- comment -->
-{% load static %} 
-{% block title %}管理後台(平安護老院){% endblock %}
-{% block extrahead %}
-<link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}" >
+{% load static i18n %}
+{% block title %}{{ title }} | {% translate "The Peaceful Home administration" %}{% endblock %}
+{% block extrahead %}{{ block.super }}
+<link rel="shortcut icon" type="image/png" href="{% static 'images/logo.png' %}">
+<script src="{% static 'js/admin-language.js' %}" defer></script>
 {% endblock %}
-<!-- load static block -->
 {% block branding %}
-<h1 style="background-color: transparent" id="head">
-    <img 
-     src="{% static 'images/logo.png' %}" 
-     alt="平安護老院網站管理後台" 
-     height="50" 
-     width="75" 
-     class="brand_img"
- />
-    <span style="vertical-align: middle; margin-left: 10px;">平安護老院網站管理後台</span>
+<h1 style="background-color:transparent" id="head">
+    <img src="{% static 'images/logo.png' %}" alt="{% translate 'The Peaceful Home administration' %}" height="50" width="75" class="brand_img">
+    <span style="vertical-align:middle;margin-left:10px;">{% translate "The Peaceful Home administration" %}</span>
 </h1>
 {% endblock %}
-    add CSS style
-<!--add CSS style -->
-{% block extrastyle %} 
-<!--add CSS link -->
-<link rel="stylesheet" href="{% static 'css/admin.css' %}" /> 
+{% block nav-global %}
+{% include "admin/language_switch.html" %}
+{% endblock %}
+{% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
 {% endblock %}

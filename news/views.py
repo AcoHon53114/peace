@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .models import New
+from django.db.models import Q
+from pages.content_languages import content_suffix
 from django.shortcuts import render, get_object_or_404
 from urllib.parse import urlparse, parse_qs
 from django.contrib import messages
@@ -26,14 +28,14 @@ def new(request, new_id):
 
 def search(request):
     queryset_list = New.objects.order_by('-list_date')
-    if 'title' in request.GET:
-        title = request.GET['title']
-        if title:
+    title = request.GET.get('title', '').strip()
+    if title:
+        suffix = content_suffix()
+        if suffix:
+            field = 'title' + suffix
             queryset_list = queryset_list.filter(
-                title__icontains=title
-                )
-        context = {
-                'news':queryset_list,
-                'values':request.GET,
-                }
-    return render(request,'news/news.html', context)
+                Q(**{field + '__icontains': title}) |
+                (Q(**{field: ''}) & Q(title__icontains=title)))
+        else:
+            queryset_list = queryset_list.filter(title__icontains=title)
+    return render(request, 'news/news.html', {'news': queryset_list, 'values': request.GET})

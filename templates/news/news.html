@@ -28,7 +28,7 @@
             name="title"
             class="form-control"
             placeholder="{% translate "搜 尋 院 舍 消 息" %}"
-            value={{ values.title }}
+            value="{{ values.title }}"
             >
 
             <button type="submit" class="form-control">
@@ -52,8 +52,9 @@
                         class="custom-block-image" alt="" />
 
                     <div class="custom-block">
-                    <div class="custom-block-body">
-                        <h5 class="text-center">{{new.title}}</h5>
+                    <div class="custom-block-body localized-content">
+                        <h5 class="text-center">{{new.localized_title}}</h5>
+{% if new.translation_incomplete %}<p class="content-translation-note">{% translate "This translation is incomplete; some content is shown in the original Traditional Chinese." %}</p>{% endif %}
 
                             <i class="bi-calendar4 custom-icon me-1"></i>
                             {{new.list_date|ui_datetime}} <br>
@@ -61,7 +62,7 @@
                             <span> {{ new.list_date| timesince }} </span>
 
                                 <h7 class="col-sm-6 col-md-8 col-lg-9 col-xl-10 text-right" >
-                                    {{new.description}}
+                                    {{new.localized_description}}
                                 </h7>
                     </div>
                     </div>

@@ -722,3 +722,219 @@ msgstr "Blood glucose meter, test strips and lancets"
 
 msgid "點擊這裏"
 msgstr "Find Out More"
+
+msgid "Title"
+msgstr "Title"
+
+msgid "Content"
+msgstr "Content"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Photo"
+msgstr "Photo"
+
+msgid "Published"
+msgstr "Published"
+
+msgid "YouTube URL"
+msgstr "YouTube URL"
+
+msgid "Publication date"
+msgstr "Publication date"
+
+msgid "Main photo"
+msgstr "Main photo"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Phone"
+msgstr "Phone"
+
+msgid "Comment"
+msgstr "Comment"
+
+msgid "Enquiry date"
+msgstr "Enquiry date"
+
+msgid "Submission date"
+msgstr "Submission date"
+
+msgid "Visit date"
+msgstr "Visit date"
+
+msgid "Visit time"
+msgstr "Visit time"
+
+msgid "User ID"
+msgstr "User ID"
+
+msgid "Resident ID"
+msgstr "Resident ID"
+
+msgid "Resident name"
+msgstr "Resident name"
+
+msgid "Resident code"
+msgstr "Resident code"
+
+msgid "Payment method"
+msgstr "Payment method"
+
+msgid "Payment month"
+msgstr "Payment month"
+
+msgid "Payment year"
+msgstr "Payment year"
+
+msgid "Payment receipt"
+msgstr "Payment receipt"
+
+msgid "Upload date"
+msgstr "Upload date"
+
+msgid "User account"
+msgstr "User account"
+
+msgid "Resident description"
+msgstr "Resident description"
+
+msgid "Contact person"
+msgstr "Contact person"
+
+msgid "Contact phone"
+msgstr "Contact phone"
+
+msgid "Contact email"
+msgstr "Contact email"
+
+msgid "Relationship"
+msgstr "Relationship"
+
+msgid "News item"
+msgstr "News item"
+
+msgid "News"
+msgstr "News"
+
+msgid "Resident testimonial"
+msgstr "Resident testimonial"
+
+msgid "Resident testimonials"
+msgstr "Resident testimonials"
+
+msgid "Contact enquiry"
+msgstr "Contact enquiry"
+
+msgid "Contact enquiries"
+msgstr "Contact enquiries"
+
+msgid "Visit booking"
+msgstr "Visit booking"
+
+msgid "Visit bookings"
+msgstr "Visit bookings"
+
+msgid "Payment record"
+msgstr "Payment record"
+
+msgid "Payment records"
+msgstr "Payment records"
+
+msgid "Resident"
+msgstr "Resident"
+
+msgid "Residents"
+msgstr "Residents"
+
+msgid "Traditional Chinese content"
+msgstr "Traditional Chinese content"
+
+msgid "Simplified Chinese content"
+msgstr "Simplified Chinese content"
+
+msgid "English content"
+msgstr "English content"
+
+msgid "Shared information"
+msgstr "Shared information"
+
+msgid "Translation status"
+msgstr "Translation status"
+
+msgid "Complete"
+msgstr "Complete"
+
+msgid "Incomplete"
+msgstr "Incomplete"
+
+msgid "The Peaceful Home administration"
+msgstr "The Peaceful Home administration"
+
+msgid "Language"
+msgstr "Language"
+
+msgid "Apply"
+msgstr "Apply"
+
+msgid "You have unsaved changes. Switching language will discard them. Continue?"
+msgstr "You have unsaved changes. Switching language will discard them. Continue?"
+
+msgid "This translation is incomplete; some content is shown in the original Traditional Chinese."
+msgstr "This translation is incomplete; some content is shown in the original Traditional Chinese."
+
+msgid "Title (Traditional Chinese)"
+msgstr "Title (Traditional Chinese)"
+
+msgid "Title (Simplified Chinese)"
+msgstr "Title (Simplified Chinese)"
+
+msgid "Title (English)"
+msgstr "Title (English)"
+
+msgid "Content (Traditional Chinese)"
+msgstr "Content (Traditional Chinese)"
+
+msgid "Content (Simplified Chinese)"
+msgstr "Content (Simplified Chinese)"
+
+msgid "Content (English)"
+msgstr "Content (English)"
+
+msgid "Name (Traditional Chinese)"
+msgstr "Name (Traditional Chinese)"
+
+msgid "Name (Simplified Chinese)"
+msgstr "Name (Simplified Chinese)"
+
+msgid "Name (English)"
+msgstr "Name (English)"
+
+msgid "Photo 1"
+msgstr "Photo 1"
+
+msgid "Photo 2"
+msgstr "Photo 2"
+
+msgid "Photo 3"
+msgstr "Photo 3"
+
+msgid "Photo 4"
+msgstr "Photo 4"
+
+msgid "Photo 5"
+msgstr "Photo 5"
+
+msgid "Photo 6"
+msgstr "Photo 6"
+
+msgid "Photo 7"
+msgstr "Photo 7"
+
+msgid "Photo 8"
+msgstr "Photo 8"
+
+msgid "Photo 9"
+msgstr "Photo 9"

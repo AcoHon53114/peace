@@ -82,9 +82,10 @@
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
                             <div class="carousel-caption">
                                 <h4 class="carousel-title">
-                                    {{voice.description}}
+                                    {{voice.localized_description}}
                                 </h4>
-                                <small class="carousel-name"><span class="carousel-name-title">{{voice.name}}</span></small>
+                                <small class="carousel-name"><span class="carousel-name-title">{{voice.localized_name}}</span></small>
+                                {% if voice.translation_incomplete %}<p class="content-translation-note">{% translate "This translation is incomplete; some content is shown in the original Traditional Chinese." %}</p>{% endif %}
                             </div>
                         </div>
                         {% endfor %}

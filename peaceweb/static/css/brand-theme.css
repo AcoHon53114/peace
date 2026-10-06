@@ -37,3 +37,9 @@
   outline-offset:3px !important;
   text-decoration:underline;
 }
+
+/* Stored multilingual content can be longer than the original Chinese. */
+.localized-content { overflow-wrap:anywhere; }
+.content-translation-note { font-size:0.875rem; color:#65513c; line-height:1.6; margin-top:12px; }
+#testimonial-carousel .carousel-title, #testimonial-carousel .carousel-name { overflow-wrap:anywhere; }
+#testimonial-carousel .carousel-name { display:inline-block; max-width:100%; }

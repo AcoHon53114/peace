@@ -675,3 +675,219 @@ msgstr "驗血糖機,血糖試紙,採血針頭"
 
 msgid "點擊這裏"
 msgstr "點擊這裏"
+
+msgid "Title"
+msgstr "標題"
+
+msgid "Content"
+msgstr "內容"
+
+msgid "Name"
+msgstr "姓名"
+
+msgid "Photo"
+msgstr "圖片"
+
+msgid "Published"
+msgstr "已發布"
+
+msgid "YouTube URL"
+msgstr "YouTube 網址"
+
+msgid "Publication date"
+msgstr "發布日期"
+
+msgid "Main photo"
+msgstr "主圖"
+
+msgid "Email"
+msgstr "電郵"
+
+msgid "Phone"
+msgstr "電話"
+
+msgid "Comment"
+msgstr "備註"
+
+msgid "Enquiry date"
+msgstr "查詢日期"
+
+msgid "Submission date"
+msgstr "提交日期"
+
+msgid "Visit date"
+msgstr "參觀日期"
+
+msgid "Visit time"
+msgstr "參觀時間"
+
+msgid "User ID"
+msgstr "用戶 ID"
+
+msgid "Resident ID"
+msgstr "院友 ID"
+
+msgid "Resident name"
+msgstr "院友姓名"
+
+msgid "Resident code"
+msgstr "院友編號"
+
+msgid "Payment method"
+msgstr "付款方式"
+
+msgid "Payment month"
+msgstr "付款月份"
+
+msgid "Payment year"
+msgstr "付款年份"
+
+msgid "Payment receipt"
+msgstr "付款憑證"
+
+msgid "Upload date"
+msgstr "上傳日期"
+
+msgid "User account"
+msgstr "用戶帳戶"
+
+msgid "Resident description"
+msgstr "院友備註"
+
+msgid "Contact person"
+msgstr "聯絡人"
+
+msgid "Contact phone"
+msgstr "聯絡電話"
+
+msgid "Contact email"
+msgstr "聯絡電郵"
+
+msgid "Relationship"
+msgstr "關係"
+
+msgid "News item"
+msgstr "院舍消息"
+
+msgid "News"
+msgstr "院舍消息"
+
+msgid "Resident testimonial"
+msgstr "院友心聲"
+
+msgid "Resident testimonials"
+msgstr "院友心聲"
+
+msgid "Contact enquiry"
+msgstr "聯絡查詢"
+
+msgid "Contact enquiries"
+msgstr "聯絡查詢"
+
+msgid "Visit booking"
+msgstr "參觀預約"
+
+msgid "Visit bookings"
+msgstr "參觀預約"
+
+msgid "Payment record"
+msgstr "付款紀錄"
+
+msgid "Payment records"
+msgstr "付款紀錄"
+
+msgid "Resident"
+msgstr "院友資料"
+
+msgid "Residents"
+msgstr "院友資料"
+
+msgid "Traditional Chinese content"
+msgstr "繁體中文內容"
+
+msgid "Simplified Chinese content"
+msgstr "簡體中文內容"
+
+msgid "English content"
+msgstr "英文內容"
+
+msgid "Shared information"
+msgstr "共用資料"
+
+msgid "Translation status"
+msgstr "翻譯狀態"
+
+msgid "Complete"
+msgstr "已完成"
+
+msgid "Incomplete"
+msgstr "未完成"
+
+msgid "The Peaceful Home administration"
+msgstr "平安護老院網站管理後台"
+
+msgid "Language"
+msgstr "語言"
+
+msgid "Apply"
+msgstr "套用"
+
+msgid "You have unsaved changes. Switching language will discard them. Continue?"
+msgstr "你有未儲存的修改，切換語言會放棄這些修改。是否繼續？"
+
+msgid "This translation is incomplete; some content is shown in the original Traditional Chinese."
+msgstr "此內容的翻譯尚未完成，部分內容顯示繁體中文原文。"
+
+msgid "Title (Traditional Chinese)"
+msgstr "標題（繁體中文）"
+
+msgid "Title (Simplified Chinese)"
+msgstr "標題（簡體中文）"
+
+msgid "Title (English)"
+msgstr "標題（英文）"
+
+msgid "Content (Traditional Chinese)"
+msgstr "內容（繁體中文）"
+
+msgid "Content (Simplified Chinese)"
+msgstr "內容（簡體中文）"
+
+msgid "Content (English)"
+msgstr "內容（英文）"
+
+msgid "Name (Traditional Chinese)"
+msgstr "姓名（繁體中文）"
+
+msgid "Name (Simplified Chinese)"
+msgstr "姓名（簡體中文）"
+
+msgid "Name (English)"
+msgstr "姓名（英文）"
+
+msgid "Photo 1"
+msgstr "圖片 1"
+
+msgid "Photo 2"
+msgstr "圖片 2"
+
+msgid "Photo 3"
+msgstr "圖片 3"
+
+msgid "Photo 4"
+msgstr "圖片 4"
+
+msgid "Photo 5"
+msgstr "圖片 5"
+
+msgid "Photo 6"
+msgstr "圖片 6"
+
+msgid "Photo 7"
+msgstr "圖片 7"
+
+msgid "Photo 8"
+msgstr "圖片 8"
+
+msgid "Photo 9"
+msgstr "圖片 9"

@@ -61,11 +61,11 @@ class LanguageSwitchTests(TestCase):
                     self.assertContains(response, f'<html lang="{language}">')
                     self.assertEqual(response.headers['Content-Language'], language)
 
-    def test_default_is_traditional_chinese_and_admin_stays_english(self):
+    def test_default_is_traditional_chinese_and_admin_is_independent(self):
         client = Client(HTTP_ACCEPT_LANGUAGE='en')
         self.assertEqual(client.get('/').headers['Content-Language'], 'zh-hant')
         client.cookies[settings.LANGUAGE_COOKIE_NAME] = 'zh-hans'
-        self.assertEqual(client.get('/admin/login/').headers['Content-Language'], 'en-us')
+        self.assertEqual(client.get('/admin/login/').headers['Content-Language'], 'zh-hant')
 
     def test_switch_preserves_location_and_rejects_external_redirect(self):
         response = self.client.post('/i18n/setlang/', {
