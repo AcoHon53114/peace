@@ -1,3 +1,4 @@
+from django.utils.translation import gettext as _
 # /Users/minkeihon/Desktop/peace/accounts/views.py
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
@@ -26,20 +27,20 @@ def register(request):
 
         if password == password2:
             if User.objects.filter(username=username).exists():
-                messages.error(request, '登錄名稱已經存在')
+                messages.error(request, _('登錄名稱已經存在'))
                 return redirect('register')
             else:
                 if User.objects.filter(email=email).exists():
-                    messages.error(request, '電郵地址已經存在')
+                    messages.error(request, _('電郵地址已經存在'))
                     return redirect('register')
                 else:
                     # 檢查 resident_name 是否已經存在
                     #if Resident.objects.filter(resident_name=resident_name).exists():
-                        #messages.error(request, '院友姓名已經存在')
+                        #messages.error(request, _('院友姓名已經存在'))
                         #return redirect('register')
                     # 檢查 resident_code 是否已經存在
                     if Resident.objects.filter(resident_code=resident_code).exists():
-                        messages.error(request, '院友編號已經存在')
+                        messages.error(request, _('院友編號已經存在'))
                         return redirect('register')
 
                     user = User.objects.create_user(username=username,
@@ -62,10 +63,10 @@ def register(request):
                     )
                     resident.save()
 
-                    messages.success(request, ": 您已經成功註冊和可以登錄!")
+                    messages.success(request, _(": 您已經成功註冊和可以登錄!"))
                     return redirect('login')
         else:
-            messages.error(request, '密碼不正確!')
+            messages.error(request, _('密碼不正確!'))
             return redirect('register')
     else:
         return render(request, 'accounts/register.html')
@@ -77,10 +78,10 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            messages.success(request, ': 您已經成功登錄!')
+            messages.success(request, _(': 您已經成功登錄!'))
             return redirect('dashboard')
         else:
-            messages.error(request, '登錄失敗!')
+            messages.error(request, _('登錄失敗!'))
             return redirect('login')
     else:
         return render(request, 'accounts/login.html')
@@ -88,7 +89,7 @@ def login(request):
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-        messages.success(request, ': 您已經成功登出!')
+        messages.success(request, _(': 您已經成功登出!'))
     return redirect('index')
 
 def dashboard(request):
@@ -99,7 +100,7 @@ def dashboard(request):
             resident = Resident.objects.get(username=request.user)
         except Resident.DoesNotExist:
             pass
-    
+
     # 獲取當前用戶的銀行記錄
     user_banks = Bank.objects.filter(user_id=request.user.id).order_by('-uploaded_date')[:6]  # Get the latest 6 records
 

@@ -1,3 +1,4 @@
+from django.utils.translation import gettext as _
 # /Users/minkeihon/Desktop/peace/banks/views.py
 from django.shortcuts import render, redirect
 from .models import Bank
@@ -19,16 +20,16 @@ def bank(request):
         payment_year = request.POST['payment_year']
         depositslip_photo = request.FILES['depositslip_photo']  # Use request.FILES for file uploads
         comment = request.POST['comment']
-        
+
         # Ensure user is authenticated
         if not request.user.is_authenticated:
-            messages.error(request, '用户未登录。')
+            messages.error(request, _('用户未登录。'))
             return redirect('dashboard')
-        
+
         user_id = request.user.id
-        
+
         has_banked = Bank.objects.filter(resident_id=resident_id, user_id=user_id)
-        
+
         bank = Bank(
             user_id=user_id,
             resident_id=resident_id,
@@ -41,16 +42,16 @@ def bank(request):
             comment=comment
         )
         bank.save()
-        
+
         # Format uploaded_date
         uploaded_date = bank.uploaded_date.strftime('%Y年%m月%d日 %I:%M %p')
-        
+
         # Generate admin change URL
         admin_change_url = request.build_absolute_uri(reverse('admin:banks_bank_change', args=[bank.id]))
-        
+
         # Generate image URL
         image_url = request.build_absolute_uri(settings.MEDIA_URL + str(bank.depositslip_photo))
-        
+
         email_subject = "(平安護老院)上傳轉帳記錄表單提交"
         email_body = (
                         f'院友編號: {resident_code}<br>'
@@ -73,8 +74,8 @@ def bank(request):
                     fail_silently=False,
                     html_message=email_body,  # Use html_message for HTML content
                     )
-        
-        messages.success(request, '您的轉帳記錄已經上傳成功，如有進一步消息會盡快聯繫您!')        
+
+        messages.success(request, _('您的轉帳記錄已經上傳成功，如有進一步消息會盡快聯繫您!'))
         return redirect('dashboard')
     else:
         # Handle GET request or other methods

@@ -1,3 +1,4 @@
+from django.utils.translation import gettext as _
 from django.shortcuts import render, redirect
 from .models import Booking
 from django.contrib import messages
@@ -28,27 +29,27 @@ def information(request):
 
         # 驗證名字
         if not name:
-            errors['name'] = "姓名是必填的。"
+            errors['name'] = _("姓名是必填的。")
         elif not re.match(r"^[\u4e00-\u9fa5a-zA-Z\s\-']+$", name):
-            errors['name'] = "姓名只能包含中文字符、英文字母、空格、連字符和撇號。"
-        
+            errors['name'] = _("姓名只能包含中文字符、英文字母、空格、連字符和撇號。")
+
         # 驗證郵件
         if not email:
-            errors['email'] = "電郵是必填的。"
+            errors['email'] = _("電郵是必填的。")
         elif not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-            errors['email'] = "請輸入有效的電郵地址。"
+            errors['email'] = _("請輸入有效的電郵地址。")
 
         # 驗證電話
         if not phone:
-            errors['phone'] = "電話是必填的。"
+            errors['phone'] = _("電話是必填的。")
         elif not re.match(r"^\d{8}$", phone):
-            errors['phone'] = "請輸入有效的8位電話號碼。"
+            errors['phone'] = _("請輸入有效的8位電話號碼。")
 
         # 驗證訪問日期和時間
         if not visit_date:
-            errors['visit_date'] = "預約參觀日期是必填的。"
+            errors['visit_date'] = _("預約參觀日期是必填的。")
         if not visit_time:
-            errors['visit_time'] = "預約參觀時間是必填的。"
+            errors['visit_time'] = _("預約參觀時間是必填的。")
 
         if errors:
             context.update({
@@ -61,7 +62,7 @@ def information(request):
                 'visit_date': visit_date,
                 'visit_time': visit_time,
             })
-            messages.error(request, '您的信息提交不成功，請修改您的信息。')
+            messages.error(request, _('您的信息提交不成功，請修改您的信息。'))
             return render(request, 'informations/information.html', context)
 
         # 如果沒有錯誤，創建預約並保存
@@ -75,13 +76,13 @@ def information(request):
             visit_time=visit_time
         )
         booking.save()
-        
+
         # Format uploaded_date
         submit_date = booking.submit_date.strftime('%Y年%m月%d日 %I:%M %p')
-        
+
         # Generate admin change URL
         admin_change_url = request.build_absolute_uri(reverse('admin:informations_booking_change', args=[booking.id]))
-        
+
         email_subject = "(平安護老院)預約表單提交"
         email_body = (
                         f'稱謂: {title}<br>'
@@ -104,9 +105,9 @@ def information(request):
                     fail_silently=False,
                     html_message=email_body  # 指定 HTML 內容
                     )
-        
+
         # 顯示成功消息
-        messages.success(request, '您的信息已成功提交，我們將盡快與您聯繫。')
+        messages.success(request, _('您的信息已成功提交，我們將盡快與您聯繫。'))
         return redirect('information')
 
     return render(request, 'informations/information.html', context)

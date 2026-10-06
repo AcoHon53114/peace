@@ -1,5 +1,7 @@
-{% extends 'base.html' %} 
-{% block title %} | 首頁 {% endblock %}
+{% extends 'base.html' %}
+{% load i18n language_ui %}
+
+{% block title %} | {% translate "首頁" %} {% endblock %}
 {% load static %}
 {% load humanize %}
 {% block content %}
@@ -16,31 +18,31 @@
                                 class="carousel-image img-fluid" alt="..." />
 
                             <div class="carousel-caption d-flex flex-column justify-content-end text-center">
-                                <h1>平安</h1>
+                                <h1>{% translate "平安" %}</h1>
 
-                                <p>將平安，仁愛，關懷，喜樂帶進各院友生活和生命當中</p>
+                                <p>{% translate "將平安，仁愛，關懷，喜樂帶進各院友生活和生命當中" %}</p>
                             </div>
                         </div>
 
                         <div class="carousel-item" data-bs-interval="5000">
-                            <img src="{% static 'images/slide/volunteer-selecting-organizing-clothes-donations-charity.webp' %}" 
+                            <img src="{% static 'images/slide/volunteer-selecting-organizing-clothes-donations-charity.webp' %}"
                                 class="carousel-image img-fluid" alt="..." />
 
                             <div class="carousel-caption d-flex flex-column justify-content-end text-center">
-                                <h1>仁愛</h1>
+                                <h1>{% translate "仁愛" %}</h1>
 
-                                <p>將平安，仁愛，關懷，喜樂帶進各院友生活和生命當中</p>
+                                <p>{% translate "將平安，仁愛，關懷，喜樂帶進各院友生活和生命當中" %}</p>
                             </div>
                         </div>
 
                         <div class="carousel-item" data-bs-interval="5000">
-                            <img src="{% static 'images/slide/different-people-doing-volunteer-work.jpg' %}" 
+                            <img src="{% static 'images/slide/different-people-doing-volunteer-work.jpg' %}"
                                 class="carousel-image img-fluid" alt="..." />
 
                             <div class="carousel-caption d-flex flex-column justify-content-end text-center">
-                                <h1>關懷</h1>
+                                <h1>{% translate "關懷" %}</h1>
 
-                                <p>將平安，仁愛，關懷，喜樂帶進各院友生活和生命當中</p>
+                                <p>{% translate "將平安，仁愛，關懷，喜樂帶進各院友生活和生命當中" %}</p>
                             </div>
                         </div>
                     </div>
@@ -48,13 +50,13 @@
                     <button class="carousel-control-prev" type="button" data-bs-target="#hero-slide"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
+                        <span class="visually-hidden">{% translate "Previous" %}</span>
                     </button>
 
                     <button class="carousel-control-next" type="button" data-bs-target="#hero-slide"
                         data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
+                        <span class="visually-hidden">{% translate "Next" %}</span>
                     </button>
                 </div>
             </div>
@@ -68,7 +70,7 @@
         <div class="row">
 <!--title of 4 button-->
             <div class="col-lg-10 col-12 text-center mx-auto">
-                <h2 class="mb-5">歡迎來到平安護老院</h2>
+                <h2 class="mb-5">{% translate "歡迎來到平安護老院" %}</h2>
             </div>
 <!--about button-->
             <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
@@ -76,7 +78,7 @@
                     <a href="{% url 'about' %}" class="d-block">
                         <img src="{% static 'images/icons/receive.png' %}"  width="150" height="150" class="featured-block-image img-fluid" alt="" />
 
-                        <p class="featured-block-text"><strong>關於我們</strong></p>
+                        <p class="featured-block-text"><strong>{% translate "關於我們" %}</strong></p>
                     </a>
                 </div>
             </div>
@@ -87,7 +89,7 @@
                     <a href="{% url 'environment' %}" class="d-block">
                         <img src="{% static 'images/icons/heart.png' %}" width="150" height="150" class="featured-block-image img-fluid" alt="" />
 
-                        <p class="featured-block-text"><strong>院舍環境</strong></p>
+                        <p class="featured-block-text"><strong>{% translate "院舍環境" %}</strong></p>
                     </a>
                 </div>
             </div>
@@ -98,7 +100,7 @@
                     <a href="{% url 'information' %}" class="d-block">
                         <img src="{% static 'images/icons/hands.png' %}" width="150" height="150" class="featured-block-image img-fluid" alt="" />
 
-                        <p class="featured-block-text"><strong>入院須知</strong></p>
+                        <p class="featured-block-text"><strong>{% translate "入院須知" %}</strong></p>
                     </a>
                 </div>
             </div>
@@ -108,7 +110,7 @@
                             <a href="{% url 'news' %}" class="d-block">
                                 <img src="{% static 'images/icons/scholarship.png' %}" width="150" height="150" class="featured-block-image img-fluid" alt="" />
 
-                                <p class="featured-block-text"><strong>院舍消息</strong></p>
+                                <p class="featured-block-text"><strong>{% translate "院舍消息" %}</strong></p>
                             </a>
                         </div>
                     </div>

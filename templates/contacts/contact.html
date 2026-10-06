@@ -1,20 +1,22 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+{% load i18n language_ui %}
+
 {% load humanize %}
 {% block content %}
-{% load static %} 
+{% load static %}
 <!--contact.html-->
 <section class="contact-section section-padding" id="section_6">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-12 ms-auto mb-5 mb-lg-0">
                 <div class="contact-info-wrap">
-                    
-                    <h2>聯絡我們</h2>
+
+                    <h2>{% translate "聯絡我們" %}</h2>
 
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d922.7344855044162!2d114.18672521072581!3d22.31818663937664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x340400d768d0ed2b%3A0xc070e5e699dfb552!2z5Zyf55Oc54Gj6aas6aCt5ZyN6YGTMzYw6Jmf!5e0!3m2!1szh-TW!2shk!4v1726344100739!5m2!1szh-TW!2shk" width="350" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                     <div class="contact-info">
-                        <h5 class="mb-3">聯絡資訊</h5>
+                        <h5 class="mb-3">{% translate "聯絡資訊" %}</h5>
 
                         <p class="d-flex mb-2">
                             <i class="bi-telephone me-2"></i>
@@ -31,15 +33,15 @@
                         <p class="d-flex">
                             <i class="bi-whatsapp me-2"></i>
 
-                            <a href="https://api.whatsapp.com/send?phone=85256466945&text=%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E6%9B%B4%E5%A4%9A%E5%B9%B3%E5%AE%89%E8%AD%B7%E8%80%81%E9%99%A2%E7%9A%84%E6%9C%8D%E5%8B%99%E5%8F%8A%E8%B3%87%E8%A8%8A">5646 6945</a>
+                            <a href="{% whatsapp_link %}">5646 6945</a>
                         </p>
 
                         <p class="d-flex mb-2">
                             <i class="bi-geo-alt me-2"></i>
-                            九龍紅磡土瓜灣馬頭圍道360號好運樓1-2樓<br>(土瓜灣街市對面)
+                            {% translate "九龍土瓜灣馬頭圍道360號好運樓1樓及2樓全層" %}<br>{% translate "(土瓜灣港鐵站出口右邊、土瓜灣街市對面)" %}
                         </p>
 
-                        <a href="https://www.google.com/maps/place/%E5%9C%9F%E7%93%9C%E7%81%A3%E9%A6%AC%E9%A0%AD%E5%9C%8D%E9%81%93360%E8%99%9F/@22.318185,114.187368,18z/data=!4m6!3m5!1s0x340400d768d0ed2b:0xc070e5e699dfb552!8m2!3d22.3181854!4d114.1873676!16s%2Fg%2F11v_46tsky?hl=zh-TW&entry=ttu&g_ep=EgoyMDI0MDkxMS4wIKXMDSoASAFQAw%3D%3D" class="custom-btn btn mt-3"><i class="fa-solid fa-map-pin"></i> 獲取路線</a>
+                        <a href="https://www.google.com/maps/place/%E5%9C%9F%E7%93%9C%E7%81%A3%E9%A6%AC%E9%A0%AD%E5%9C%8D%E9%81%93360%E8%99%9F/@22.318185,114.187368,18z/data=!4m6!3m5!1s0x340400d768d0ed2b:0xc070e5e699dfb552!8m2!3d22.3181854!4d114.1873676!16s%2Fg%2F11v_46tsky?hl=zh-TW&entry=ttu&g_ep=EgoyMDI0MDkxMS4wIKXMDSoASAFQAw%3D%3D" class="custom-btn btn mt-3"><i class="fa-solid fa-map-pin"></i> {% translate "獲取路線" %}</a>
                     </div>
                 </div>
             </div>
@@ -52,24 +54,24 @@
                         {% endfor %}
                     </div>
                 {% endif %}
-        
+
                 <form class="custom-form contact-form" action="{% url 'contact' %}" method="POST" role="form">
                     {% csrf_token %}
-                    <h2>讓我們聯繫您!</h2>
-                
+                    <h2>{% translate "讓我們聯繫您!" %}</h2>
+
                     <p class="mb-4">
-                        歡迎瞭解更多資訊，我們非常樂意為您服務。<br>或電郵至：
+                        {% translate "歡迎瞭解更多資訊，我們非常樂意為您服務。" %}<br>{% translate "或電郵至：" %}
                         <a href="mailto:limcheelee@gmail.com">limcheelee@gmail.com</a>
                     </p>
-                    <input type="text" name="name" id="name" class="form-control" placeholder="姓名" required />
-                
-                    <input type="email" name="email" id="email" class="form-control" placeholder="電郵地址" required />
-                    
-                    <input type="tel" name="phone" id="phone" class="form-control" placeholder="聯絡電話" required />
-                
-                    <textarea name="comment" rows="5" class="form-control" id="comment" placeholder="請問有什麼事情可以幫忙? 謝謝"></textarea>
-                
-                    <button type="submit" class="form-control"><i class="fa-solid fa-paper-plane"></i> 傳送資訊</button>
+                    <input type="text" name="name" id="name" class="form-control" placeholder="{% translate "姓名" %}" required />
+
+                    <input type="email" name="email" id="email" class="form-control" placeholder="{% translate "電郵地址" %}" required />
+
+                    <input type="tel" name="phone" id="phone" class="form-control" placeholder="{% translate "聯絡電話" %}" required />
+
+                    <textarea name="comment" rows="5" class="form-control" id="comment" placeholder="{% translate "請問有什麼事情可以幫忙? 謝謝" %}"></textarea>
+
+                    <button type="submit" class="form-control"><i class="fa-solid fa-paper-plane"></i> {% translate "傳送資訊" %}</button>
                 </form>
             </div>
         </div>

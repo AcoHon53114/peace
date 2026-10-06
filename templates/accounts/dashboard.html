@@ -1,7 +1,9 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+{% load i18n language_ui %}
+
 {% load humanize %}
 {% load static %}
-{% block title %} | 主要 {% endblock %}
+{% block title %} | {% translate "主要" %} {% endblock %}
 {% block content %}
 <!--dashboard.html-->
 <section class="contact-section section-padding" id="section_6">
@@ -10,22 +12,22 @@
         {% include 'partials/_alert.html' %}
           <div class="col-lg-4 col-12 ms-auto mb-5 mb-lg-0">
               <div class="contact-info-wrap">
-                  <h2 style="padding-left: 0.3cm;">歡迎 {{user.username}}</h2>
+                  <h2 style="padding-left: 0.3cm;">{% translate "歡迎" %} {{user.username}}</h2>
 
                   <section id="dashboard" class="py-4">
                       <div class="container">
                         <div class="row">
                           <div class="col-md-12">
                             <h2></h2>
-                            <p>以下是您最近的上傳轉帳記錄(最多顯示6次):
+                            <p>{% translate "以下是您最近的上傳轉帳記錄(最多顯示6次):" %}
                             </p>
                             {% if banks %}
                             <table class="table">
                               <thead>
                                 <tr>
-                                  <th scope="col">編號</th>
-                                  <th scope="col" style="padding-left: 0.90cm;">付款年份及月份</th>
-                                  <th scope="col" style="padding-left: 0.95cm;">詳細</th>
+                                  <th scope="col">{% translate "編號" %}</th>
+                                  <th scope="col" style="padding-left: 0.90cm;">{% translate "付款年份及月份" %}</th>
+                                  <th scope="col" style="padding-left: 0.95cm;">{% translate "詳細" %}</th>
                                   <th></th>
                                 </tr>
                               </thead>
@@ -33,17 +35,17 @@
                                 {% for bank in banks %}
                                 <tr>
                                   <td style="padding-left: 0.35cm;">{{bank.id}}</td>
-                                  <td style="padding-left: 0.95cm;">{{bank.payment_year}}年 {{bank.payment_month}}</td>
+                                  <td style="padding-left: 0.95cm;">{{ bank.payment_year }}{% if LANGUAGE_CODE != "en" %}年{% endif %} {% translate bank.payment_month %}</td>
                                   <td>
                                     <!-- Modal -->
-                                    <a class="btn btn-light" href="#" data-bs-toggle="modal" data-bs-target="#recordModal{{bank.id}}">查看記錄</a>
+                                    <a class="btn btn-light" href="#" data-bs-toggle="modal" data-bs-target="#recordModal{{bank.id}}">{% translate "查看記錄" %}</a>
                                   </td>
                                 </tr>
                                 {% endfor %}
                               </tbody>
                             </table>
                             {% else %}
-                            <p><strong style="font-size: 1.2em;">暫未有記錄</strong></p>
+                            <p><strong style="font-size: 1.2em;">{% translate "暫未有記錄" %}</strong></p>
                             {% endif %}
                           </div>
                         </div>
@@ -62,28 +64,28 @@
                 {% endif %}
                 <!--add realtor email-->
                 <input type='hidden' name="resident_id" value="{{resident.id}}" />
-                  <h2>上傳轉帳記錄</h2>
-          
+                  <h2>{% translate "上傳轉帳記錄" %}</h2>
+
                   <p class="mb-4">
                       <a href="#"></a>
                   </p>
 
-                  <input type="text" name="resident_code" id="resident_code" class="form-control" placeholder="院友編號" value="{{resident.resident_code}}" required />
-          
-                  <input type="text" name="resident_name" id="resident_name" class="form-control" placeholder="院友姓名" value="{{resident.resident_name}}" required />
-                
+                  <input type="text" name="resident_code" id="resident_code" class="form-control" placeholder="{% translate "院友編號" %}" value="{{resident.resident_code}}" required />
+
+                  <input type="text" name="resident_name" id="resident_name" class="form-control" placeholder="{% translate "院友姓名" %}" value="{{resident.resident_name}}" required />
+
                   <select name="payment_method" id="payment_method" class="form-control" required>
-                    <option value="" disabled selected>付款方式</option>
+                    <option value="" disabled selected>{% translate "付款方式" %}</option>
                     {% for key, value in payment_method_choices %}
-                        <option value="{{ key }}" {% if key == values.payment_method %} selected {% endif %}>{{ value }}</option>
+                        <option value="{{ key }}" {% if key == values.payment_method %} selected {% endif %}>{% translate value %}</option>
                     {% endfor %}
                     <!-- 其他選項 -->
                 </select>
 
                 <select name="payment_year" id="payment_year" class="form-control" required>
-                  <option value="" disabled selected>付款年份</option>
+                  <option value="" disabled selected>{% translate "付款年份" %}</option>
                   {% for key, value in payment_year_choices %}
-                      <option value="{{ key }}" {% if key == current_year %} selected {% endif %}>{{ value }}</option>
+                      <option value="{{ key }}" {% if key == current_year %} selected {% endif %}>{% translate value %}</option>
                   {% endfor %}
                   <!-- 其他選項 -->
               </select>
@@ -91,23 +93,23 @@
                 <div class="form-group">
                   </select>
                   <select name="payment_month" id="payment_month" class="form-control" required>
-                    <option value="" disabled selected>付款月份</option>
+                    <option value="" disabled selected>{% translate "付款月份" %}</option>
                     {% for key, value in payment_month_choices %}
-                        <option value="{{ key }}" {% if key == current_month %} selected {% endif %}>{{ value }}</option>
+                        <option value="{{ key }}" {% if key == current_month %} selected {% endif %}>{% translate value %}</option>
                     {% endfor %}
                     <!-- 其他選項 -->
                 </select>
-                <small class="form-text text-danger">只能上傳 PDF, PNG, JPG 和 JPEG 檔案。</small>
+                <small class="form-text text-danger">{% translate "只能上傳 PDF, PNG, JPG 和 JPEG 檔案。" %}</small>
               </div>
-          
-                  <input type="file" name="depositslip_photo" id="depositslip_photo" class="form-control" placeholder="附件上傳" accept=".pdf, .png, .jpg, .jpeg" required />
 
-                  <input type="text" name="comment" id="comment" class="form-control" placeholder="備註/留言" />
-          
-                  <button type="submit" class="form-control"><i class="fa-solid fa-upload"></i> 上傳</button>
+                  <input type="file" name="depositslip_photo" id="depositslip_photo" class="form-control" placeholder="{% translate "附件上傳" %}" accept=".pdf, .png, .jpg, .jpeg" required />
+
+                  <input type="text" name="comment" id="comment" class="form-control" placeholder="{% translate "備註/留言" %}" />
+
+                  <button type="submit" class="form-control"><i class="fa-solid fa-upload"></i> {% translate "上傳" %}</button>
               </form>
            </div>
-          
+
           <style>
               .form-group {
                   margin-bottom: 0; /* 移除默认的底部间距 */
@@ -126,49 +128,49 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="recordModalLabel{{ bank.id }}">查看記錄</h5>
-        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+        <h5 class="modal-title" id="recordModalLabel{{ bank.id }}">{% translate "查看記錄" %}</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="{% translate "Close" %}">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form>
             <div class="form-group">
-                <label for="resident_code" class="col-form-label">院友編號</label>
+                <label for="resident_code" class="col-form-label">{% translate "院友編號" %}</label>
                 <input type="text" name="resident_code" class="form-control" value="{{ bank.resident_code }}" disabled />
             </div>
             <div class="form-group">
-                <label for="resident_name" class="col-form-label">院友姓名</label>
+                <label for="resident_name" class="col-form-label">{% translate "院友姓名" %}</label>
                 <input type="text" name="resident_name" class="form-control" value="{{ bank.resident_name }}" disabled />
             </div>
             <div class="form-group">
-                <label for="payment_method" class="col-form-label">付款方式</label>
-                <input type="text" name="payment_method" class="form-control" value="{{ bank.payment_method }}" disabled />
+                <label for="payment_method" class="col-form-label">{% translate "付款方式" %}</label>
+                <input type="text" name="payment_method" class="form-control" value="{% translate bank.payment_method %}" disabled />
             </div>
             <div class="form-group">
-              <label for="payment_year" class="col-form-label">付款年份</label>
+              <label for="payment_year" class="col-form-label">{% translate "付款年份" %}</label>
               <input type="text" name="payment_year" class="form-control" value="{{ bank.payment_year }}" disabled />
           </div>
             <div class="form-group">
-                <label for="payment_month" class="col-form-label">付款月份</label>
-                <input type="text" name="payment_month" class="form-control" value="{{ bank.payment_month }}" disabled />
+                <label for="payment_month" class="col-form-label">{% translate "付款月份" %}</label>
+                <input type="text" name="payment_month" class="form-control" value="{% translate bank.payment_month %}" disabled />
             </div>
                         <!-- 下载文件栏位 -->
                         <div class="form-group">
-                          <label class="col-form-label">轉帳記錄</label>
+                          <label class="col-form-label">{% translate "轉帳記錄" %}</label>
                           <div class="row">
                               <div class="col-md-3">
-                                <a href="{{ bank.depositslip_photo.url }}" download style="background-color: #67400aa2; border-color: #67400aa2;" class="btn btn-primary btn-block">下載檔案</a>
+                                <a href="{{ bank.depositslip_photo.url }}" download style="background-color: #67400aa2; border-color: #67400aa2;" class="btn btn-primary btn-block">{% translate "下載檔案" %}</a>
                               </div>
                           </div>
                       </div>
             <div class="form-group">
-                <label for="comment" class="col-form-label">備註/留言</label>
+                <label for="comment" class="col-form-label">{% translate "備註/留言" %}</label>
                 <textarea name="comment" class="form-control" disabled>{{ bank.comment }}</textarea>
             </div>
             <div class="form-group">
-              <label for="uploaded_date" class="col-form-label">上傳日期及時間</label>
-              <input type="text" name="uploaded_date" class="form-control" value="{{ bank.uploaded_date|date:"Y年m月d日" }} {{ bank.uploaded_date|time:"P" }}" disabled />
+              <label for="uploaded_date" class="col-form-label">{% translate "上傳日期及時間" %}</label>
+              <input type="text" name="uploaded_date" class="form-control" value="{{ bank.uploaded_date|ui_date }} {{ bank.uploaded_date|time:"H:i" }}" disabled />
           </div>
         </form>
     </div>

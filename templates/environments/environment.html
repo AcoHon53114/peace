@@ -1,14 +1,16 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+{% load i18n language_ui %}
+
 {% load static %}
 {% load humanize %}
-{% block title %} | 院舎環境 {% endblock %}
+{% block title %} | {% translate "院舎環境" %} {% endblock %}
 {% block content %}
 <!--environment.html-->
 <section class="section-padding" id="section_3">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-12 text-center mb-4">
-                <h2>院舍環境</h2>
+                <h2>{% translate "院舍環境" %}</h2>
             </div>
 <!--img of 房間-->
             <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
@@ -18,12 +20,12 @@
 
                     <div class="custom-block">
                         <div class="custom-block-body">
-                            <h5 class=text-center >房間</h5>
-                            <div class="custom-text-box_1"> 
+                            <h5 class=text-center >{% translate "房間" %}</h5>
+                            <div class="custom-text-box_1">
 
-                                <li>舒適的住宿環境</li>
-                                <li>單、雙人房間設有獨立的洗手盤</li>
-                            
+                                <li>{% translate "舒適的住宿環境" %}</li>
+                                <li>{% translate "單、雙人房間設有獨立的洗手盤" %}</li>
+
                             </div>
                         </div>
                     </div>
@@ -37,11 +39,11 @@
 
                     <div class="custom-block">
                         <div class="custom-block-body">
-                            <h5 class=text-center >設施</h5>
+                            <h5 class=text-center >{% translate "設施" %}</h5>
                             <div class="custom-text-box_1">
 
-                                <li>設置LCD電視、個人儲物櫃</li>
-                                <li>設有餐廳、會客室、運動區</li>
+                                <li>{% translate "設置LCD電視、個人儲物櫃" %}</li>
+                                <li>{% translate "設有餐廳、會客室、運動區" %}</li>
                             </div>
                         </div>
                     </div>
@@ -55,24 +57,24 @@
 
                     <div class="custom-block">
                         <div class="custom-block-body">
-                            <h5 class=text-center >照顧設備</h5>
+                            <h5 class=text-center >{% translate "照顧設備" %}</h5>
                             <div class="custom-text-box_1">
 
-                                <li>設有藥房、洗衣房</li>
-                                <li>洗手間更設有平安鐘,為每位長者提供舒適和貼心的服務</li>
+                                <li>{% translate "設有藥房、洗衣房" %}</li>
+                                <li>{% translate "洗手間更設有平安鐘,為每位長者提供舒適和貼心的服務" %}</li>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        
+
 </section>
 <!--院友心聲-->
 <section class="testimonial-section section-padding section-bg">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-12 mx-auto">
-                <h2 class="mb-lg-3">院友心聲</h2>
+                <h2 class="mb-lg-3">{% translate "院友心聲" %}</h2>
                 {% if voices %}
                 <div id="testimonial-carousel" class="carousel carousel-fade slide" data-bs-ride="carousel" data-bs-interval="2400">
                     <div class="carousel-inner">
@@ -97,7 +99,7 @@
                 </div>
                 {% else %}
                 <div class="col-md-12">
-                    <p>暫時未能提供</p>
+                    <p>{% translate "暫時未能提供" %}</p>
                 </div>
                 {% endif %}
             </div>

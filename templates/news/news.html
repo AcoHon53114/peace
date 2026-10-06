@@ -1,5 +1,7 @@
-{% extends 'base.html' %} 
-{% block title %} | 院舎消息 {% endblock %}
+{% extends 'base.html' %}
+{% load i18n language_ui %}
+
+{% block title %} | {% translate "院舎消息" %} {% endblock %}
 {% load humanize %}
 {% load static %}
 {% load custom_filters %}
@@ -11,7 +13,7 @@
         <section class="testimonial-section section-padding section-bg">
             <div class="col-lg-12 col-12 ">
                 <div class="text-center" >
-                    <h8>院舍消息</h8>
+                    <h8>{% translate "院舍消息" %}</h8>
                 </div>
             </div>
         </section>
@@ -21,15 +23,15 @@
     <section>
         <form class="custom-form search-form" action={% url 'search' %} method="get">
             {% csrf_token %}
-            <input 
+            <input
             type="text"
             name="title"
-            class="form-control"  
-            placeholder="搜 尋 院 舍 消 息" 
+            class="form-control"
+            placeholder="{% translate "搜 尋 院 舍 消 息" %}"
             value={{ values.title }}
             >
-        
-            <button type="submit" class="form-control"> 
+
+            <button type="submit" class="form-control">
                 <i class="bi-search"></i>
             </button>
         </form>
@@ -42,7 +44,7 @@
         <div class="custom-text-box_2">
         <div class="row">
             {% if news %}
-                {% for new in news %}            
+                {% for new in news %}
                 <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0 my-5">
                     <div class="custom-block-wrap">
 
@@ -51,32 +53,32 @@
 
                     <div class="custom-block">
                     <div class="custom-block-body">
-                        <h5 class="text-center">{{new.title}}</h5> 
-                        
+                        <h5 class="text-center">{{new.title}}</h5>
+
                             <i class="bi-calendar4 custom-icon me-1"></i>
-                            {{new.list_date|date:"Y年m月d日 H:i"}} <br>
+                            {{new.list_date|ui_datetime}} <br>
                             <i class="bi-calendar4 custom-icon me-1"></i>
-                            <span> {{ new.list_date| timesince_zh }} </span>
+                            <span> {{ new.list_date| timesince }} </span>
 
                                 <h7 class="col-sm-6 col-md-8 col-lg-9 col-xl-10 text-right" >
                                     {{new.description}}
-                                </h7>   
+                                </h7>
                     </div>
                     </div>
 
-                    <div class="container " style="width:200px" >            
+                    <div class="container " style="width:200px" >
                         <a href={% url "new" new.id %} class="custom-btn btn smoothscroll" style="width:180px"
-                        ><i class="fa-solid fa-circle-info"></i> 查看更多
+                        ><i class="fa-solid fa-circle-info"></i> {% translate "查看更多" %}
                         </a>
                     </div>
-                            
+
                     <br>
                 </div>
         </div>
             {% endfor %}
             {% else %}
             <div class="col-md-12">
-                <p>暫時未能提供院舍消息</p>
+                <p>{% translate "暫時未能提供院舍消息" %}</p>
             </div>
             {% endif%}
 
@@ -84,7 +86,7 @@
 
         <div class="row">
             <div class="col-md-12">
-    
+
             <br>
 
             <!-- pagination part of the code -->
@@ -99,9 +101,9 @@
                 <li class="page-item disabled">
                     <a class="page-link" href="#">&laquo;</a>
                 </li>
-                    
+
             {% endif %}
-                    
+
             <!--Use for loop to gen page numbers-->
             {% for i in news.paginator.page_range %}
             <!-- check current page, then change the button color-->
@@ -115,11 +117,11 @@
                 </li>
             {% endif %}
             {% endfor %}
-        
+
             <!-- next button-->
             {% if news.has_next %}
                 <li class="page-item">
-                    <a href="?page={{news.next_page_number}}" 
+                    <a href="?page={{news.next_page_number}}"
                         class="page-link">&raquo;</a>
                 </li>
             {% else %}

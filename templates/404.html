@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
+{% load i18n language_ui %}
+
 <!--add tag title-->
-{% block title %} | Not Found 404 {% endblock %} 
+{% block title %} | Not Found 404 {% endblock %}
 {% block content %}
 <div class ="container">
-    <h1 class="max-auto">404:找不到</h1>
+    <h1 class="max-auto">{% translate "404:找不到" %}</h1>
     </div>
     {% endblock %}

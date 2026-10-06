@@ -1,11 +1,13 @@
-{% extends 'base.html' %} 
-{% block title %} | 入院須知 {% endblock %}
+{% extends 'base.html' %}
+{% load i18n language_ui %}
+
+{% block title %} | {% translate "入院須知" %} {% endblock %}
 {% load static %}
 {% load humanize %}
 {% block content %}
 
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +37,7 @@
         {% endfor %}
     {% endif %}
 
-    <title>入院須知</title>
+    <title>{% translate "入院須知" %}</title>
 
 
 
@@ -43,187 +45,187 @@
 
         <div class="row">
             <div class="col-lg-6 col-12"></div>
-            <h2 class="text-white text-center mb-4 ">入院須知</h2>
+            <h2 class="text-white text-center mb-4 ">{% translate "入院須知" %}</h2>
 
-<!--入院條件-->          
+<!--入院條件-->
 
-<section class="testimonial-section section-padding section-bg">            
+<section class="testimonial-section section-padding section-bg">
     <div class="col">
         <div class="custom-text-box">
-            <h5 class="mb-3">入院條件:</h5>
-            <li>本港居民，60歲或以上，無傳染病或滋擾性行為均可入住 (60歲以下人士，證實有服務需要，亦可申請)。</li>
+            <h5 class="mb-3">{% translate "入院條件:" %}</h5>
+            <li>{% translate "本港居民，60歲或以上，無傳染病或滋擾性行為均可入住 (60歲以下人士，證實有服務需要，亦可申請)。" %}</li>
             <br>
-            <li>無不良嗜好，精神狀態適合過群體生活。</li>
+            <li>{% translate "無不良嗜好，精神狀態適合過群體生活。" %}</li>
         </div>
     </div>
 </section>
 
 <hr>
-<!--訂房程序-->   
+<!--訂房程序-->
                 <div class="col-lg-6 col-12">
                     <div class="custom-text-box">
-                        <h5 class="mb-3">訂房程序:</h5>
-                        <li>由院友，家屬，朋友或社工參觀院舍及訂定床位
+                        <h5 class="mb-3">{% translate "訂房程序:" %}</h5>
+                        <li>{% translate "由院友，家屬，朋友或社工參觀院舍及訂定床位" %}
                             <br>
-                                A. 兩週內入住交訂金1,000元;<br>
-                                B. 一個月內入住交訂金2,000元;<br>
-                                C. 一個月後人住交訂金為一個月院費<br>
+                                {% translate "A. 兩週內入住交訂金1,000元;" %}<br>
+                                {% translate "B. 一個月內入住交訂金2,000元;" %}<br>
+                                {% translate "C. 一個月後人住交訂金為一個月院費" %}<br>
                             </li>
                     <br>
-                        <li>入院訂金於正式入住時，在院費內扣還，唯中途放棄入住者，則 所繳入院訂金 一概不發還，一個月內身故者收取訂金半費</li>
+                        <li>{% translate "入院訂金於正式入住時，在院費內扣還，唯中途放棄入住者，則 所繳入院訂金 一概不發還，一個月內身故者收取訂金半費" %}</li>
                     <br>
-                        <li>安排住客接受免費身體檢查以及填寫相關入住文件</li>
+                        <li>{% translate "安排住客接受免費身體檢查以及填寫相關入住文件" %}</li>
                     </div>
                 </div>
 <!--入院程序-->
                 <div class="col-lg-6 col-12">
                     <div class="custom-text-box">
-                        <h5 class="mb-3">入院程序:</h5>
-                        <li>帶院友身份証影印本一份</li>
+                        <h5 class="mb-3">{% translate "入院程序:" %}</h5>
+                        <li>{% translate "帶院友身份証影印本一份" %}</li>
                     <br>
-                        <li>填寫入院記錄</li>
+                        <li>{% translate "填寫入院記錄" %}</li>
                     <br>
-                        <li>缴交院費:上期一個月及按金一個月</li>
+                        <li>{% translate "缴交院費:上期一個月及按金一個月" %}</li>
                     <br>
-                        <li>院友如退院必須提前30天通知,否則不予退還按金</li>
+                        <li>{% translate "院友如退院必須提前30天通知,否則不予退還按金" %}</li>
                     <br>
-                        <li>退院時如入住不足半個月院費按半個月算，超過半個月則按整月算</li>
+                        <li>{% translate "退院時如入住不足半個月院費按半個月算，超過半個月則按整月算" %}</li>
                     </div>
                 </div>
 <hr>
 <!--新院友日常用品建議帶備清單-->
                 <div class="col-lg-6 col-12">
                     <div class="custom-text-box">
-                        <h5 class="mb-3">新院友帶備物品建議清單:</h5>
+                        <h5 class="mb-3">{% translate "新院友帶備物品建議清單:" %}</h5>
 
                             <div class="row">
-                                <div class="col-6" style="border: 1px solid #fff">輕便睡衣(褲-橡筋褲頭)</div>
+                                <div class="col-6" style="border: 1px solid #fff">{% translate "輕便睡衣(褲-橡筋褲頭)" %}</div>
                                 <div class="col-3" style="border: 1px solid #fff"> </div>
-                                <div class="col-3" style="border: 1px solid #fff">4套</div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-6" style="border: 1px solid #fff">外套、冬季禦寒衣</div>
-                                <div class="col-3" style="border: 1px solid #fff"> </div>
-                                <div class="col-3" style="border: 1px solid #fff">各1件</div>
+                                <div class="col-3" style="border: 1px solid #fff">{% translate "4套" %}</div>
                             </div>
 
                             <div class="row">
-                                <div class="col-6" style="border: 1px solid #fff">鞋襪、拖鞋</div>
+                                <div class="col-6" style="border: 1px solid #fff">{% translate "外套、冬季禦寒衣" %}</div>
                                 <div class="col-3" style="border: 1px solid #fff"> </div>
-                                <div class="col-3" style="border: 1px solid #fff">各1件</div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-6" style="border: 1px solid #fff">浴巾、面巾</div>
-                                <div class="col-3" style="border: 1px solid #fff"> </div>
-                                <div class="col-3" style="border: 1px solid #fff">各2條</div>
+                                <div class="col-3" style="border: 1px solid #fff">{% translate "各1件" %}</div>
                             </div>
 
                             <div class="row">
-                                <div class="col-6" style="border: 1px solid #fff">電鬚刨(男院友適用)</div>
+                                <div class="col-6" style="border: 1px solid #fff">{% translate "鞋襪、拖鞋" %}</div>
                                 <div class="col-3" style="border: 1px solid #fff"> </div>
-                                <div class="col-3" style="border: 1px solid #fff">1個</div>
+                                <div class="col-3" style="border: 1px solid #fff">{% translate "各1件" %}</div>
                             </div>
 
                             <div class="row">
-                                <div class="col-6" style="border: 1px solid #fff">有蓋水杯、水壺</div>
+                                <div class="col-6" style="border: 1px solid #fff">{% translate "浴巾、面巾" %}</div>
                                 <div class="col-3" style="border: 1px solid #fff"> </div>
-                                <div class="col-3" style="border: 1px solid #fff">各1件</div>
+                                <div class="col-3" style="border: 1px solid #fff">{% translate "各2條" %}</div>
                             </div>
 
                             <div class="row">
-                                <div class="col-6" style="border: 1px solid #fff">廁紙、盒裝濕紙巾</div>
+                                <div class="col-6" style="border: 1px solid #fff">{% translate "電鬚刨(男院友適用)" %}</div>
                                 <div class="col-3" style="border: 1px solid #fff"> </div>
-                                <div class="col-3" style="border: 1px solid #fff">各1件</div>
+                                <div class="col-3" style="border: 1px solid #fff">{% translate "1個" %}</div>
                             </div>
 
                             <div class="row">
-                                <div class="col-9" style="border: 1px solid #fff">牙膏、牙刷、漱口膠杯(如有假牙請帶備假牙盒)</div>
-                                <div class="col-3" style="border: 1px solid #fff">各1件</div>
+                                <div class="col-6" style="border: 1px solid #fff">{% translate "有蓋水杯、水壺" %}</div>
+                                <div class="col-3" style="border: 1px solid #fff"> </div>
+                                <div class="col-3" style="border: 1px solid #fff">{% translate "各1件" %}</div>
                             </div>
 
                             <div class="row">
-                                <div class="col-6" style="border: 1px solid #fff">潤膚露</div>
+                                <div class="col-6" style="border: 1px solid #fff">{% translate "廁紙、盒裝濕紙巾" %}</div>
                                 <div class="col-3" style="border: 1px solid #fff"> </div>
-                                <div class="col-3" style="border: 1px solid #fff">1件</div>
+                                <div class="col-3" style="border: 1px solid #fff">{% translate "各1件" %}</div>
                             </div>
 
                             <div class="row">
-                                <div class="col-6" style="border: 1px solid #fff">膠底圍裙</div>
-                                <div class="col-3" style="border: 1px solid #fff"> </div>
-                                <div class="col-3" style="border: 1px solid #fff">2件</div>
+                                <div class="col-9" style="border: 1px solid #fff">{% translate "牙膏、牙刷、漱口膠杯(如有假牙請帶備假牙盒)" %}</div>
+                                <div class="col-3" style="border: 1px solid #fff">{% translate "各1件" %}</div>
                             </div>
 
                             <div class="row">
-                                <div class="col-6" style="border: 1px solid #fff">洗衣網袋</div>
+                                <div class="col-6" style="border: 1px solid #fff">{% translate "潤膚露" %}</div>
                                 <div class="col-3" style="border: 1px solid #fff"> </div>
-                                <div class="col-3" style="border: 1px solid #fff">1個</div>
+                                <div class="col-3" style="border: 1px solid #fff">{% translate "1件" %}</div>
                             </div>
 
                             <div class="row">
-                                <div class="col-6" style="border: 1px solid #fff">膠箱</div>
+                                <div class="col-6" style="border: 1px solid #fff">{% translate "膠底圍裙" %}</div>
                                 <div class="col-3" style="border: 1px solid #fff"> </div>
-                                <div class="col-3" style="border: 1px solid #fff">1個</div>
+                                <div class="col-3" style="border: 1px solid #fff">{% translate "2件" %}</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6" style="border: 1px solid #fff">{% translate "洗衣網袋" %}</div>
+                                <div class="col-3" style="border: 1px solid #fff"> </div>
+                                <div class="col-3" style="border: 1px solid #fff">{% translate "1個" %}</div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6" style="border: 1px solid #fff">{% translate "膠箱" %}</div>
+                                <div class="col-3" style="border: 1px solid #fff"> </div>
+                                <div class="col-3" style="border: 1px solid #fff">{% translate "1個" %}</div>
                             </div>
 
 
                             <div class="row">
-                                <div class="col-6" style="border: 1px solid #fff">細垃圾箱</div>
+                                <div class="col-6" style="border: 1px solid #fff">{% translate "細垃圾箱" %}</div>
                                 <div class="col-3" style="border: 1px solid #fff"> </div>
-                                <div class="col-3" style="border: 1px solid #fff">1個</div>
+                                <div class="col-3" style="border: 1px solid #fff">{% translate "1個" %}</div>
                             </div>
-                    
+
                     <br>
 
                     </div>
                 </div>
 
-<!--新院友建議準備的醫療用品&紙本文件-->                        
+<!--新院友建議準備的醫療用品&紙本文件-->
 <!--新院友建議準備的紙本文件-->
                 <div class="col-lg-6 col-12" >
                     <div class="custom-text-box">
-                        <h5 class="mb-3">新院友建議準備的紙本文件:</h5>
+                        <h5 class="mb-3">{% translate "新院友建議準備的紙本文件:" %}</h5>
 
                         <div class="row">
-                            <div class="col-6" style="border: 1px solid #fff">安老院體格檢查報告</div>
+                            <div class="col-6" style="border: 1px solid #fff">{% translate "安老院體格檢查報告" %}</div>
                             <div class="col-3" style="border: 1px solid #fff"> </div>
-                            <div class="col-3" style="border: 1px solid #fff">1份</div>
+                            <div class="col-3" style="border: 1px solid #fff">{% translate "1份" %}</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-6" style="border: 1px solid #fff">出院紙、覆診紙</div>
+                            <div class="col-6" style="border: 1px solid #fff">{% translate "出院紙、覆診紙" %}</div>
                             <div class="col-3" style="border: 1px solid #fff"> </div>
-                            <div class="col-3" style="border: 1px solid #fff">1份</div>
+                            <div class="col-3" style="border: 1px solid #fff">{% translate "1份" %}</div>
                         </div>
 
                         <br>
-<!--新院友醫療用品建議帶備清單-->   
-                        <h5 class="mb-3">新院友醫療用品建議帶備清單(按需要):</h5>
+<!--新院友醫療用品建議帶備清單-->
+                        <h5 class="mb-3">{% translate "新院友醫療用品建議帶備清單(按需要):" %}</h5>
 
                         <div class="row">
-                            <div class="col-6" style="border: 1px solid #fff">助行器(標記名字)</div>
+                            <div class="col-6" style="border: 1px solid #fff">{% translate "助行器(標記名字)" %}</div>
                             <div class="col-3" style="border: 1px solid #fff"> </div>
-                            <div class="col-3" style="border: 1px solid #fff">1個</div>
+                            <div class="col-3" style="border: 1px solid #fff">{% translate "1個" %}</div>
                         </div>
 
                         <div class="row">
-                            <div class="col-6" style="border: 1px solid #fff">輪椅(標記名字)</div>
+                            <div class="col-6" style="border: 1px solid #fff">{% translate "輪椅(標記名字)" %}</div>
                             <div class="col-3" style="border: 1px solid #fff"> </div>
-                            <div class="col-3" style="border: 1px solid #fff">1個</div>
-                        </div> 
-                        
-                        <div class="row">
-                            <div class="col-6" style="border: 1px solid #fff">驗血糖機,血糖試紙,採血針頭</div>
-                            <div class="col-3" style="border: 1px solid #fff"> </div>
-                            <div class="col-3" style="border: 1px solid #fff">適當數量</div>
-                        </div> 
+                            <div class="col-3" style="border: 1px solid #fff">{% translate "1個" %}</div>
+                        </div>
 
                         <div class="row">
-                            <div class="col-6" style="border: 1px solid #fff">日常服用藥物</div>
+                            <div class="col-6" style="border: 1px solid #fff">{% translate "驗血糖機,血糖試紙,採血針頭" %}</div>
                             <div class="col-3" style="border: 1px solid #fff"> </div>
-                            <div class="col-3" style="border: 1px solid #fff">適當數量</div>
-                        </div> 
+                            <div class="col-3" style="border: 1px solid #fff">{% translate "適當數量" %}</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6" style="border: 1px solid #fff">{% translate "日常服用藥物" %}</div>
+                            <div class="col-3" style="border: 1px solid #fff"> </div>
+                            <div class="col-3" style="border: 1px solid #fff">{% translate "適當數量" %}</div>
+                        </div>
 
                         <br>
 
@@ -233,7 +235,7 @@
                         <div>
                         <br>
                             <p class="text-white text-center">
-                                <a href="{% static 'images/入住申請表.pdf' %}" class="custom-btn btn smoothscroll" download><i class="fa-solid fa-download"></i>下載入住申請表</a>
+                                <a href="{% static 'images/入住申請表.pdf' %}" class="custom-btn btn smoothscroll" download><i class="fa-solid fa-download"></i>{% translate "下載入住申請表" %}</a>
                             </p>
                         </div>
                     </div>
@@ -242,83 +244,83 @@
 
 <div class="row justify-content-center">
     <div class="col-lg-6 col-md-8 col-sm-10 col-12 text-center">
-        <h3 class="text-white mb-4">立即預約參觀選位</h3>
+        <h3 class="text-white mb-4">{% translate "立即預約參觀選位" %}</h3>
 
         <form class="custom-form volunteer-form mb-5 mb-lg-0" action="{% url 'information' %}" method="POST" role="form">
             {% csrf_token %}
 
-            <h5 class="text-start">稱謂:</h5>
-            
+            <h5 class="text-start">{% translate "稱謂:" %}</h5>
+
             <select name="title" id="title" class="form-control" value="{{ title }}" required>
-                <option selected="true" disabled="disabled">稱謂</option>
+                <option selected="true" disabled="disabled">{% translate "稱謂" %}</option>
                 {% for key, value in title_choices.items %}
                     <option value="{{ key }}"
                     {% if key == title %} selected {% endif %}
-                    >{{ value }}</option>
+                    >{% translate value %}</option>
                 {% endfor %}
             </select>
 
-            <h5 class="text-start">預約參觀日子及時間:</h5>
+            <h5 class="text-start">{% translate "預約參觀日子及時間:" %}</h5>
 
-            <input 
-                type="date" 
-                id="meeting-date" 
-                name="visit_date" 
-                class="form-control" 
+            <input
+                type="date"
+                id="meeting-date"
+                name="visit_date"
+                class="form-control"
                 value="{{ visit_date }}"
                 required />
 
             <select id="meeting-time" name="visit_time" class="form-control" required>
-                <option value="" disabled {% if not visit_time %}selected{% endif %}>請選擇時間</option>
+                <option value="" disabled {% if not visit_time %}selected{% endif %}>{% translate "請選擇時間" %}</option>
                 <!-- 這裡可以添加時間選項 -->
             </select>
 
-            
 
-            <h5 class="text-start">姓名:</h5>
+
+            <h5 class="text-start">{% translate "姓名:" %}</h5>
             {% if errors.name %}<span class="error">{{ errors.name }}</span>{% endif %}
-            <input 
-                type="text" 
-                name="name" 
-                id="name" 
-                class="form-control" 
-                placeholder="姓名" 
+            <input
+                type="text"
+                name="name"
+                id="name"
+                class="form-control"
+                placeholder="{% translate "姓名" %}"
                 value="{{ name }}"
                 required />
 
-            <h5 class="text-start">電話:</h5>
+            <h5 class="text-start">{% translate "電話:" %}</h5>
             {% if errors.phone %}<span class="error">{{ errors.phone }}</span>{% endif %}
-            <input 
-                type="tel" 
-                name="phone" 
-                id="phone" 
-                class="form-control" 
-                placeholder="電話" 
+            <input
+                type="tel"
+                name="phone"
+                id="phone"
+                class="form-control"
+                placeholder="{% translate "電話" %}"
                 value="{{ phone }}"
                 required />
 
-            <h5 class="text-start">電郵地址:</h5>
+            <h5 class="text-start">{% translate "電郵地址:" %}</h5>
             {% if errors.email %}<span class="error">{{ errors.email }}</span>{% endif %}
-            <input 
-                type="email" 
-                name="email" 
-                id="email" 
-                class="form-control" 
-                placeholder="電郵地址" 
+            <input
+                type="email"
+                name="email"
+                id="email"
+                class="form-control"
+                placeholder="{% translate "電郵地址" %}"
                 value="{{ email }}"
                 required />
 
-            <h5 class="text-start">如有任何問題，請在此填寫:</h5>
-            <textarea 
-                name="comment" 
-                rows="3" 
-                class="form-control" 
-                id="comment" 
-                placeholder="(可選填)">{{ comment }}</textarea>
+            <h5 class="text-start">{% translate "如有任何問題，請在此填寫:" %}</h5>
+            <textarea
+                name="comment"
+                rows="3"
+                class="form-control"
+                id="comment"
+                placeholder="{% translate "(可選填)" %}">{{ comment }}</textarea>
 
-            <button type="submit" class="form-control"><i class="fa-solid fa-forward-step"></i> 提交</button>
+            <button type="submit" class="form-control"><i class="fa-solid fa-forward-step"></i> {% translate "提交" %}</button>
         </form>
-        
+
     </div>
 
 
@@ -333,7 +335,7 @@
 
 
 
-                
+
 
 
 <!-- link to 護老小知識.html -->
@@ -350,16 +352,16 @@
                     </div>
 
                     <div>
-                        <h4 class="text-white text-center mt-3 mb-3 my-auto mx-auto"> 想知更多護老小知識？</h4>
+                        <h4 class="text-white text-center mt-3 mb-3 my-auto mx-auto"> {% translate "想知更多護老小知識？" %}</h4>
                     </div>
 
                     <div>
                         <p class="text-white text-center">
-                        <a href={% url "guideline" %} class="custom-btn btn smoothscroll"><i class="fa-solid fa-computer-mouse"></i> 點擊這裏</a>
+                        <a href={% url "guideline" %} class="custom-btn btn smoothscroll"><i class="fa-solid fa-computer-mouse"></i> {% translate "點擊這裏" %}</a>
                         </p>
                     </div>
                 </div>
-            
+
         </div>
         </div>
 

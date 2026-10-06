@@ -1,5 +1,7 @@
-{% extends 'base.html' %} 
-{% block title %} | 護老指引 {% endblock %}
+{% extends 'base.html' %}
+{% load i18n language_ui %}
+
+{% block title %} | {% translate "護老指引" %} {% endblock %}
 {% load humanize %}
 {% load static %}
 {% block content %}
@@ -7,7 +9,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8 col-sm-10 col-12 text-center mb-4">
-                <h2>護老小知識更新中<br>敬請期待!</h2>
+                <h2>{% translate "護老小知識更新中" %}<br>{% translate "敬請期待!" %}</h2>
             </div>
         </div>
     </div>

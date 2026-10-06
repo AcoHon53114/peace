@@ -1,58 +1,85 @@
+{% load i18n language_ui %}
 {% load static%}
 <!--_navbar.html-->
 <nav class="navbar navbar-expand-lg bg-light shadow-lg">
     <div class="container">
         <a class="navbar-brand" href={% url "index" %}>
-            <img src={%static "images/logo.png" %} class="logo img-fluid" alt="Kind Heart Charity" />
+            <img src={%static "images/logo.png" %} class="logo img-fluid" alt="{% translate "平安護老院標誌" %}" />
             <span>
-                平安護老院有限公司
+                {% if LANGUAGE_CODE == "en" %}The Peaceful Home{% else %}{% translate "平安護老院有限公司" %}{% endif %}
                 <br>
-                <small>將平安，仁愛，關懷，喜樂帶進各院友生活和生命當中</small>
+                <small>{% translate "將平安，仁愛，關懷，喜樂帶進各院友生活和生命當中" %}</small>
             </span>
         </a>
 
 
+
+        <div class="language-control">
+                    <form action="{% url 'set_language' %}" method="post" class="language-switcher">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                        <label class="visually-hidden" for="site-language">{% translate "語言" %}</label>
+                        <select name="language" id="site-language" class="form-select form-select-sm language-native">
+                            <option value="zh-hant" {% if LANGUAGE_CODE == 'zh-hant' %}selected{% endif %}>繁體中文</option>
+                            <option value="zh-hans" {% if LANGUAGE_CODE == 'zh-hans' %}selected{% endif %}>简体中文</option>
+                            <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
+                        </select>
+                        <div class="language-custom" hidden>
+                            <button type="button" class="language-toggle" aria-expanded="false" aria-controls="language-options" aria-label="{% translate '語言' %}">
+                                <svg class="language-globe" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg>
+                                <span class="language-current">{% if LANGUAGE_CODE == 'en' %}EN{% elif LANGUAGE_CODE == 'zh-hans' %}简{% else %}繁{% endif %}</span>
+                            </button>
+                            <div id="language-options" class="language-options" hidden>
+                                <button type="button" data-language="en" lang="en">EN</button>
+                                <button type="button" data-language="zh-hant" lang="zh-Hant">繁</button>
+                                <button type="button" data-language="zh-hans" lang="zh-Hans">简</button>
+                            </div>
+                        </div>
+                        <noscript><button type="submit" class="btn btn-sm">{% translate "提交" %}</button></noscript>
+                    </form>
+        </div>
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarNav" aria-expanded="false" aria-label="{% translate "開啟／收起導覽選單" %}">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li {% if '/' == request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link" href="{% url 'index' %}">首頁</a>
+                    <a class="nav-link" href="{% url 'index' %}">{% translate "首頁" %}</a>
                 </li>
-            
+
                 <li {% if 'about' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link" href="{% url 'about' %}">關於我們</a>
+                    <a class="nav-link" href="{% url 'about' %}">{% translate "關於我們" %}</a>
                 </li>
-            
+
                 <li {% if 'environment' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link" href="{% url 'environment' %}">院舍環境</a>
+                    <a class="nav-link" href="{% url 'environment' %}">{% translate "院舍環境" %}</a>
                 </li>
-            
+
                 <li {% if 'information' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link" href="{% url 'information' %}">入院須知</a>
+                    <a class="nav-link" href="{% url 'information' %}">{% translate "入院須知" %}</a>
                 </li>
-            
+
                 <li {% if 'news' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link" href="{% url 'news' %}">院舍消息</a>
+                    <a class="nav-link" href="{% url 'news' %}">{% translate "院舍消息" %}</a>
                 </li>
-            
+
                 <li {% if 'contact' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link" href="{% url 'contact' %}">聯絡我們</a>
+                    <a class="nav-link" href="{% url 'contact' %}">{% translate "聯絡我們" %}</a>
                 </li>
-            
+
                 <!-- 如果用戶已登錄，顯示 Dashboard 和 Logout 按鈕 -->
                 {% if user.is_authenticated %}
                 <!-- Dashboard 按鈕 -->
                 <li {% if 'dashboard' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %} style="margin-right: 10px;">
-                    <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'dashboard' %}"><i class="fa-solid fa-table-columns"></i>主要 | {{user.username}}</a>
+                    <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'dashboard' %}"><i class="fa-solid fa-table-columns"></i>{% translate "主要" %} | {{user.username}}</a>
                 </li>
                 <!-- Logout 按鈕 -->
                 <li class="nav-item mr-3">
                     <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link custom-btn custom-border-btn btn">
-                        <i class="fas fa-sign-out-alt"></i>登出
+                        <i class="fas fa-sign-out-alt"></i>{% translate "登出" %}
                     </a>
                     <form action="{% url 'logout' %}" method="POST" id="logout">
                         {% csrf_token %}
@@ -62,13 +89,15 @@
                 {% else %}
                 <!-- 如果用戶未登錄，顯示註冊和登錄按鈕 -->
                 <li {% if 'register' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %} style="margin-right: 10px;">
-                    <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'register' %}"><i class="fa-regular fa-registered"></i>註冊</a>
+                    <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'register' %}"><i class="fa-regular fa-registered"></i>{% translate "註冊" %}</a>
                 </li>
-            
+
                 <li {% if 'login' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3" {% endif %} style="margin-right: 10px;">
-                    <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i>登錄</a>
+                    <a class="nav-link custom-btn custom-border-btn btn" href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i>{% translate "登錄" %}</a>
                 </li>
                 {% endif %}
+
+
             </ul>
         </div>
     </div>
