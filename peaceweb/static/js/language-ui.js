@@ -64,7 +64,12 @@
       choices[(index + (event.key === 'ArrowDown' ? 1 : -1) + choices.length) % choices.length].focus();
     }
   });
-  custom.addEventListener('focusout', function (event) { if (!custom.contains(event.relatedTarget)) close(false); });
+  custom.addEventListener('focusout', function (event) {
+    // Safari may report no next focus target when tapping an option.
+    // Closing here would hide the option before its click can run.
+    // Outside clicks and Escape still close the dropdown.
+    if (event.relatedTarget && !custom.contains(event.relatedTarget)) close(false);
+  });
 
   select.addEventListener('change', async function () {
     form.elements.next.value = window.location.pathname + window.location.search + window.location.hash;

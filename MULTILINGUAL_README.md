@@ -2,14 +2,16 @@
 
 基於 GitHub main：c27acfb0bbc984d7175ab06aa9fc939c8218db15（peace-optimized）。
 
-## 本次修正（desktop 導覽列掉行及語言按鈕走位）
+## 本次修正（Safari 選語言沒有反應）
 
-導覽列不再為品牌保留固定百分比空間，桌面連結與帳戶按鈕保持單行，語言按鈕緊接帳戶操作。
-按實際可用寬度、語言與帳戶名稱量度，放不下時整組使用 burger，不讓登錄／登出單獨掉行。
-手機保持語言按鈕在 burger 左邊；無需改動圖片、其他模板、翻譯、後端或資料庫。
-本次只修改 peaceweb/static/css/language-ui.css 和 peaceweb/static/js/language-ui.js，另更新此說明。
-如已套用上一版，只需覆蓋以上兩檔，提交 GitHub 讓 Vercel 部署；無需 migration。
-本 ZIP 同時包含之前的地球語言選單、三語及外部資源名稱修正。
+只修改 peaceweb/static/js/language-ui.js 的 focusout 關閉條件：Safari 觸控時下一個焦點為 null，不立即關閉選單，以免選項的 click 尚未執行便被隱藏。
+明確移到外部元素、點擊外部、Esc 仍可關閉；現有語言切換、網址保留及未提交表單／附件保護不變。
+本次 CSS、HTML、圖片、翻譯、後端及資料庫完全不變，另更新此說明。
+如已套用上一版，只需覆蓋 peaceweb/static/js/language-ui.js，提交 GitHub 並讓 Vercel 部署；無需 migration。
+部署後請在實體 iPhone Safari 點開語言選單，輪流選 EN／繁／简確認切換。
+
+本次使用實際 JavaScript 的 DOM 事件模擬：修正前可重現 null relatedTarget 令選單提早關閉，修正後9組語言組合、外部點擊、Esc、鍵盤焦點離開、query/hash及未提交表單保護均通過。
+JavaScript 語法及 git diff --check 通過。此測試不等同實體 Safari，本次未在 iPhone 或 WebKit 引擎執行；下方其他測試為此前版本的驗證記錄。
 
 ## 已完成
 
