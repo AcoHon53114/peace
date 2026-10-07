@@ -2,6 +2,11 @@ name: Publish Peace frontend demo
 
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types: [vercel.deployment.success, vercel.deployment.promoted]
+  schedule:
+    # UTC: minute 23 of every hour (avoid the busy top of the hour).
+    - cron: '23 * * * *'
 
 permissions:
   contents: read
@@ -13,39 +18,90 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  publish:
+    if: github.event_name != 'repository_dispatch' || contains(fromJSON('["production","Production"]'), github.event.client_payload.environment)
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      PAGES_SOURCE: https://peace-beta-sandy.vercel.app
+      PEACE_VERCEL_PROJECT_ID: ${{ vars.PEACE_VERCEL_PROJECT_ID }}
+      PEACE_VERCEL_TEAM_ID: ${{ vars.PEACE_VERCEL_TEAM_ID }}
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout automation from default branch
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
+      - name: Install exporter dependency
+        run: python -m pip install beautifulsoup4==4.13.4
+      - name: Identify current live Production commit
+        id: live
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: python tools/pages_automation.py resolve
+      - name: Checkout matching public assets
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ steps.live.outputs.sha }}
+          path: deployed-source
+          persist-credentials: false
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v5
-      - name: Install exporter dependency
-        run: python -m pip install beautifulsoup4==4.13.4
-      - name: Snapshot public Vercel frontend
+      - name: Restore last successfully published fingerprint
+        uses: actions/cache/restore@v4
+        with:
+          path: .pages-last
+          key: peace-pages-published-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: peace-pages-published-v1-
+      - name: Snapshot public frontend with matching CSS and images
         env:
           PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
         run: >-
           python tools/export_pages.py
-          --source https://peace-beta-sandy.vercel.app
+          --source "$PAGES_SOURCE"
           --base-path "$PAGES_BASE_PATH"
+          --asset-root deployed-source/peaceweb/static
           --output _site
-      - name: Upload static website
+      - name: Ensure Production did not change during export
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: python tools/pages_automation.py verify
+      - name: Compare public content and asset bytes
+        id: compare
+        run: python tools/pages_automation.py compare
+      - name: Upload changed static website
+        if: steps.compare.outputs.changed == 'true'
         uses: actions/upload-pages-artifact@v4
         with:
           path: _site
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy GitHub Pages
+      - name: Recheck Production immediately before publishing
+        if: steps.compare.outputs.changed == 'true'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: python tools/pages_automation.py verify
+      - name: Deploy changed GitHub Pages site
+        if: steps.compare.outputs.changed == 'true'
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Remember fingerprint only after successful publication
+        if: steps.compare.outputs.changed == 'true' && steps.deployment.outcome == 'success'
+        uses: actions/cache/save@v4
+        with:
+          path: .pages-last
+          key: peace-pages-published-v1-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Run summary
+        env:
+          CHANGED: ${{ steps.compare.outputs.changed }}
+        run: |
+          if [ "$CHANGED" = "true" ]; then
+            echo 'Public content/assets changed: GitHub Pages published.' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'Public content/assets unchanged: publication skipped.' >> "$GITHUB_STEP_SUMMARY"
+          fi

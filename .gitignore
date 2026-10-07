@@ -7,3 +7,6 @@ __pycache__/
 staticfiles/
 _site/
 _site-preview*/
+.pages-state.json
+.pages-last/
+deployed-source/
