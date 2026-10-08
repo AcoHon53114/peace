@@ -3,8 +3,9 @@ from django.utils.translation import gettext_lazy as _
 
 # Register your models here.
 from .models import New
+from peaceweb.pages_sync import PublicContentPagesSyncMixin
 
-class NewAdmin(admin.ModelAdmin):
+class NewAdmin(PublicContentPagesSyncMixin, admin.ModelAdmin):
     list_display = ('id', 'title', 'is_published', 'translation_status', 'list_date')
     list_display_links = ('id', 'title')
     list_filter = ('title',)

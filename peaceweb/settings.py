@@ -196,3 +196,11 @@ IMPORT_FORMATS = [CSV, XLSX]
 
 # single export options
 EXPORT_FORMATS = [XLSX]
+
+# Optional Admin -> GitHub Pages notification. Only enable in Vercel Production.
+PEACE_PAGES_SYNC_ENABLED = os.getenv('PEACE_PAGES_SYNC_ENABLED', 'false').lower() == 'true'
+PEACE_PAGES_DEPLOYMENT_ENV = os.getenv('VERCEL_ENV', '')
+PEACE_PAGES_GITHUB_TOKEN = os.getenv('PEACE_PAGES_GITHUB_TOKEN', '')
+PEACE_PAGES_GITHUB_REPOSITORY = os.getenv('PEACE_PAGES_GITHUB_REPOSITORY', 'AcoHon53114/peace')
+PEACE_PAGES_GITHUB_WORKFLOW = os.getenv('PEACE_PAGES_GITHUB_WORKFLOW', 'pages-demo.yml')
+PEACE_PAGES_GITHUB_REF = os.getenv('PEACE_PAGES_GITHUB_REF', 'main')

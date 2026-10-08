@@ -891,3 +891,9 @@ msgstr "圖片 8"
 
 msgid "Photo 9"
 msgstr "圖片 9"
+
+msgid "Content saved. A demo website sync has been requested; publication may take a few minutes."
+msgstr "內容已儲存，已提出展示網站同步要求；發布可能需要幾分鐘。"
+
+msgid "Content saved, but the immediate demo sync notification failed. The hourly check or Run workflow can retry."
+msgstr "內容已儲存，但即時展示網站同步通知失敗。每小時檢查或 Run workflow 可重新嘗試。"

@@ -3,8 +3,9 @@ from django.utils.translation import gettext_lazy as _
 
 # Register your models here.
 from .models import Voice
+from peaceweb.pages_sync import PublicContentPagesSyncMixin
 
-class VoiceAdmin(admin.ModelAdmin):
+class VoiceAdmin(PublicContentPagesSyncMixin, admin.ModelAdmin):
     list_display = ('id', 'name', 'description', 'is_published', 'translation_status')
     list_display_links = ('id', 'name')
     list_editable = ('is_published',)
@@ -29,4 +30,3 @@ class VoiceAdmin(admin.ModelAdmin):
     list_per_page = (25)
     
 admin.site.register(Voice, VoiceAdmin)
-

@@ -938,3 +938,9 @@ msgstr "Photo 8"
 
 msgid "Photo 9"
 msgstr "Photo 9"
+
+msgid "Content saved. A demo website sync has been requested; publication may take a few minutes."
+msgstr "Content saved. A demo website sync has been requested; publication may take a few minutes."
+
+msgid "Content saved, but the immediate demo sync notification failed. The hourly check or Run workflow can retry."
+msgstr "Content saved, but the immediate demo sync notification failed. The hourly check or Run workflow can retry."
